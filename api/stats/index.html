@@ -1,859 +1,471 @@
 
+<!DOCTYPE html>
 
-
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
-    
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      <meta http-equiv="x-ua-compatible" content="ie=edge">
-      
-        <meta name="description" content="Debug annotated Named Entity Recognition (NER) data for inconsitencies and get insights on improving the quality of your data.">
-      
-      
-        <link rel="canonical" href="https://microsoft.github.io/reconner/api/stats/">
-      
-      
-      
-        <meta name="lang:clipboard.copy" content="Copy to clipboard">
-      
-        <meta name="lang:clipboard.copied" content="Copied to clipboard">
-      
-        <meta name="lang:search.language" content="en">
-      
-        <meta name="lang:search.pipeline.stopwords" content="True">
-      
-        <meta name="lang:search.pipeline.trimmer" content="True">
-      
-        <meta name="lang:search.result.none" content="No matching documents">
-      
-        <meta name="lang:search.result.one" content="1 matching document">
-      
-        <meta name="lang:search.result.other" content="# matching documents">
-      
-        <meta name="lang:search.tokenizer" content="[\s\-]+">
-      
-      <link rel="shortcut icon" href="../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.1, mkdocs-material-4.6.3">
-    
-    
-      
-        <title>Stats - Recon</title>
-      
-    
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/application.adb8469c.css">
-      
-        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
-      
-      
-        
-        
-        <meta name="theme-color" content="#fb8c00">
-      
-    
-    
-      <script src="../../assets/javascripts/modernizr.86422ebf.js"></script>
-    
-    
-      
-        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
-      
-    
-    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
-    
-    
-      <link rel="stylesheet" href="../../css/termynal.css">
-    
-      <link rel="stylesheet" href="../../css/custom.css">
-    
-    
-      
-    
-    
-
-  <meta property="og:url" content="https://microsoft.github.io/reconner/api/stats/">
-  
-    <meta property="og:title" content="Stats - Recon">
-  
-  <meta property="og:description" content="Debug annotated Named Entity Recognition (NER) data for inconsitencies and get insights on improving the quality of your data.">
-  <meta property="og:image" content="https://microsoft.github.io/reconner/img/recon.svg">
-  <meta property="og:image:alt" content="Recon NER">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@kabir_khan14">
-  <meta name="twitter:creator" content="@kabir_khan14">
-  
-    <meta property="twitter:title" content="Stats - Recon">
-  
-  <meta name="twitter:description" content="Debug annotated Named Entity Recognition (NER) data for inconsitencies and get insights on improving the quality of your data.">
-  <meta name="twitter:image" content="https://microsoft.github.io/reconner/img/recon.svg">
-  <meta name="twitter:image:alt" content="Recon NER">
-
-
-  </head>
-  
-    
-    
-    <body dir="ltr" data-md-color-primary="orange" data-md-color-accent="deep-orange">
-  
-    <svg class="md-svg">
-      <defs>
-        
-        
-          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
-        
-      </defs>
-    </svg>
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
-    
-      <a href="#recon.stats.calculate_entity_coverage_entropy" tabindex="0" class="md-skip">
-        Skip to content
-      </a>
-    
-    
-      <header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid">
-    <div class="md-flex">
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://microsoft.github.io/reconner/" title="Recon" aria-label="Recon" class="md-header-nav__button md-logo">
-          
-            <img alt="logo" src="../../img/drone-white.svg" width="24" height="24">
-          
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Debug annotated Named Entity Recognition (NER) data for inconsitencies and get insights on improving the quality of your data." name="description"/>
+<link href="https://microsoft.github.io/reconner/api/stats/" rel="canonical"/>
+<link href="../../img/favicon.ico" rel="shortcut icon"/>
+<meta content="mkdocs-1.1.2, mkdocs-material-5.4.0" name="generator"/>
+<title>Stats - Recon</title>
+<link href="../../assets/stylesheets/main.fe0cca5b.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.a46bcfb3.min.css" rel="stylesheet"/>
+<meta content="#ffa726" name="theme-color"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
+<style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+<link href="../../css/termynal.css" rel="stylesheet"/>
+<link href="../../css/custom.css" rel="stylesheet"/>
+<meta content="https://microsoft.github.io/reconner/api/stats/" property="og:url"/>
+<meta content="Stats - Recon" property="og:title"/>
+<meta content="Debug annotated Named Entity Recognition (NER) data for inconsitencies and get insights on improving the quality of your data." property="og:description"/>
+<meta content="https://microsoft.github.io/reconner/img/recon.svg" property="og:image"/>
+<meta content="Recon NER" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="@kabir_khan14" name="twitter:site"/>
+<meta content="@kabir_khan14" name="twitter:creator"/>
+<meta content="Stats - Recon" property="twitter:title"/>
+<meta content="Debug annotated Named Entity Recognition (NER) data for inconsitencies and get insights on improving the quality of your data." name="twitter:description"/>
+<meta content="https://microsoft.github.io/reconner/img/recon.svg" name="twitter:image"/>
+<meta content="Recon NER" name="twitter:image:alt"/>
+</head>
+<body data-md-color-accent="deep-orange" data-md-color-primary="orange" data-md-color-scheme="" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#recon.stats">
+          Skip to content
         </a>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
-      </div>
-      <div class="md-flex__cell md-flex__cell--stretch">
-        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-          
-            <span class="md-header-nav__topic">
-              Recon
-            </span>
-            <span class="md-header-nav__topic">
-              
-                Stats
-              
-            </span>
-          
-        </div>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        
-      </div>
-      
-        <div class="md-flex__cell md-flex__cell--shrink">
-          <div class="md-header-nav__source">
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header-nav md-grid">
+<a aria-label="Recon" class="md-header-nav__button md-logo" href="https://microsoft.github.io/reconner/" title="Recon">
+<img alt="logo" src="../../img/drone-white.svg"/>
+</a>
+<label class="md-header-nav__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header-nav__title" data-md-component="header-title">
+<div class="md-header-nav__ellipsis">
+<span class="md-header-nav__topic md-ellipsis">
+            Recon
+          </span>
+<span class="md-header-nav__topic md-ellipsis">
             
-
-
-  
-
-<a href="https://github.com/microsoft/reconner/" title="Go to repository" class="md-source" data-md-source="github">
-  
-    <div class="md-source__icon">
-      <svg viewBox="0 0 24 24" width="24" height="24">
-        <use xlink:href="#__github" width="24" height="24"></use>
-      </svg>
-    </div>
-  
-  <div class="md-source__repository">
+              Stats
+            
+          </span>
+</div>
+</div>
+<div class="md-header-nav__source">
+<a class="md-source" href="https://github.com/microsoft/reconner/" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
     microsoft/reconner
   </div>
 </a>
-          </div>
-        </div>
-      
-    </div>
-  </nav>
+</div>
+</nav>
 </header>
-    
-    <div class="md-container">
-      
-        
-      
-      
-      <main class="md-main" role="main">
-        <div class="md-main__inner md-grid" data-md-component="container">
-          
-            
-              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="https://microsoft.github.io/reconner/" title="Recon" class="md-nav__button md-logo">
-      
-        <img alt="logo" src="../../img/drone-white.svg" width="48" height="48">
-      
-    </a>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Recon" class="md-nav__button md-logo" href="https://microsoft.github.io/reconner/" title="Recon">
+<img alt="logo" src="../../img/drone-white.svg"/>
+</a>
     Recon
   </label>
-  
-    <div class="md-nav__source">
-      
-
-
-  
-
-<a href="https://github.com/microsoft/reconner/" title="Go to repository" class="md-source" data-md-source="github">
-  
-    <div class="md-source__icon">
-      <svg viewBox="0 0 24 24" width="24" height="24">
-        <use xlink:href="#__github" width="24" height="24"></use>
-      </svg>
-    </div>
-  
-  <div class="md-source__repository">
+<div class="md-nav__source">
+<a class="md-source" href="https://github.com/microsoft/reconner/" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
     microsoft/reconner
   </div>
 </a>
-    </div>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../.." title="Recon" class="md-nav__link">
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../.." title="Recon">
       Recon
     </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
-    
-    <label class="md-nav__link" for="nav-2">
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" id="nav-2" type="checkbox"/>
+<label class="md-nav__link" for="nav-2">
       Tutorial
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-2">
+      <span class="md-nav__icon md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"></path></svg>
+</span>
+</label>
+<nav aria-label="Tutorial" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="nav-2">
+<span class="md-nav__icon md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</span>
         Tutorial
       </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../tutorial/1_loading_data/" title="Loading your data" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial/1_loading_data/" title="Loading your data">
       Loading your data
     </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../tutorial/2_ner_stats/" title="NER Stats" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial/2_ner_stats/" title="NER Stats">
       NER Stats
     </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-3" type="checkbox" id="nav-2-3">
-    
-    <label class="md-nav__link" for="nav-2-3">
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-3" id="nav-2-3" type="checkbox"/>
+<label class="md-nav__link" for="nav-2-3">
       Dataset
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-2-3">
+      <span class="md-nav__icon md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"></path></svg>
+</span>
+</label>
+<nav aria-label="Dataset" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="nav-2-3">
+<span class="md-nav__icon md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</span>
         Dataset
       </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../tutorial/3_dataset_intro/" title="Introduction" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial/3_dataset_intro/" title="Introduction">
       Introduction
     </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../tutorial/3_dataset_mutate/" title="Making changes to a Dataset" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial/3_dataset_mutate/" title="Making changes to a Dataset">
       Making changes to a Dataset
     </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../tutorial/4_corpus/" title="Using a Corpus" class="md-nav__link">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial/4_corpus/" title="Using a Corpus">
       Using a Corpus
     </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../tutorial/4_more_stats/" title="More NER Stats" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial/4_more_stats/" title="More NER Stats">
       More NER Stats
     </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../tutorial/5_getting_insights/" title="Getting Insights" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial/5_getting_insights/" title="Getting Insights">
       Getting Insights
     </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../tutorial/custom_entity_recognizer/" title="Custom EntityRecognizer" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorial/custom_entity_recognizer/" title="Custom EntityRecognizer">
       Custom EntityRecognizer
     </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
-    
-    <label class="md-nav__link" for="nav-3">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="nav-3" id="nav-3" type="checkbox"/>
+<label class="md-nav__link" for="nav-3">
       API Reference
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-3">
+      <span class="md-nav__icon md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"></path></svg>
+</span>
+</label>
+<nav aria-label="API Reference" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="nav-3">
+<span class="md-nav__icon md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</span>
         API Reference
       </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../corpus/" title="Corpus" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../corpus/" title="Corpus">
       Corpus
     </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../corrections/" title="Corrections" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../corrections/" title="Corrections">
       Corrections
     </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../dataset/" title="Dataset" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../dataset/" title="Dataset">
       Dataset
     </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../hashing/" title="Hashing" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../hashing/" title="Hashing">
       Hashing
     </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../insights/" title="Insights" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../insights/" title="Insights">
       Insights
     </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../loaders/" title="Loaders" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../loaders/" title="Loaders">
       Loaders
     </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../operations/" title="Operations" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../operations/" title="Operations">
       Operations
     </a>
-  </li>
-
-        
-          
-          
-          
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
         Stats
-      </label>
-    
-    <a href="./" title="Stats" class="md-nav__link md-nav__link--active">
+        <span class="md-nav__icon md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"></path></svg>
+</span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./" title="Stats">
       Stats
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#recon.stats.calculate_entity_coverage_entropy" class="md-nav__link">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#recon.stats">
+    recon.stats
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#recon.stats.calculate_entity_coverage_entropy">
     calculate_entity_coverage_entropy()
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#recon.stats.calculate_entity_coverage_similarity" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#recon.stats.calculate_entity_coverage_similarity">
     calculate_entity_coverage_similarity()
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#recon.stats.calculate_label_balance_entropy" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#recon.stats.calculate_label_balance_entropy">
     calculate_label_balance_entropy()
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#recon.stats.calculate_label_distribution_similarity" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#recon.stats.calculate_label_distribution_similarity">
     calculate_label_distribution_similarity()
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#recon.stats.detect_outliers" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#recon.stats.detect_outliers">
     detect_outliers()
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#recon.stats.entropy" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#recon.stats.entropy">
     entropy()
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#recon.stats.get_entity_coverage" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#recon.stats.get_entity_coverage">
     get_entity_coverage()
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#recon.stats.get_ner_stats" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#recon.stats.get_ner_stats">
     get_ner_stats()
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#recon.stats.get_probs_from_counts" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#recon.stats.get_probs_from_counts">
     get_probs_from_counts()
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#recon.stats.get_sorted_type_counts" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#recon.stats.get_sorted_type_counts">
     get_sorted_type_counts()
   </a>
-  
 </li>
-      
-      
-      
-      
-      
-    </ul>
-  
+</ul>
 </nav>
-    
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../store/" title="Store" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../store/" title="Store">
       Store
     </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../tokenization/" title="Tokenization" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../tokenization/" title="Tokenization">
       Tokenization
     </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../validation/" title="Validation" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../validation/" title="Validation">
       Validation
     </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-12" type="checkbox" id="nav-3-12">
-    
-    <label class="md-nav__link" for="nav-3-12">
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-12" id="nav-3-12" type="checkbox"/>
+<label class="md-nav__link" for="nav-3-12">
       Recognizers
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-3-12">
+      <span class="md-nav__icon md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"></path></svg>
+</span>
+</label>
+<nav aria-label="Recognizers" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="nav-3-12">
+<span class="md-nav__icon md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</span>
         Recognizers
       </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../recognizers/base/" title="EntityRecognizer" class="md-nav__link">
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../recognizers/base/" title="EntityRecognizer">
       EntityRecognizer
     </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../recognizers/spacy/" title="SpacyEntityRecognizer" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../recognizers/spacy/" title="SpacyEntityRecognizer">
       SpacyEntityRecognizer
     </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../types/example/" title="Types" class="md-nav__link">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../types/example/" title="Types">
       Types
     </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../../contributing/" title="Development - Contributing" class="md-nav__link">
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../contributing/" title="Development - Contributing">
       Development - Contributing
     </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../../release-notes/" title="Release Notes" class="md-nav__link">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../release-notes/" title="Release Notes">
       Release Notes
     </a>
-  </li>
-
-    
-  </ul>
+</li>
+</ul>
 </nav>
-                  </div>
-                </div>
-              </div>
-            
-            
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#recon.stats.calculate_entity_coverage_entropy" class="md-nav__link">
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#recon.stats">
+    recon.stats
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#recon.stats.calculate_entity_coverage_entropy">
     calculate_entity_coverage_entropy()
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#recon.stats.calculate_entity_coverage_similarity" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#recon.stats.calculate_entity_coverage_similarity">
     calculate_entity_coverage_similarity()
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#recon.stats.calculate_label_balance_entropy" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#recon.stats.calculate_label_balance_entropy">
     calculate_label_balance_entropy()
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#recon.stats.calculate_label_distribution_similarity" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#recon.stats.calculate_label_distribution_similarity">
     calculate_label_distribution_similarity()
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#recon.stats.detect_outliers" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#recon.stats.detect_outliers">
     detect_outliers()
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#recon.stats.entropy" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#recon.stats.entropy">
     entropy()
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#recon.stats.get_entity_coverage" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#recon.stats.get_entity_coverage">
     get_entity_coverage()
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#recon.stats.get_ner_stats" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#recon.stats.get_ner_stats">
     get_ner_stats()
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#recon.stats.get_probs_from_counts" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#recon.stats.get_probs_from_counts">
     get_probs_from_counts()
   </a>
-  
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#recon.stats.get_sorted_type_counts" class="md-nav__link">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#recon.stats.get_sorted_type_counts">
     get_sorted_type_counts()
   </a>
-  
 </li>
-      
-      
-      
-      
-      
-    </ul>
-  
+</ul>
 </nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          <div class="md-content">
-            <article class="md-content__inner md-typeset">
-              
-                
-                  <a href="https://github.com/microsoft/reconner/tree/master/docs/api/stats.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
-                
-                
-                  <h1>Stats</h1>
-                
-                <h2 id="recon.stats.calculate_entity_coverage_entropy"><code class="codehilite"><span class="n">calculate_entity_coverage_entropy</span><span class="p">(</span><span class="n">entity_coverage</span><span class="p">)</span></code><a class="headerlink" href="#recon.stats.calculate_entity_coverage_entropy" title="Permanent link">&para;</a></h2>
-<div class="autodoc">
-<details class="note"><summary>Show source code in <code>recon/stats.py</code></summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>252
-253
-254
-255
-256
-257
-258
-259
-260
-261
-262
-263</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">calculate_entity_coverage_entropy</span><span class="p">(</span><span class="n">entity_coverage</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">EntityCoverage</span><span class="p">],)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Use Entropy to calculate a metric for entity coverage.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        entity_coverage (List[EntityCoverage]): List of EntityCoverage </span>
-<span class="sd">            from get_entity_coverage</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        float: Entropy for entity coverage counts</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">counts</span> <span class="o">=</span> <span class="p">[</span><span class="n">ecs</span><span class="o">.</span><span class="n">count</span> <span class="k">for</span> <span class="n">ecs</span> <span class="ow">in</span> <span class="n">entity_coverage</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">entropy</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="n">counts</span><span class="p">))</span>  <span class="c1"># type: ignore</span>
-</code></pre></div>
-</td></tr></table>
-
-</details>
+</div>
+</div>
+</div>
+<div class="md-content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://github.com/microsoft/reconner/tree/master/docs/api/stats.md" title="Edit this page">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
+</a>
+<h1>Stats</h1>
+<div class="doc doc-object doc-module">
+<h2 class="hidden-toc" href="#recon.stats" id="recon.stats" style="visibility: hidden; width: 0; height: 0;">
+<a class="headerlink" href="#recon.stats" title="Permanent link">¶</a></h2>
+<div class="doc doc-contents first">
+<div class="doc doc-children">
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="recon.stats.calculate_entity_coverage_entropy">
+<code class="highlight language-python">
+calculate_entity_coverage_entropy<span class="p">(</span><span class="n">entity_coverage</span><span class="p">)</span> </code>
+<a class="headerlink" href="#recon.stats.calculate_entity_coverage_entropy" title="Permanent link">¶</a></h2>
+<div class="doc doc-contents">
 <p>Use Entropy to calculate a metric for entity coverage.</p>
-<p><strong>Parameters</strong></p>
+<p><strong>Parameters:</strong></p>
 <table>
 <thead>
 <tr>
@@ -867,12 +479,15 @@
 <tr>
 <td><code>entity_coverage</code></td>
 <td><code>List[recon.types.EntityCoverage]</code></td>
-<td>List of EntityCoverage  from get_entity_coverage</td>
+<td>
+<p>List of EntityCoverage 
+from get_entity_coverage</p>
+</td>
 <td><em>required</em></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns</strong></p>
+<p><strong>Returns:</strong></p>
 <table>
 <thead>
 <tr>
@@ -883,15 +498,120 @@
 <tbody>
 <tr>
 <td><code>float</code></td>
-<td>float: Entropy for entity coverage counts</td>
+<td>
+<p>float: Entropy for entity coverage counts</p>
+</td>
 </tr>
 </tbody>
 </table>
+<details class="quote">
+<summary>Source code in <code>recon/stats.py</code></summary>
+<table class="highlighttable">
+<tr>
+<td class="linenos">
+<div class="linenodiv">
+<pre><span></span>253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264</pre>
 </div>
-<h2 id="recon.stats.calculate_entity_coverage_similarity"><code class="codehilite"><span class="n">calculate_entity_coverage_similarity</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span></code><a class="headerlink" href="#recon.stats.calculate_entity_coverage_similarity" title="Permanent link">&para;</a></h2>
-<div class="autodoc">
-<details class="note"><summary>Show source code in <code>recon/stats.py</code></summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>157
-158
+</td>
+<td class="code">
+<div class="highlight">
+<pre><span></span><code><span class="k">def</span> <span class="nf">calculate_entity_coverage_entropy</span><span class="p">(</span><span class="n">entity_coverage</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">EntityCoverage</span><span class="p">],)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="sd">"""Use Entropy to calculate a metric for entity coverage.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        entity_coverage (List[EntityCoverage]): List of EntityCoverage </span>
+<span class="sd">            from get_entity_coverage</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        float: Entropy for entity coverage counts</span>
+<span class="sd">    """</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="p">[</span><span class="n">ecs</span><span class="o">.</span><span class="n">count</span> <span class="k">for</span> <span class="n">ecs</span> <span class="ow">in</span> <span class="n">entity_coverage</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">entropy</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="n">counts</span><span class="p">))</span>  <span class="c1"># type: ignore</span>
+</code></pre>
+</div>
+</td>
+</tr>
+</table>
+</details>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="recon.stats.calculate_entity_coverage_similarity">
+<code class="highlight language-python">
+calculate_entity_coverage_similarity<span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> </code>
+<a class="headerlink" href="#recon.stats.calculate_entity_coverage_similarity" title="Permanent link">¶</a></h2>
+<div class="doc doc-contents">
+<p>Calculate how well dataset x covers the entities in dataset y.
+This function should be used to calculate how similar your train set
+annotations cover the annotations in your dev/test set</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><code>List[recon.types.Example]</code></td>
+<td>
+<p>Dataset to compare coverage to (usually corpus.train)</p>
+</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><code>List[recon.types.Example]</code></td>
+<td>
+<p>Dataset to evaluate coverage for (usually corpus.dev or corpus.test)</p>
+</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>EntityCoverageStats</code></td>
+<td>
+<p>EntityCoverageStats: Stats with 
+    1. The base entity coverage (does entity in y exist in x)
+    2. Count coverage (sum of the EntityCoverage.count property for 
+    each EntityCoverage in y to get a more holisic coverage scaled by how 
+    often entities occur in each dataset x and y)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<details class="quote">
+<summary>Source code in <code>recon/stats.py</code></summary>
+<table class="highlighttable">
+<tr>
+<td class="linenos">
+<div class="linenodiv">
+<pre><span></span>158
 159
 160
 161
@@ -928,8 +648,14 @@
 192
 193
 194
-195</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">calculate_entity_coverage_similarity</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Example</span><span class="p">],</span> <span class="n">y</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Example</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">EntityCoverageStats</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Calculate how well dataset x covers the entities in dataset y.</span>
+195
+196</pre>
+</div>
+</td>
+<td class="code">
+<div class="highlight">
+<pre><span></span><code><span class="k">def</span> <span class="nf">calculate_entity_coverage_similarity</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Example</span><span class="p">],</span> <span class="n">y</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Example</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">EntityCoverageStats</span><span class="p">:</span>
+    <span class="sd">"""Calculate how well dataset x covers the entities in dataset y.</span>
 <span class="sd">    This function should be used to calculate how similar your train set</span>
 <span class="sd">    annotations cover the annotations in your dev/test set</span>
 
@@ -943,7 +669,7 @@
 <span class="sd">            2. Count coverage (sum of the EntityCoverage.count property for </span>
 <span class="sd">            each EntityCoverage in y to get a more holisic coverage scaled by how </span>
 <span class="sd">            often entities occur in each dataset x and y)</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">def</span> <span class="nf">pipeline</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Example</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
         <span class="n">ecs</span> <span class="o">=</span> <span class="n">get_entity_coverage</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -967,85 +693,22 @@
     <span class="k">return</span> <span class="n">EntityCoverageStats</span><span class="p">(</span>
         <span class="n">entity</span><span class="o">=</span><span class="p">(</span><span class="n">n_intersection</span> <span class="o">/</span> <span class="n">n_union</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="p">(</span><span class="n">count_intersection</span> <span class="o">/</span> <span class="n">count_union</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span>
     <span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
-
-</details>
-<p>Calculate how well dataset x covers the entities in dataset y.
-This function should be used to calculate how similar your train set
-annotations cover the annotations in your dev/test set</p>
-<p><strong>Parameters</strong></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>x</code></td>
-<td><code>List[recon.types.Example]</code></td>
-<td>Dataset to compare coverage to (usually corpus.train)</td>
-<td><em>required</em></td>
-</tr>
-<tr>
-<td><code>y</code></td>
-<td><code>List[recon.types.Example]</code></td>
-<td>Dataset to evaluate coverage for (usually corpus.dev or corpus.test)</td>
-<td><em>required</em></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Returns</strong></p>
-<table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>EntityCoverageStats</code></td>
-<td>EntityCoverageStats: Stats with          1. The base entity coverage (does entity in y exist in x)         2. Count coverage (sum of the EntityCoverage.count property for          each EntityCoverage in y to get a more holisic coverage scaled by how          often entities occur in each dataset x and y)</td>
-</tr>
-</tbody>
-</table>
+</code></pre>
 </div>
-<h2 id="recon.stats.calculate_label_balance_entropy"><code class="codehilite"><span class="n">calculate_label_balance_entropy</span><span class="p">(</span><span class="n">ner_stats</span><span class="p">)</span></code><a class="headerlink" href="#recon.stats.calculate_label_balance_entropy" title="Permanent link">&para;</a></h2>
-<div class="autodoc">
-<details class="note"><summary>Show source code in <code>recon/stats.py</code></summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>238
-239
-240
-241
-242
-243
-244
-245
-246
-247
-248
-249</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">calculate_label_balance_entropy</span><span class="p">(</span><span class="n">ner_stats</span><span class="p">:</span> <span class="n">NERStats</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Use Entropy to calculate a metric for label balance based on an NERStats object </span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        ner_stats (NERStats): NERStats for a dataset.</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        float: Entropy for annotation counts of each label</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">total</span> <span class="o">=</span> <span class="n">ner_stats</span><span class="o">.</span><span class="n">n_annotations</span>
-    <span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">count</span> <span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">ner_stats</span><span class="o">.</span><span class="n">n_annotations_per_type</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
-    <span class="k">return</span> <span class="n">entropy</span><span class="p">(</span><span class="n">classes</span><span class="p">,</span> <span class="n">total</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
-
+</td>
+</tr>
+</table>
 </details>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="recon.stats.calculate_label_balance_entropy">
+<code class="highlight language-python">
+calculate_label_balance_entropy<span class="p">(</span><span class="n">ner_stats</span><span class="p">)</span> </code>
+<a class="headerlink" href="#recon.stats.calculate_label_balance_entropy" title="Permanent link">¶</a></h2>
+<div class="doc doc-contents">
 <p>Use Entropy to calculate a metric for label balance based on an NERStats object </p>
-<p><strong>Parameters</strong></p>
+<p><strong>Parameters:</strong></p>
 <table>
 <thead>
 <tr>
@@ -1059,12 +722,14 @@ annotations cover the annotations in your dev/test set</p>
 <tr>
 <td><code>ner_stats</code></td>
 <td><code>NERStats</code></td>
-<td>NERStats for a dataset.</td>
+<td>
+<p>NERStats for a dataset.</p>
+</td>
 <td><em>required</em></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns</strong></p>
+<p><strong>Returns:</strong></p>
 <table>
 <thead>
 <tr>
@@ -1075,14 +740,125 @@ annotations cover the annotations in your dev/test set</p>
 <tbody>
 <tr>
 <td><code>float</code></td>
-<td>float: Entropy for annotation counts of each label</td>
+<td>
+<p>float: Entropy for annotation counts of each label</p>
+</td>
 </tr>
 </tbody>
 </table>
+<details class="quote">
+<summary>Source code in <code>recon/stats.py</code></summary>
+<table class="highlighttable">
+<tr>
+<td class="linenos">
+<div class="linenodiv">
+<pre><span></span>239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250</pre>
 </div>
-<h2 id="recon.stats.calculate_label_distribution_similarity"><code class="codehilite"><span class="n">calculate_label_distribution_similarity</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span></code><a class="headerlink" href="#recon.stats.calculate_label_distribution_similarity" title="Permanent link">&para;</a></h2>
-<div class="autodoc">
-<details class="note"><summary>Show source code in <code>recon/stats.py</code></summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 82
+</td>
+<td class="code">
+<div class="highlight">
+<pre><span></span><code><span class="k">def</span> <span class="nf">calculate_label_balance_entropy</span><span class="p">(</span><span class="n">ner_stats</span><span class="p">:</span> <span class="n">NERStats</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="sd">"""Use Entropy to calculate a metric for label balance based on an NERStats object </span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ner_stats (NERStats): NERStats for a dataset.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        float: Entropy for annotation counts of each label</span>
+<span class="sd">    """</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">ner_stats</span><span class="o">.</span><span class="n">n_annotations</span>
+    <span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">count</span> <span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">ner_stats</span><span class="o">.</span><span class="n">n_annotations_per_type</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+    <span class="k">return</span> <span class="n">entropy</span><span class="p">(</span><span class="n">classes</span><span class="p">,</span> <span class="n">total</span><span class="p">)</span>
+</code></pre>
+</div>
+</td>
+</tr>
+</table>
+</details>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="recon.stats.calculate_label_distribution_similarity">
+<code class="highlight language-python">
+calculate_label_distribution_similarity<span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> </code>
+<a class="headerlink" href="#recon.stats.calculate_label_distribution_similarity" title="Permanent link">¶</a></h2>
+<div class="doc doc-contents">
+<p>Calculate the similarity of the label distribution for 2 datasets.</p>
+<p>e.g. This can help you understand how well your train set models your dev and test sets.
+Empircally you want a similarity over <strong>0.8</strong> when comparing your train set to each of your
+dev and test sets.</p>
+<div class="codehilite">
+<pre><span></span><code><span class="n">calculate_label_distribution_similarity</span><span class="p">(</span><span class="n">corpus</span><span class="p">.</span><span class="n">train</span><span class="p">,</span> <span class="n">corpus</span><span class="p">.</span><span class="n">dev</span><span class="p">)</span>
+<span class="o">#</span> <span class="mi">98</span><span class="p">.</span><span class="mi">57</span>
+
+<span class="n">calculate_label_distribution_similarity</span><span class="p">(</span><span class="n">corpus</span><span class="p">.</span><span class="n">train</span><span class="p">,</span> <span class="n">corpus</span><span class="p">.</span><span class="n">test</span><span class="p">)</span>
+<span class="o">#</span> <span class="mi">73</span><span class="p">.</span><span class="mi">29</span> <span class="o">-</span> <span class="n">This</span> <span class="k">is</span> <span class="n">bad</span><span class="p">,</span> <span class="n">let</span><span class="err">'</span><span class="n">s</span> <span class="n">investigate</span> <span class="n">our</span> <span class="n">test</span> <span class="k">set</span> <span class="k">more</span>
+</code></pre>
+</div>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td><code>List[recon.types.Example]</code></td>
+<td>
+<p>Dataset</p>
+</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><code>List[recon.types.Example]</code></td>
+<td>
+<p>Dataset to compare x to</p>
+</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>float</code></td>
+<td>
+<p>float: Similarity of label distributions</p>
+</td>
+</tr>
+</tbody>
+</table>
+<details class="quote">
+<summary>Source code in <code>recon/stats.py</code></summary>
+<table class="highlighttable">
+<tr>
+<td class="linenos">
+<div class="linenodiv">
+<pre><span></span> 82
  83
  84
  85
@@ -1111,8 +887,13 @@ annotations cover the annotations in your dev/test set</p>
 108
 109
 110
-111</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">calculate_label_distribution_similarity</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Example</span><span class="p">],</span> <span class="n">y</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Example</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Calculate the similarity of the label distribution for 2 datasets.</span>
+111</pre>
+</div>
+</td>
+<td class="code">
+<div class="highlight">
+<pre><span></span><code><span class="k">def</span> <span class="nf">calculate_label_distribution_similarity</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Example</span><span class="p">],</span> <span class="n">y</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Example</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="sd">"""Calculate the similarity of the label distribution for 2 datasets.</span>
 
 <span class="sd">    e.g. This can help you understand how well your train set models your dev and test sets.</span>
 <span class="sd">    Empircally you want a similarity over **0.8** when comparing your train set to each of your</span>
@@ -1122,7 +903,7 @@ annotations cover the annotations in your dev/test set</p>
 <span class="sd">        # 98.57</span>
 
 <span class="sd">        calculate_label_distribution_similarity(corpus.train, corpus.test)</span>
-<span class="sd">        # 73.29 - This is bad, let&#39;s investigate our test set more</span>
+<span class="sd">        # 73.29 - This is bad, let's investigate our test set more</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        x (List[Example]): Dataset</span>
@@ -1130,7 +911,7 @@ annotations cover the annotations in your dev/test set</p>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        float: Similarity of label distributions</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">def</span> <span class="nf">pipeline</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Example</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
         <span class="n">stats</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">NERStats</span><span class="p">,</span> <span class="n">get_ner_stats</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
@@ -1141,23 +922,22 @@ annotations cover the annotations in your dev/test set</p>
     <span class="n">distance</span> <span class="o">=</span> <span class="n">jensenshannon</span><span class="p">(</span><span class="n">pipeline</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">pipeline</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
 
     <span class="k">return</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">distance</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
-</code></pre></div>
-</td></tr></table>
-
+</code></pre>
+</div>
+</td>
+</tr>
+</table>
 </details>
-<p>Calculate the similarity of the label distribution for 2 datasets.</p>
-<p>e.g. This can help you understand how well your train set models your dev and test sets.
-Empircally you want a similarity over <strong>0.8</strong> when comparing your train set to each of your
-dev and test sets.</p>
-<div class="codehilite"><pre><span></span><code>calculate_label_distribution_similarity(corpus.train, corpus.dev)
-# 98.57
-
-calculate_label_distribution_similarity(corpus.train, corpus.test)
-# 73.29 - This is bad, let&#39;s investigate our test set more
-</code></pre></div>
-
-
-<p><strong>Parameters</strong></p>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="recon.stats.detect_outliers">
+<code class="highlight language-python">
+detect_outliers<span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">use_log</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> </code>
+<a class="headerlink" href="#recon.stats.detect_outliers" title="Permanent link">¶</a></h2>
+<div class="doc doc-contents">
+<p>Detect outliers in a numerical sequence.</p>
+<p><strong>Parameters:</strong></p>
 <table>
 <thead>
 <tr>
@@ -1169,20 +949,24 @@ calculate_label_distribution_similarity(corpus.train, corpus.test)
 </thead>
 <tbody>
 <tr>
-<td><code>x</code></td>
-<td><code>List[recon.types.Example]</code></td>
-<td>Dataset</td>
+<td><code>seq</code></td>
+<td><code>Sequence[Any]</code></td>
+<td>
+<p>Sequence of ints or floats</p>
+</td>
 <td><em>required</em></td>
 </tr>
 <tr>
-<td><code>y</code></td>
-<td><code>List[recon.types.Example]</code></td>
-<td>Dataset to compare x to</td>
-<td><em>required</em></td>
+<td><code>use_log</code></td>
+<td><code>bool</code></td>
+<td>
+<p>Use logarithm of seq.</p>
+</td>
+<td><code>False</code></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns</strong></p>
+<p><strong>Returns:</strong></p>
 <table>
 <thead>
 <tr>
@@ -1192,16 +976,20 @@ calculate_label_distribution_similarity(corpus.train, corpus.test)
 </thead>
 <tbody>
 <tr>
-<td><code>float</code></td>
-<td>float: Similarity of label distributions</td>
+<td><code>Outliers</code></td>
+<td>
+<p>Tuple[List[int], List[int]]: Tuple of low and high indices</p>
+</td>
 </tr>
 </tbody>
 </table>
-</div>
-<h2 id="recon.stats.detect_outliers"><code class="codehilite"><span class="n">detect_outliers</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">use_log</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code><a class="headerlink" href="#recon.stats.detect_outliers" title="Permanent link">&para;</a></h2>
-<div class="autodoc">
-<details class="note"><summary>Show source code in <code>recon/stats.py</code></summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>266
-267
+<details class="quote">
+<summary>Source code in <code>recon/stats.py</code></summary>
+<table class="highlighttable">
+<tr>
+<td class="linenos">
+<div class="linenodiv">
+<pre><span></span>267
 268
 269
 270
@@ -1217,8 +1005,14 @@ calculate_label_distribution_similarity(corpus.train, corpus.test)
 280
 281
 282
-283</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">detect_outliers</span><span class="p">(</span><span class="n">seq</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span> <span class="n">use_log</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Outliers</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Detect outliers in a numerical sequence.</span>
+283
+284</pre>
+</div>
+</td>
+<td class="code">
+<div class="highlight">
+<pre><span></span><code><span class="k">def</span> <span class="nf">detect_outliers</span><span class="p">(</span><span class="n">seq</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span> <span class="n">use_log</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Outliers</span><span class="p">:</span>
+    <span class="sd">"""Detect outliers in a numerical sequence.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        seq (Sequence[Any]): Sequence of ints or floats</span>
@@ -1226,7 +1020,7 @@ calculate_label_distribution_similarity(corpus.train, corpus.test)
 
 <span class="sd">    Returns:</span>
 <span class="sd">        Tuple[List[int], List[int]]: Tuple of low and high indices</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">q1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)</span>
     <span class="n">q3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">)</span>
     <span class="n">iqr</span> <span class="o">=</span> <span class="n">q3</span> <span class="o">-</span> <span class="n">q1</span>
@@ -1235,12 +1029,24 @@ calculate_label_distribution_similarity(corpus.train, corpus.test)
     <span class="n">low_indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span> <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="n">fence_low</span><span class="p">]</span>
     <span class="n">high_indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span> <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="n">fence_high</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">Outliers</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="n">low_indices</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="n">high_indices</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
-
+</code></pre>
+</div>
+</td>
+</tr>
+</table>
 </details>
-<p>Detect outliers in a numerical sequence.</p>
-<p><strong>Parameters</strong></p>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="recon.stats.entropy">
+<code class="highlight language-python">
+entropy<span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">total</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> </code>
+<a class="headerlink" href="#recon.stats.entropy" title="Permanent link">¶</a></h2>
+<div class="doc doc-contents">
+<p>Calculate Shannon Entropy for a sequence of Floats or Integers.
+If Floats, check they are probabilities
+If Integers, divide each n in seq by total and calculate entropy</p>
+<p><strong>Parameters:</strong></p>
 <table>
 <thead>
 <tr>
@@ -1253,19 +1059,23 @@ calculate_label_distribution_similarity(corpus.train, corpus.test)
 <tbody>
 <tr>
 <td><code>seq</code></td>
-<td><code>Sequence[Any]</code></td>
-<td>Sequence of ints or floats</td>
+<td><code>Union[List[int], List[float]]</code></td>
+<td>
+<p>Sequence to calculate entropy for</p>
+</td>
 <td><em>required</em></td>
 </tr>
 <tr>
-<td><code>use_log</code></td>
-<td><code>bool</code></td>
-<td>Use logarithm of seq.</td>
-<td><code>False</code></td>
+<td><code>total</code></td>
+<td><code>int</code></td>
+<td>
+<p>Total to divide by for List of int</p>
+</td>
+<td><code>None</code></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns</strong></p>
+<p><strong>Exceptions:</strong></p>
 <table>
 <thead>
 <tr>
@@ -1275,16 +1085,37 @@ calculate_label_distribution_similarity(corpus.train, corpus.test)
 </thead>
 <tbody>
 <tr>
-<td><code>Outliers</code></td>
-<td>Tuple[List[int], List[int]]: Tuple of low and high indices</td>
+<td><code>ValueError</code></td>
+<td>
+<p>If seq is not valid</p>
+</td>
 </tr>
 </tbody>
 </table>
-</div>
-<h2 id="recon.stats.entropy"><code class="codehilite"><span class="n">entropy</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">total</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code><a class="headerlink" href="#recon.stats.entropy" title="Permanent link">&para;</a></h2>
-<div class="autodoc">
-<details class="note"><summary>Show source code in <code>recon/stats.py</code></summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>211
-212
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>float</code></td>
+<td>
+<p>float: Entropy for sequence</p>
+</td>
+</tr>
+</tbody>
+</table>
+<details class="quote">
+<summary>Source code in <code>recon/stats.py</code></summary>
+<table class="highlighttable">
+<tr>
+<td class="linenos">
+<div class="linenodiv">
+<pre><span></span>212
 213
 214
 215
@@ -1307,8 +1138,14 @@ calculate_label_distribution_similarity(corpus.train, corpus.test)
 232
 233
 234
-235</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">entropy</span><span class="p">(</span><span class="n">seq</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span> <span class="n">total</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Calculate Shannon Entropy for a sequence of Floats or Integers.</span>
+235
+236</pre>
+</div>
+</td>
+<td class="code">
+<div class="highlight">
+<pre><span></span><code><span class="k">def</span> <span class="nf">entropy</span><span class="p">(</span><span class="n">seq</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span> <span class="n">total</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="sd">"""Calculate Shannon Entropy for a sequence of Floats or Integers.</span>
 <span class="sd">    If Floats, check they are probabilities</span>
 <span class="sd">    If Integers, divide each n in seq by total and calculate entropy</span>
 
@@ -1321,25 +1158,36 @@ calculate_label_distribution_similarity(corpus.train, corpus.test)
 
 <span class="sd">    Returns:</span>
 <span class="sd">        float: Entropy for sequence</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">seq</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Pass a valid non-empty sequence&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Pass a valid non-empty sequence"</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">seq</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">float</span><span class="p">):</span>
         <span class="n">e</span> <span class="o">=</span> <span class="n">scipy_entropy</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">seq</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">int</span><span class="p">):</span>
         <span class="n">e</span> <span class="o">=</span> <span class="n">scipy_entropy</span><span class="p">(</span><span class="n">get_probs_from_counts</span><span class="p">(</span><span class="n">seq</span><span class="p">))</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Parameter seq must be a sequence of probabilites or integers.&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Parameter seq must be a sequence of probabilites or integers."</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">e</span>
-</code></pre></div>
-</td></tr></table>
-
+</code></pre>
+</div>
+</td>
+</tr>
+</table>
 </details>
-<p>Calculate Shannon Entropy for a sequence of Floats or Integers.
-If Floats, check they are probabilities
-If Integers, divide each n in seq by total and calculate entropy</p>
-<p><strong>Parameters</strong></p>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="recon.stats.get_entity_coverage">
+<code class="highlight language-python">
+get_entity_coverage<span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">'||'</span><span class="p">,</span> <span class="n">case_sensitive</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">return_examples</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> </code>
+<a class="headerlink" href="#recon.stats.get_entity_coverage" title="Permanent link">¶</a></h2>
+<div class="doc doc-contents">
+<p>Identify how well you dataset covers an entity type. Get insights
+on the how many times certain text/label span combinations exist across your
+data so that you can focus your annotation efforts better rather than
+annotating examples your Model already understands well.</p>
+<p><strong>Parameters:</strong></p>
 <table>
 <thead>
 <tr>
@@ -1351,20 +1199,41 @@ If Integers, divide each n in seq by total and calculate entropy</p>
 </thead>
 <tbody>
 <tr>
-<td><code>seq</code></td>
-<td><code>Union[List[int], List[float]]</code></td>
-<td>Sequence to calculate entropy for</td>
+<td><code>data</code></td>
+<td><code>List[recon.types.Example]</code></td>
+<td>
+<p>List of examples</p>
+</td>
 <td><em>required</em></td>
 </tr>
 <tr>
-<td><code>total</code></td>
-<td><code>int</code></td>
-<td>Total to divide by for List of int</td>
-<td><code>None</code></td>
+<td><code>sep</code></td>
+<td><code>str</code></td>
+<td>
+<p>Separator used in coverage map, only change if || exists in your text
+or label.</p>
+</td>
+<td><code>'||'</code></td>
+</tr>
+<tr>
+<td><code>case_sensitive</code></td>
+<td><code>bool</code></td>
+<td>
+<p>Consider case of text for each annotation</p>
+</td>
+<td><code>False</code></td>
+</tr>
+<tr>
+<td><code>return_examples</code></td>
+<td><code>bool</code></td>
+<td>
+<p>Return Examples that contain the entity label annotation.</p>
+</td>
+<td><code>False</code></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Exceptions</strong></p>
+<p><strong>Returns:</strong></p>
 <table>
 <thead>
 <tr>
@@ -1374,30 +1243,21 @@ If Integers, divide each n in seq by total and calculate entropy</p>
 </thead>
 <tbody>
 <tr>
-<td><code>ValueError</code></td>
-<td>If seq is not valid</td>
+<td><code>List[recon.types.EntityCoverage]</code></td>
+<td>
+<p>List[EntityCoverage]: Sorted List of EntityCoverage objects containing the text, label, count, and
+    an optional list of examples where that text/label annotation exists.</p>
+</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns</strong></p>
-<table>
-<thead>
+<details class="quote">
+<summary>Source code in <code>recon/stats.py</code></summary>
+<table class="highlighttable">
 <tr>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>float</code></td>
-<td>float: Entropy for sequence</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h2 id="recon.stats.get_entity_coverage"><code class="codehilite"><span class="n">get_entity_coverage</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;||&#39;</span><span class="p">,</span> <span class="n">use_lower</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_examples</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code><a class="headerlink" href="#recon.stats.get_entity_coverage" title="Permanent link">&para;</a></h2>
-<div class="autodoc">
-<details class="note"><summary>Show source code in <code>recon/stats.py</code></summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>114
+<td class="linenos">
+<div class="linenodiv">
+<pre><span></span>114
 115
 116
 117
@@ -1437,10 +1297,19 @@ If Integers, divide each n in seq by total and calculate entropy</p>
 151
 152
 153
-154</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">get_entity_coverage</span><span class="p">(</span>
-    <span class="n">data</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Example</span><span class="p">],</span> <span class="n">sep</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;||&quot;</span><span class="p">,</span> <span class="n">use_lower</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">return_examples</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+154
+155</pre>
+</div>
+</td>
+<td class="code">
+<div class="highlight">
+<pre><span></span><code><span class="k">def</span> <span class="nf">get_entity_coverage</span><span class="p">(</span>
+    <span class="n">data</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Example</span><span class="p">],</span>
+    <span class="n">sep</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"||"</span><span class="p">,</span>
+    <span class="n">case_sensitive</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">return_examples</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">EntityCoverage</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;Identify how well you dataset covers an entity type. Get insights</span>
+    <span class="sd">"""Identify how well you dataset covers an entity type. Get insights</span>
 <span class="sd">    on the how many times certain text/label span combinations exist across your</span>
 <span class="sd">    data so that you can focus your annotation efforts better rather than</span>
 <span class="sd">    annotating examples your Model already understands well.</span>
@@ -1449,22 +1318,20 @@ If Integers, divide each n in seq by total and calculate entropy</p>
 <span class="sd">        data (List[Example]): List of examples</span>
 <span class="sd">        sep (str, optional): Separator used in coverage map, only change if || exists in your text</span>
 <span class="sd">            or label.</span>
-<span class="sd">        use_lower (bool, optional): Use the lowercase form of the span text in ents_to_label.</span>
+<span class="sd">        case_sensitive (bool, optional): Consider case of text for each annotation</span>
 <span class="sd">        return_examples (bool, optional): Return Examples that contain the entity label annotation.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        List[EntityCoverage]: Sorted List of EntityCoverage objects containing the text, label, count, and</span>
 <span class="sd">            an optional list of examples where that text/label annotation exists.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">coverage_map</span><span class="p">:</span> <span class="n">DefaultDict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
     <span class="n">examples_map</span><span class="p">:</span> <span class="n">DefaultDict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Example</span><span class="p">]]</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
 
     <span class="k">for</span> <span class="n">example</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">span</span> <span class="ow">in</span> <span class="n">example</span><span class="o">.</span><span class="n">spans</span><span class="p">:</span>
-            <span class="n">text</span> <span class="o">=</span> <span class="n">span</span><span class="o">.</span><span class="n">text</span>
-            <span class="k">if</span> <span class="n">use_lower</span><span class="p">:</span>
-                <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-            <span class="n">key</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">text</span><span class="si">}{</span><span class="n">sep</span><span class="si">}{</span><span class="n">span</span><span class="o">.</span><span class="n">label</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">span</span><span class="o">.</span><span class="n">text</span> <span class="k">if</span> <span class="n">case_sensitive</span> <span class="k">else</span> <span class="n">span</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">text</span><span class="si">}{</span><span class="n">sep</span><span class="si">}{</span><span class="n">span</span><span class="o">.</span><span class="n">label</span><span class="si">}</span><span class="s2">"</span>
             <span class="n">coverage_map</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
             <span class="n">examples_map</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">example</span><span class="p">)</span>
 
@@ -1478,15 +1345,22 @@ If Integers, divide each n in seq by total and calculate entropy</p>
 
     <span class="n">sorted_coverage</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">coverage</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">count</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">sorted_coverage</span>
-</code></pre></div>
-</td></tr></table>
-
+</code></pre>
+</div>
+</td>
+</tr>
+</table>
 </details>
-<p>Identify how well you dataset covers an entity type. Get insights
-on the how many times certain text/label span combinations exist across your
-data so that you can focus your annotation efforts better rather than
-annotating examples your Model already understands well.</p>
-<p><strong>Parameters</strong></p>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="recon.stats.get_ner_stats">
+<code class="highlight language-python">
+get_ner_stats<span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">serialize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">return_examples</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> </code>
+<a class="headerlink" href="#recon.stats.get_ner_stats" title="Permanent link">¶</a></h2>
+<div class="doc doc-contents">
+<p>Compute statistics for NER data</p>
+<p><strong>Parameters:</strong></p>
 <table>
 <thead>
 <tr>
@@ -1500,30 +1374,30 @@ annotating examples your Model already understands well.</p>
 <tr>
 <td><code>data</code></td>
 <td><code>List[recon.types.Example]</code></td>
-<td>List of examples</td>
+<td>
+<p>Data as a List of examples</p>
+</td>
 <td><em>required</em></td>
 </tr>
 <tr>
-<td><code>sep</code></td>
-<td><code>str</code></td>
-<td>Separator used in coverage map, only change if</td>
-<td></td>
-</tr>
-<tr>
-<td><code>use_lower</code></td>
+<td><code>serialize</code></td>
 <td><code>bool</code></td>
-<td>Use the lowercase form of the span text in ents_to_label.</td>
-<td><code>True</code></td>
+<td>
+<p>Serialize to a JSON string for printing.</p>
+</td>
+<td><code>False</code></td>
 </tr>
 <tr>
 <td><code>return_examples</code></td>
 <td><code>bool</code></td>
-<td>Return Examples that contain the entity label annotation.</td>
+<td>
+<p>Whether to return examples per type</p>
+</td>
 <td><code>False</code></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns</strong></p>
+<p><strong>Returns:</strong></p>
 <table>
 <thead>
 <tr>
@@ -1533,15 +1407,21 @@ annotating examples your Model already understands well.</p>
 </thead>
 <tbody>
 <tr>
-<td><code>List[recon.types.EntityCoverage]</code></td>
-<td>List[EntityCoverage]: Sorted List of EntityCoverage objects containing the text, label, count, and         an optional list of examples where that text/label annotation exists.</td>
+<td><code>Optional[Union[recon.types.NERStats, str]]</code></td>
+<td>
+<p>Union[NERStats, str, None]: 
+    List of examples or string if serialize and no_print are both True</p>
+</td>
 </tr>
 </tbody>
 </table>
-</div>
-<h2 id="recon.stats.get_ner_stats"><code class="codehilite"><span class="n">get_ner_stats</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">serialize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">return_examples</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code><a class="headerlink" href="#recon.stats.get_ner_stats" title="Permanent link">&para;</a></h2>
-<div class="autodoc">
-<details class="note"><summary>Show source code in <code>recon/stats.py</code></summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>21
+<details class="quote">
+<summary>Source code in <code>recon/stats.py</code></summary>
+<table class="highlighttable">
+<tr>
+<td class="linenos">
+<div class="linenodiv">
+<pre><span></span>21
 22
 23
 24
@@ -1583,10 +1463,15 @@ annotating examples your Model already understands well.</p>
 60
 61
 62
-63</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">get_ner_stats</span><span class="p">(</span>
+63</pre>
+</div>
+</td>
+<td class="code">
+<div class="highlight">
+<pre><span></span><code><span class="k">def</span> <span class="nf">get_ner_stats</span><span class="p">(</span>
     <span class="n">data</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Example</span><span class="p">],</span> <span class="n">serialize</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">return_examples</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">NERStats</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;Compute statistics for NER data</span>
+    <span class="sd">"""Compute statistics for NER data</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        data (List[Example]): Data as a List of examples</span>
@@ -1596,7 +1481,7 @@ annotating examples your Model already understands well.</p>
 <span class="sd">    Returns:</span>
 <span class="sd">        Union[NERStats, str, None]: </span>
 <span class="sd">            List of examples or string if serialize and no_print are both True</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">annotations_per_type</span><span class="p">:</span> <span class="n">DefaultDict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
     <span class="n">examples</span><span class="p">:</span> <span class="n">DefaultDict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
     <span class="n">n_examples_no_entities</span> <span class="o">=</span> <span class="mi">0</span>
@@ -1626,88 +1511,23 @@ annotating examples your Model already understands well.</p>
         <span class="k">return</span> <span class="n">srsly</span><span class="o">.</span><span class="n">json_dumps</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">dict</span><span class="p">(),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">stats</span>
-</code></pre></div>
-</td></tr></table>
-
-</details>
-<p>Compute statistics for NER data</p>
-<p><strong>Parameters</strong></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>data</code></td>
-<td><code>List[recon.types.Example]</code></td>
-<td>Data as a List of examples</td>
-<td><em>required</em></td>
-</tr>
-<tr>
-<td><code>serialize</code></td>
-<td><code>bool</code></td>
-<td>Serialize to a JSON string for printing.</td>
-<td><code>False</code></td>
-</tr>
-<tr>
-<td><code>return_examples</code></td>
-<td><code>bool</code></td>
-<td>Whether to return examples per type</td>
-<td><code>False</code></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Returns</strong></p>
-<table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>Union[recon.types.NERStats, str, NoneType]</code></td>
-<td>Union[NERStats, str, None]:          List of examples or string if serialize and no_print are both True</td>
-</tr>
-</tbody>
-</table>
+</code></pre>
 </div>
-<h2 id="recon.stats.get_probs_from_counts"><code class="codehilite"><span class="n">get_probs_from_counts</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span></code><a class="headerlink" href="#recon.stats.get_probs_from_counts" title="Permanent link">&para;</a></h2>
-<div class="autodoc">
-<details class="note"><summary>Show source code in <code>recon/stats.py</code></summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>198
-199
-200
-201
-202
-203
-204
-205
-206
-207
-208</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">get_probs_from_counts</span><span class="p">(</span><span class="n">seq</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;Convert a sequence of counts to a sequence of probabilties</span>
-<span class="sd">    by dividing each n by the sum of all n in seq</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        seq (Sequence[int]): Sequence of counts</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        Sequence[float]: Sequence of probabilities</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span> <span class="o">/</span> <span class="nb">sum</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
-
+</td>
+</tr>
+</table>
 </details>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="recon.stats.get_probs_from_counts">
+<code class="highlight language-python">
+get_probs_from_counts<span class="p">(</span><span class="n">seq</span><span class="p">)</span> </code>
+<a class="headerlink" href="#recon.stats.get_probs_from_counts" title="Permanent link">¶</a></h2>
+<div class="doc doc-contents">
 <p>Convert a sequence of counts to a sequence of probabilties
 by dividing each n by the sum of all n in seq</p>
-<p><strong>Parameters</strong></p>
+<p><strong>Parameters:</strong></p>
 <table>
 <thead>
 <tr>
@@ -1721,12 +1541,14 @@ by dividing each n by the sum of all n in seq</p>
 <tr>
 <td><code>seq</code></td>
 <td><code>Sequence[int]</code></td>
-<td>Sequence of counts</td>
+<td>
+<p>Sequence of counts</p>
+</td>
 <td><em>required</em></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns</strong></p>
+<p><strong>Returns:</strong></p>
 <table>
 <thead>
 <tr>
@@ -1737,47 +1559,61 @@ by dividing each n by the sum of all n in seq</p>
 <tbody>
 <tr>
 <td><code>Sequence[float]</code></td>
-<td>Sequence[float]: Sequence of probabilities</td>
+<td>
+<p>Sequence[float]: Sequence of probabilities</p>
+</td>
 </tr>
 </tbody>
 </table>
+<details class="quote">
+<summary>Source code in <code>recon/stats.py</code></summary>
+<table class="highlighttable">
+<tr>
+<td class="linenos">
+<div class="linenodiv">
+<pre><span></span>199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209</pre>
 </div>
-<h2 id="recon.stats.get_sorted_type_counts"><code class="codehilite"><span class="n">get_sorted_type_counts</span><span class="p">(</span><span class="n">ner_stats</span><span class="p">)</span></code><a class="headerlink" href="#recon.stats.get_sorted_type_counts" title="Permanent link">&para;</a></h2>
-<div class="autodoc">
-<details class="note"><summary>Show source code in <code>recon/stats.py</code></summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">get_sorted_type_counts</span><span class="p">(</span><span class="n">ner_stats</span><span class="p">:</span> <span class="n">NERStats</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;Get list of counts for each type in n_annotations_per_type property </span>
-<span class="sd">    of an NERStats object sorted by type name</span>
+</td>
+<td class="code">
+<div class="highlight">
+<pre><span></span><code><span class="k">def</span> <span class="nf">get_probs_from_counts</span><span class="p">(</span><span class="n">seq</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+    <span class="sd">"""Convert a sequence of counts to a sequence of probabilties</span>
+<span class="sd">    by dividing each n by the sum of all n in seq</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        ner_stats (NERStats): Dataset stats</span>
+<span class="sd">        seq (Sequence[int]): Sequence of counts</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        List[int]: List of counts sorted by type name</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">annotations_per_type</span> <span class="o">=</span> <span class="n">ner_stats</span><span class="o">.</span><span class="n">n_annotations_per_type</span>
-    <span class="n">annotations_per_type</span><span class="p">[</span><span class="n">NONE</span><span class="p">]</span> <span class="o">=</span> <span class="n">ner_stats</span><span class="o">.</span><span class="n">n_examples_no_entities</span>
-
-    <span class="k">return</span> <span class="p">[</span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">annotations_per_type</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span>
-</code></pre></div>
-</td></tr></table>
-
+<span class="sd">        Sequence[float]: Sequence of probabilities</span>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span> <span class="o">/</span> <span class="nb">sum</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+</code></pre>
+</div>
+</td>
+</tr>
+</table>
 </details>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="recon.stats.get_sorted_type_counts">
+<code class="highlight language-python">
+get_sorted_type_counts<span class="p">(</span><span class="n">ner_stats</span><span class="p">)</span> </code>
+<a class="headerlink" href="#recon.stats.get_sorted_type_counts" title="Permanent link">¶</a></h2>
+<div class="doc doc-contents">
 <p>Get list of counts for each type in n_annotations_per_type property 
 of an NERStats object sorted by type name</p>
-<p><strong>Parameters</strong></p>
+<p><strong>Parameters:</strong></p>
 <table>
 <thead>
 <tr>
@@ -1791,12 +1627,14 @@ of an NERStats object sorted by type name</p>
 <tr>
 <td><code>ner_stats</code></td>
 <td><code>NERStats</code></td>
-<td>Dataset stats</td>
+<td>
+<p>Dataset stats</p>
+</td>
 <td><em>required</em></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns</strong></p>
+<p><strong>Returns:</strong></p>
 <table>
 <thead>
 <tr>
@@ -1807,100 +1645,124 @@ of an NERStats object sorted by type name</p>
 <tbody>
 <tr>
 <td><code>List[int]</code></td>
-<td>List[int]: List of counts sorted by type name</td>
+<td>
+<p>List[int]: List of counts sorted by type name</p>
+</td>
 </tr>
 </tbody>
 </table>
+<details class="quote">
+<summary>Source code in <code>recon/stats.py</code></summary>
+<table class="highlighttable">
+<tr>
+<td class="linenos">
+<div class="linenodiv">
+<pre><span></span>66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79</pre>
 </div>
-                
-                  
-                
-                
-              
-              
-                
+</td>
+<td class="code">
+<div class="highlight">
+<pre><span></span><code><span class="k">def</span> <span class="nf">get_sorted_type_counts</span><span class="p">(</span><span class="n">ner_stats</span><span class="p">:</span> <span class="n">NERStats</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+    <span class="sd">"""Get list of counts for each type in n_annotations_per_type property </span>
+<span class="sd">    of an NERStats object sorted by type name</span>
 
+<span class="sd">    Args:</span>
+<span class="sd">        ner_stats (NERStats): Dataset stats</span>
 
-              
-            </article>
-          </div>
-        </div>
-      </main>
-      
-        
+<span class="sd">    Returns:</span>
+<span class="sd">        List[int]: List of counts sorted by type name</span>
+<span class="sd">    """</span>
+    <span class="n">annotations_per_type</span> <span class="o">=</span> <span class="n">ner_stats</span><span class="o">.</span><span class="n">n_annotations_per_type</span>
+    <span class="n">annotations_per_type</span><span class="p">[</span><span class="n">NONE</span><span class="p">]</span> <span class="o">=</span> <span class="n">ner_stats</span><span class="o">.</span><span class="n">n_examples_no_entities</span>
+
+    <span class="k">return</span> <span class="p">[</span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">annotations_per_type</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span>
+</code></pre>
+</div>
+</td>
+</tr>
+</table>
+</details>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div>
+</div>
+</main>
 <footer class="md-footer">
-  
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
-        
-          <a href="../operations/" title="Operations" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
-            </div>
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
+<div class="md-footer-nav">
+<nav aria-label="Footer" class="md-footer-nav__inner md-grid">
+<a class="md-footer-nav__link md-footer-nav__link--prev" href="../operations/" rel="prev" title="Operations">
+<div class="md-footer-nav__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</div>
+<div class="md-footer-nav__title">
+<div class="md-ellipsis">
+<span class="md-footer-nav__direction">
                   Previous
                 </span>
                 Operations
-              </span>
-            </div>
-          </a>
-        
-        
-          <a href="../store/" title="Store" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
+              </div>
+</div>
+</a>
+<a class="md-footer-nav__link md-footer-nav__link--next" href="../store/" rel="next" title="Store">
+<div class="md-footer-nav__title">
+<div class="md-ellipsis">
+<span class="md-footer-nav__direction">
                   Next
                 </span>
                 Store
-              </span>
-            </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
-          </a>
+              </div>
+</div>
+<div class="md-footer-nav__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
+</div>
+</a>
+</nav>
+</div>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
         
-      </nav>
-    </div>
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-        powered by
-        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
-        and
-        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs</a>
-      </div>
-      
-  <div class="md-footer-social">
-    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
-    
-      <a href="https://github.com/microsoft/reconner" target="_blank" rel="noopener" title="github" class="md-footer-social__link fa fa-github"></a>
-    
-      <a href="https://twitter.com/kabir_khan14" target="_blank" rel="noopener" title="twitter" class="md-footer-social__link fa fa-twitter"></a>
-    
-  </div>
-
-    </div>
-  </div>
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+          Material for MkDocs
+        </a>
+</div>
+<div class="md-footer-social">
+</div>
+</div>
+</div>
 </footer>
-      
-    </div>
-    
-      <script src="../../assets/javascripts/application.c33a9706.js"></script>
-      
-      <script>app.initialize({version:"1.1",url:{base:"../.."}})</script>
-      
-        <script src="../../js/termynal.js"></script>
-      
-        <script src="https://unpkg.com/mermaid@8.4.6/dist/mermaid.min.js"></script>
-      
-        <script src="../../js/custom.js"></script>
-      
-    
-  </body>
+</div>
+<script src="../../assets/javascripts/vendor.d710d30a.min.js"></script>
+<script src="../../assets/javascripts/bundle.b39636ac.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+<script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.a68abb33.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+<script src="../../js/termynal.js"></script>
+<script src="https://unpkg.com/mermaid@8.4.6/dist/mermaid.min.js"></script>
+<script src="../../js/custom.js"></script>
+</body>
 </html>
