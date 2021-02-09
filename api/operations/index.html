@@ -526,24 +526,7 @@ __call__<span class="p">(</span><span class="bp">self</span><span class="p">,</s
 <tr>
 <td class="linenos">
 <div class="linenodiv">
-<pre><span></span>133
-134
-135
-136
-137
-138
-139
-140
-141
-142
-143
-144
-145
-146
-147
-148
-149
-150
+<pre><span></span>150
 151
 152
 153
@@ -623,7 +606,30 @@ __call__<span class="p">(</span><span class="bp">self</span><span class="p">,</s
 227
 228
 229
-230</pre>
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253</pre>
 </div>
 </td>
 <td class="code">
@@ -640,8 +646,8 @@ __call__<span class="p">(</span><span class="bp">self</span><span class="p">,</s
 <span class="sd">    Returns:</span>
 <span class="sd">        OperationResult: Container holding new data and the state of the Operation</span>
 <span class="sd">    """</span>
-    <span class="n">initial_state</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">"initial_state"</span><span class="p">)</span> <span class="k">if</span> <span class="s2">"initial_state"</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="kc">None</span>
-    <span class="n">verbose</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">"verbose"</span><span class="p">)</span> <span class="k">if</span> <span class="s2">"verbose"</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="k">else</span> <span class="kc">None</span>
+    <span class="n">verbose</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">"verbose"</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="n">initial_state</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">"initial_state"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">initial_state</span><span class="p">:</span>
         <span class="n">initial_state</span> <span class="o">=</span> <span class="n">OperationState</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
     <span class="n">state</span> <span class="o">=</span> <span class="n">initial_state</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -690,31 +696,37 @@ __call__<span class="p">(</span><span class="bp">self</span><span class="p">,</s
         <span class="p">)</span>
 
     <span class="n">new_data</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">orig_example_hash</span><span class="p">,</span> <span class="n">example</span><span class="p">,</span> <span class="n">preprocessed_outputs</span> <span class="ow">in</span> <span class="n">op_iter</span><span class="p">(</span>
-        <span class="n">dataset</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span>
-    <span class="p">):</span>
-        <span class="k">if</span> <span class="n">preprocessed_outputs</span><span class="p">:</span>
-            <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">op</span><span class="p">(</span><span class="n">example</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">preprocessed_outputs</span><span class="o">=</span><span class="n">preprocessed_outputs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">op</span><span class="p">(</span><span class="n">example</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">res</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">remove_example</span><span class="p">(</span><span class="n">orig_example_hash</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-            <span class="n">old_example_present</span> <span class="o">=</span> <span class="kc">False</span>
-            <span class="k">for</span> <span class="n">new_example</span> <span class="ow">in</span> <span class="n">res</span><span class="p">:</span>
-                <span class="n">new_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_example</span><span class="p">)</span>
-                <span class="k">if</span> <span class="nb">hash</span><span class="p">(</span><span class="n">new_example</span><span class="p">)</span> <span class="o">==</span> <span class="n">orig_example_hash</span><span class="p">:</span>
-                    <span class="n">old_example_present</span> <span class="o">=</span> <span class="kc">True</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">add_example</span><span class="p">(</span><span class="n">new_example</span><span class="p">)</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">old_example_present</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">),</span> <span class="n">disable</span><span class="o">=</span><span class="p">(</span><span class="ow">not</span> <span class="n">verbose</span><span class="p">))</span> <span class="k">as</span> <span class="n">pbar</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">orig_example_hash</span><span class="p">,</span> <span class="n">example</span><span class="p">,</span> <span class="n">preprocessed_outputs</span> <span class="ow">in</span> <span class="n">op_iter</span><span class="p">(</span>
+            <span class="n">dataset</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span>
+        <span class="p">):</span>
+            <span class="k">if</span> <span class="n">preprocessed_outputs</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">op</span><span class="p">(</span>
+                    <span class="n">example</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">preprocessed_outputs</span><span class="o">=</span><span class="n">preprocessed_outputs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">op</span><span class="p">(</span><span class="n">example</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">res</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">remove_example</span><span class="p">(</span><span class="n">orig_example_hash</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">Example</span><span class="p">)</span>
-            <span class="n">new_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
-            <span class="k">if</span> <span class="nb">hash</span><span class="p">(</span><span class="n">res</span><span class="p">)</span> <span class="o">!=</span> <span class="n">orig_example_hash</span><span class="p">:</span>
-                <span class="n">change_example</span><span class="p">(</span><span class="n">orig_example_hash</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                <span class="n">old_example_present</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="k">for</span> <span class="n">new_example</span> <span class="ow">in</span> <span class="n">res</span><span class="p">:</span>
+                    <span class="n">new_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_example</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="nb">hash</span><span class="p">(</span><span class="n">new_example</span><span class="p">)</span> <span class="o">==</span> <span class="n">orig_example_hash</span><span class="p">:</span>
+                        <span class="n">old_example_present</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">add_example</span><span class="p">(</span><span class="n">new_example</span><span class="p">)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">old_example_present</span><span class="p">:</span>
+                    <span class="n">remove_example</span><span class="p">(</span><span class="n">orig_example_hash</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">Example</span><span class="p">)</span>
+                <span class="n">new_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+                <span class="k">if</span> <span class="nb">hash</span><span class="p">(</span><span class="n">res</span><span class="p">)</span> <span class="o">!=</span> <span class="n">orig_example_hash</span><span class="p">:</span>
+                    <span class="n">change_example</span><span class="p">(</span><span class="n">orig_example_hash</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span>
+
+            <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="n">transformation_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">([</span><span class="n">t</span><span class="o">.</span><span class="n">type</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">state</span><span class="o">.</span><span class="n">transformations</span><span class="p">])</span>
 
@@ -737,7 +749,7 @@ __call__<span class="p">(</span><span class="bp">self</span><span class="p">,</s
 <div class="doc doc-object doc-method">
 <h3 class="doc doc-heading" id="recon.operations.Operation.__init__">
 <code class="highlight language-python">
-__init__<span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">pre</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="n">handles_tokens</span><span class="p">)</span> </code>
+__init__<span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">pre</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="n">handles_tokens</span><span class="p">,</span> <span class="n">augmentation</span><span class="p">)</span> </code>
 <span class="doc doc-properties">
 <small class="doc doc-property doc-property-special"><code>special</code></small>
 </span>
@@ -787,23 +799,38 @@ __init__<span class="p">(</span><span class="bp">self</span><span class="p">,</s
 <tr>
 <td class="linenos">
 <div class="linenodiv">
-<pre><span></span>120
-121
-122
-123
-124
-125
-126
-127
-128
-129
+<pre><span></span>129
 130
-131</pre>
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148</pre>
 </div>
 </td>
 <td class="code">
 <div class="highlight">
-<pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">pre</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">PreProcessor</span><span class="p">],</span> <span class="n">op</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">handles_tokens</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
+<pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">pre</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">PreProcessor</span><span class="p">],</span>
+    <span class="n">op</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
+    <span class="n">handles_tokens</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+    <span class="n">augmentation</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+<span class="p">):</span>
     <span class="sd">"""Initialize an Operation instance</span>
 
 <span class="sd">    Args:</span>
@@ -815,6 +842,7 @@ __init__<span class="p">(</span><span class="bp">self</span><span class="p">,</s
     <span class="bp">self</span><span class="o">.</span><span class="n">pre</span> <span class="o">=</span> <span class="n">pre</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">op</span> <span class="o">=</span> <span class="n">op</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">handles_tokens</span> <span class="o">=</span> <span class="n">handles_tokens</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">augmentation</span> <span class="o">=</span> <span class="n">augmentation</span>
 </code></pre>
 </div>
 </td>
@@ -892,10 +920,7 @@ recon will take care of applying it to a full Dataset</p>
 <tr>
 <td class="linenos">
 <div class="linenodiv">
-<pre><span></span> 74
- 75
- 76
- 77
+<pre><span></span> 77
  78
  79
  80
@@ -931,7 +956,16 @@ recon will take care of applying it to a full Dataset</p>
 110
 111
 112
-113</pre>
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122</pre>
 </div>
 </td>
 <td class="code">
@@ -967,12 +1001,18 @@ recon will take care of applying it to a full Dataset</p>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">factory</span><span class="p">:</span>
 
         <span class="k">def</span> <span class="nf">factory</span><span class="p">(</span><span class="n">pre</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">PreProcessor</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Operation</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">Operation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">pre</span><span class="p">,</span> <span class="n">op</span><span class="o">=</span><span class="n">op</span><span class="p">,</span> <span class="n">handles_tokens</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">handles_tokens</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">Operation</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="n">pre</span><span class="p">,</span>
+                <span class="n">op</span><span class="o">=</span><span class="n">op</span><span class="p">,</span>
+                <span class="n">handles_tokens</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">handles_tokens</span><span class="p">,</span>
+                <span class="n">augmentation</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">augmentation</span><span class="p">,</span>
+            <span class="p">)</span>
 
         <span class="n">registry</span><span class="o">.</span><span class="n">operation_factories</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)(</span><span class="n">factory</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">registry</span><span class="o">.</span><span class="n">operations</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)(</span>
-            <span class="n">Operation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">pre</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles_tokens</span><span class="p">)</span>
+            <span class="n">Operation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">pre</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles_tokens</span><span class="p">,</span> <span class="n">augmentation</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">augmentation</span><span class="p">)</span>
         <span class="p">)</span>
 
     <span class="k">return</span> <span class="n">op</span>
@@ -987,7 +1027,7 @@ recon will take care of applying it to a full Dataset</p>
 <div class="doc doc-object doc-method">
 <h3 class="doc doc-heading" id="recon.operations.operation.__init__">
 <code class="highlight language-python">
-__init__<span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">pre</span><span class="o">=</span><span class="p">[],</span> <span class="n">handles_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">factory</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> </code>
+__init__<span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">pre</span><span class="o">=</span><span class="p">[],</span> <span class="n">handles_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">factory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">augmentation</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> </code>
 <span class="doc doc-properties">
 <small class="doc doc-property doc-property-special"><code>special</code></small>
 </span>
@@ -1029,8 +1069,7 @@ __init__<span class="p">(</span><span class="bp">self</span><span class="p">,</s
 <tr>
 <td class="linenos">
 <div class="linenodiv">
-<pre><span></span>56
-57
+<pre><span></span>57
 58
 59
 60
@@ -1045,7 +1084,10 @@ __init__<span class="p">(</span><span class="bp">self</span><span class="p">,</s
 69
 70
 71
-72</pre>
+72
+73
+74
+75</pre>
 </div>
 </td>
 <td class="code">
@@ -1056,6 +1098,7 @@ __init__<span class="p">(</span><span class="bp">self</span><span class="p">,</s
     <span class="n">pre</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">PreProcessor</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[],</span>
     <span class="n">handles_tokens</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="n">factory</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">augmentation</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <span class="p">):</span>
     <span class="sd">"""Decorate an operation that makes some changes to a dataset.</span>
 
@@ -1067,6 +1110,7 @@ __init__<span class="p">(</span><span class="bp">self</span><span class="p">,</s
     <span class="bp">self</span><span class="o">.</span><span class="n">pre</span> <span class="o">=</span> <span class="n">pre</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">handles_tokens</span> <span class="o">=</span> <span class="n">handles_tokens</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">factory</span> <span class="o">=</span> <span class="n">factory</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">augmentation</span> <span class="o">=</span> <span class="n">augmentation</span>
 </code></pre>
 </div>
 </td>
@@ -1133,8 +1177,7 @@ yielding tuples of (example hash, example)</p>
 <tr>
 <td class="linenos">
 <div class="linenodiv">
-<pre><span></span>26
-27
+<pre><span></span>27
 28
 29
 30
@@ -1159,7 +1202,8 @@ yielding tuples of (example hash, example)</p>
 49
 50
 51
-52</pre>
+52
+53</pre>
 </div>
 </td>
 <td class="code">
@@ -1181,13 +1225,13 @@ yielding tuples of (example hash, example)</p>
     <span class="n">msg</span> <span class="o">=</span> <span class="n">Printer</span><span class="p">(</span><span class="n">no_print</span><span class="o">=</span><span class="n">verbose</span> <span class="o">==</span> <span class="kc">False</span><span class="p">,</span> <span class="n">hide_animation</span><span class="o">=</span><span class="n">verbose</span> <span class="o">==</span> <span class="kc">False</span><span class="p">)</span>
     <span class="n">preprocessed_outputs</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">Example</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">dict</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">processor</span> <span class="ow">in</span> <span class="n">pre</span><span class="p">:</span>
-        <span class="k">with</span> <span class="n">msg</span><span class="o">.</span><span class="n">loading</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\t</span><span class="s2">=&gt; Running preprocessor </span><span class="si">{</span><span class="n">processor</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">..."</span><span class="p">):</span>
-            <span class="n">processor_outputs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">processor</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
-            <span class="n">msg</span><span class="o">.</span><span class="n">good</span><span class="p">(</span><span class="s2">"Done"</span><span class="p">)</span>
-
-        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">example</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">processor_outputs</span><span class="p">)):</span>
-            <span class="n">preprocessed_outputs</span><span class="p">[</span><span class="n">example</span><span class="p">][</span><span class="n">processor</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">processor_outputs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-            <span class="n">example</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="n">processor</span><span class="o">.</span><span class="n">field</span><span class="p">,</span> <span class="n">processor_outputs</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">msg</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\t</span><span class="s2">=&gt; Running preprocessor </span><span class="si">{</span><span class="n">processor</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="n">processor_outputs</span> <span class="o">=</span> <span class="n">processor</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">example</span><span class="p">,</span> <span class="n">output</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span>
+            <span class="nb">zip</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">processor_outputs</span><span class="p">),</span> <span class="n">total</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">disable</span><span class="o">=</span><span class="p">(</span><span class="ow">not</span> <span class="n">verbose</span><span class="p">),</span> <span class="n">leave</span><span class="o">=</span><span class="kc">False</span>
+        <span class="p">):</span>
+            <span class="n">preprocessed_outputs</span><span class="p">[</span><span class="n">example</span><span class="p">][</span><span class="n">processor</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">output</span>
+            <span class="n">example</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="n">processor</span><span class="o">.</span><span class="n">field</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
 
     <span class="k">for</span> <span class="n">example</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
         <span class="k">yield</span> <span class="nb">hash</span><span class="p">(</span><span class="n">example</span><span class="p">),</span> <span class="n">example</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">preprocessed_outputs</span><span class="p">[</span><span class="n">example</span><span class="p">]</span>

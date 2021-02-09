@@ -475,7 +475,7 @@ calculate_entity_coverage_entropy<span class="p">(</span><span class="n">entity_
 <td><code>entity_coverage</code></td>
 <td><code>List[recon.types.EntityCoverage]</code></td>
 <td>
-<p>List of EntityCoverage 
+<p>List of EntityCoverage
 from get_entity_coverage</p>
 </td>
 <td><em>required</em></td>
@@ -505,8 +505,7 @@ from get_entity_coverage</p>
 <tr>
 <td class="linenos">
 <div class="linenodiv">
-<pre><span></span>253
-254
+<pre><span></span>254
 255
 256
 257
@@ -516,16 +515,21 @@ from get_entity_coverage</p>
 261
 262
 263
-264</pre>
+264
+265
+266
+267</pre>
 </div>
 </td>
 <td class="code">
 <div class="highlight">
-<pre><span></span><code><span class="k">def</span> <span class="nf">calculate_entity_coverage_entropy</span><span class="p">(</span><span class="n">entity_coverage</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">EntityCoverage</span><span class="p">],)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<pre><span></span><code><span class="k">def</span> <span class="nf">calculate_entity_coverage_entropy</span><span class="p">(</span>
+    <span class="n">entity_coverage</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">EntityCoverage</span><span class="p">],</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="sd">"""Use Entropy to calculate a metric for entity coverage.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        entity_coverage (List[EntityCoverage]): List of EntityCoverage </span>
+<span class="sd">        entity_coverage (List[EntityCoverage]): List of EntityCoverage</span>
 <span class="sd">            from get_entity_coverage</span>
 
 <span class="sd">    Returns:</span>
@@ -591,10 +595,10 @@ annotations cover the annotations in your dev/test set</p>
 <tr>
 <td><code>EntityCoverageStats</code></td>
 <td>
-<p>EntityCoverageStats: Stats with 
+<p>EntityCoverageStats: Stats with
     1. The base entity coverage (does entity in y exist in x)
-    2. Count coverage (sum of the EntityCoverage.count property for 
-    each EntityCoverage in y to get a more holisic coverage scaled by how 
+    2. Count coverage (sum of the EntityCoverage.count property for
+    each EntityCoverage in y to get a more holisic coverage scaled by how
     often entities occur in each dataset x and y)</p>
 </td>
 </tr>
@@ -644,7 +648,8 @@ annotations cover the annotations in your dev/test set</p>
 193
 194
 195
-196</pre>
+196
+197</pre>
 </div>
 </td>
 <td class="code">
@@ -659,10 +664,10 @@ annotations cover the annotations in your dev/test set</p>
 <span class="sd">        y (List[Example]): Dataset to evaluate coverage for (usually corpus.dev or corpus.test)</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        EntityCoverageStats: Stats with </span>
+<span class="sd">        EntityCoverageStats: Stats with</span>
 <span class="sd">            1. The base entity coverage (does entity in y exist in x)</span>
-<span class="sd">            2. Count coverage (sum of the EntityCoverage.count property for </span>
-<span class="sd">            each EntityCoverage in y to get a more holisic coverage scaled by how </span>
+<span class="sd">            2. Count coverage (sum of the EntityCoverage.count property for</span>
+<span class="sd">            each EntityCoverage in y to get a more holisic coverage scaled by how</span>
 <span class="sd">            often entities occur in each dataset x and y)</span>
 <span class="sd">    """</span>
 
@@ -686,7 +691,8 @@ annotations cover the annotations in your dev/test set</p>
         <span class="n">count_union</span> <span class="o">+=</span> <span class="n">count</span>
 
     <span class="k">return</span> <span class="n">EntityCoverageStats</span><span class="p">(</span>
-        <span class="n">entity</span><span class="o">=</span><span class="p">(</span><span class="n">n_intersection</span> <span class="o">/</span> <span class="n">n_union</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="p">(</span><span class="n">count_intersection</span> <span class="o">/</span> <span class="n">count_union</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span>
+        <span class="n">entity</span><span class="o">=</span><span class="p">(</span><span class="n">n_intersection</span> <span class="o">/</span> <span class="n">n_union</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span>
+        <span class="n">count</span><span class="o">=</span><span class="p">(</span><span class="n">count_intersection</span> <span class="o">/</span> <span class="n">count_union</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span>
     <span class="p">)</span>
 </code></pre>
 </div>
@@ -702,7 +708,7 @@ annotations cover the annotations in your dev/test set</p>
 calculate_label_balance_entropy<span class="p">(</span><span class="n">ner_stats</span><span class="p">)</span> </code>
 <a class="headerlink" href="#recon.stats.calculate_label_balance_entropy" title="Permanent link">¶</a></h2>
 <div class="doc doc-contents">
-<p>Use Entropy to calculate a metric for label balance based on an NERStats object </p>
+<p>Use Entropy to calculate a metric for label balance based on an NERStats object</p>
 <p><strong>Parameters:</strong></p>
 <table>
 <thead>
@@ -747,8 +753,7 @@ calculate_label_balance_entropy<span class="p">(</span><span class="n">ner_stats
 <tr>
 <td class="linenos">
 <div class="linenodiv">
-<pre><span></span>239
-240
+<pre><span></span>240
 241
 242
 243
@@ -758,13 +763,14 @@ calculate_label_balance_entropy<span class="p">(</span><span class="n">ner_stats
 247
 248
 249
-250</pre>
+250
+251</pre>
 </div>
 </td>
 <td class="code">
 <div class="highlight">
 <pre><span></span><code><span class="k">def</span> <span class="nf">calculate_label_balance_entropy</span><span class="p">(</span><span class="n">ner_stats</span><span class="p">:</span> <span class="n">NERStats</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-    <span class="sd">"""Use Entropy to calculate a metric for label balance based on an NERStats object </span>
+    <span class="sd">"""Use Entropy to calculate a metric for label balance based on an NERStats object</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        ner_stats (NERStats): NERStats for a dataset.</span>
@@ -984,10 +990,7 @@ detect_outliers<span class="p">(</span><span class="n">seq</span><span class="p"
 <tr>
 <td class="linenos">
 <div class="linenodiv">
-<pre><span></span>267
-268
-269
-270
+<pre><span></span>270
 271
 272
 273
@@ -1001,7 +1004,10 @@ detect_outliers<span class="p">(</span><span class="n">seq</span><span class="p"
 281
 282
 283
-284</pre>
+284
+285
+286
+287</pre>
 </div>
 </td>
 <td class="code">
@@ -1110,8 +1116,7 @@ If Integers, divide each n in seq by total and calculate entropy</p>
 <tr>
 <td class="linenos">
 <div class="linenodiv">
-<pre><span></span>212
-213
+<pre><span></span>213
 214
 215
 216
@@ -1134,7 +1139,8 @@ If Integers, divide each n in seq by total and calculate entropy</p>
 233
 234
 235
-236</pre>
+236
+237</pre>
 </div>
 </td>
 <td class="code">
@@ -1404,7 +1410,7 @@ get_ner_stats<span class="p">(</span><span class="n">data</span><span class="p">
 <tr>
 <td><code>Optional[Union[recon.types.NERStats, str]]</code></td>
 <td>
-<p>Union[NERStats, str, None]: 
+<p>Union[NERStats, str, None]:
     List of examples or string if serialize and no_print are both True</p>
 </td>
 </tr>
@@ -1474,7 +1480,7 @@ get_ner_stats<span class="p">(</span><span class="n">data</span><span class="p">
 <span class="sd">        return_examples (bool, optional): Whether to return examples per type</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        Union[NERStats, str, None]: </span>
+<span class="sd">        Union[NERStats, str, None]:</span>
 <span class="sd">            List of examples or string if serialize and no_print are both True</span>
 <span class="sd">    """</span>
     <span class="n">annotations_per_type</span><span class="p">:</span> <span class="n">DefaultDict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
@@ -1566,8 +1572,7 @@ by dividing each n by the sum of all n in seq</p>
 <tr>
 <td class="linenos">
 <div class="linenodiv">
-<pre><span></span>199
-200
+<pre><span></span>200
 201
 202
 203
@@ -1576,7 +1581,8 @@ by dividing each n by the sum of all n in seq</p>
 206
 207
 208
-209</pre>
+209
+210</pre>
 </div>
 </td>
 <td class="code">
@@ -1606,7 +1612,7 @@ by dividing each n by the sum of all n in seq</p>
 get_sorted_type_counts<span class="p">(</span><span class="n">ner_stats</span><span class="p">)</span> </code>
 <a class="headerlink" href="#recon.stats.get_sorted_type_counts" title="Permanent link">¶</a></h2>
 <div class="doc doc-contents">
-<p>Get list of counts for each type in n_annotations_per_type property 
+<p>Get list of counts for each type in n_annotations_per_type property
 of an NERStats object sorted by type name</p>
 <p><strong>Parameters:</strong></p>
 <table>
@@ -1671,7 +1677,7 @@ of an NERStats object sorted by type name</p>
 <td class="code">
 <div class="highlight">
 <pre><span></span><code><span class="k">def</span> <span class="nf">get_sorted_type_counts</span><span class="p">(</span><span class="n">ner_stats</span><span class="p">:</span> <span class="n">NERStats</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-    <span class="sd">"""Get list of counts for each type in n_annotations_per_type property </span>
+    <span class="sd">"""Get list of counts for each type in n_annotations_per_type property</span>
 <span class="sd">    of an NERStats object sorted by type name</span>
 
 <span class="sd">    Args:</span>

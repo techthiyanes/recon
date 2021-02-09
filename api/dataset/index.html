@@ -263,6 +263,16 @@
   </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#recon.dataset.Dataset.rollback">
+    rollback()
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#recon.dataset.Dataset.search">
+    search()
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#recon.dataset.Dataset.to_disk">
     to_disk()
   </a>
@@ -408,6 +418,16 @@
   </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#recon.dataset.Dataset.rollback">
+    rollback()
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#recon.dataset.Dataset.search">
+    search()
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#recon.dataset.Dataset.to_disk">
     to_disk()
   </a>
@@ -520,8 +540,7 @@ apply<span class="p">(</span><span class="bp">self</span><span class="p">,</span
 <tr>
 <td class="linenos">
 <div class="linenodiv">
-<pre><span></span>105
-106
+<pre><span></span>106
 107
 108
 109
@@ -532,7 +551,8 @@ apply<span class="p">(</span><span class="bp">self</span><span class="p">,</span
 114
 115
 116
-117</pre>
+117
+118</pre>
 </div>
 </td>
 <td class="code">
@@ -593,8 +613,7 @@ changes data in place. See recon.operations.registry.operations</p>
 <tr>
 <td class="linenos">
 <div class="linenodiv">
-<pre><span></span>119
-120
+<pre><span></span>120
 121
 122
 123
@@ -629,7 +648,8 @@ changes data in place. See recon.operations.registry.operations</p>
 152
 153
 154
-155</pre>
+155
+156</pre>
 </div>
 </td>
 <td class="code">
@@ -657,7 +677,7 @@ changes data in place. See recon.operations.registry.operations</p>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"This function is not an operation since it does not have a name."</span><span class="p">)</span>
 
     <span class="n">msg</span> <span class="o">=</span> <span class="n">Printer</span><span class="p">(</span><span class="n">no_print</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">==</span> <span class="kc">False</span><span class="p">)</span>
-    <span class="n">msg</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="sa">f</span><span class="s2">"=&gt; Applying operation '</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">' inplace"</span><span class="p">)</span>
+    <span class="n">msg</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="sa">f</span><span class="s2">"=&gt; Applying operation '</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">' to dataset '</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">'"</span><span class="p">)</span>
     <span class="n">result</span><span class="p">:</span> <span class="n">OperationResult</span> <span class="o">=</span> <span class="n">operation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">initial_state</span><span class="o">=</span><span class="n">initial_state</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
     <span class="n">msg</span><span class="o">.</span><span class="n">good</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Completed operation '</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">'"</span><span class="p">)</span>
 
@@ -682,7 +702,7 @@ changes data in place. See recon.operations.registry.operations</p>
 <div class="doc doc-object doc-method">
 <h3 class="doc doc-heading" id="recon.dataset.Dataset.from_disk">
 <code class="highlight language-python">
-from_disk<span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">loader_func</span><span class="o">=&lt;</span><span class="n">function</span> <span class="n">read_jsonl</span> <span class="n">at</span> <span class="mh">0x7fb6d5a3aae8</span><span class="o">&gt;</span><span class="p">)</span> </code>
+from_disk<span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">loader_func</span><span class="o">=&lt;</span><span class="n">function</span> <span class="n">read_jsonl</span> <span class="n">at</span> <span class="mh">0x7ff27c9a7158</span><span class="o">&gt;</span><span class="p">)</span> </code>
 <a class="headerlink" href="#recon.dataset.Dataset.from_disk" title="Permanent link">¶</a></h3>
 <div class="doc doc-contents">
 <p>Load Dataset from disk given a path and a loader function that reads the data
@@ -713,7 +733,7 @@ and returns an iterator of Examples</p>
 <p>Callable that reads a file and returns a List of examples.
 Defaults to <a href="https://kabirkhan.github.io/recon/api/loaders/#recon.loaders.read_jsonl">read_jsonl</a></p>
 </td>
-<td><code>&lt;function read_jsonl at 0x7fb6d5a3aae8&gt;</code></td>
+<td><code>&lt;function read_jsonl at 0x7ff27c9a7158&gt;</code></td>
 </tr>
 </tbody>
 </table>
@@ -723,70 +743,70 @@ Defaults to <a href="https://kabirkhan.github.io/recon/api/loaders/#recon.loader
 <tr>
 <td class="linenos">
 <div class="linenodiv">
-<pre><span></span>189
-190
-191
-192
-193
-194
-195
-196
-197
-198
-199
-200
-201
-202
-203
-204
-205
-206
-207
-208
-209
-210
-211
-212
-213
-214
-215
-216
-217
-218
-219
-220
-221
-222
-223
-224
-225
-226
-227
-228
-229
-230
-231
-232
-233
-234
-235
-236
-237
-238
-239
-240
-241
-242
-243
-244
-245
-246
-247
-248
-249
-250
-251
-252</pre>
+<pre><span></span>259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322</pre>
 </div>
 </td>
 <td class="code">
@@ -916,26 +936,26 @@ can stay separate and new annotation sessions can happen often. Basically prodig
 <tr>
 <td class="linenos">
 <div class="linenodiv">
-<pre><span></span>281
-282
-283
-284
-285
-286
-287
-288
-289
-290
-291
-292
-293
-294
-295
-296
-297
-298
-299
-300</pre>
+<pre><span></span>351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370</pre>
 </div>
 </td>
 <td class="code">
@@ -1004,8 +1024,7 @@ operations in registry.operations</p>
 <tr>
 <td class="linenos">
 <div class="linenodiv">
-<pre><span></span>157
-158
+<pre><span></span>158
 159
 160
 161
@@ -1034,7 +1053,8 @@ operations in registry.operations</p>
 184
 185
 186
-187</pre>
+187
+188</pre>
 </div>
 </td>
 <td class="code">
@@ -1070,6 +1090,251 @@ operations in registry.operations</p>
         <span class="n">operation</span> <span class="o">=</span> <span class="n">registry</span><span class="o">.</span><span class="n">operations</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">op_name</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">apply_</span><span class="p">(</span><span class="n">operation</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">initial_state</span><span class="o">=</span><span class="n">initial_state</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</code></pre>
+</div>
+</td>
+</tr>
+</table>
+</details>
+</div>
+</div>
+<div class="doc doc-object doc-method">
+<h3 class="doc doc-heading" id="recon.dataset.Dataset.rollback">
+<code class="highlight language-python">
+rollback<span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> </code>
+<a class="headerlink" href="#recon.dataset.Dataset.rollback" title="Permanent link">¶</a></h3>
+<div class="doc doc-contents">
+<p>Rollback the last n operations on a dataset.</p>
+<p>e.g.
+    ```
+    ds = Dataset("name", data)</p>
+<div class="codehilite">
+<pre><span></span><code><span class="n">initial_ds_hash</span> <span class="o">=</span> <span class="n">hash</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
+
+<span class="n">ds</span><span class="p">.</span><span class="n">apply_</span><span class="p">(</span><span class="ss">"some_operation"</span><span class="p">)</span>
+<span class="n">ds</span><span class="p">.</span><span class="k">rollback</span><span class="p">()</span>
+
+<span class="n">hash</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span> <span class="o">==</span> <span class="n">initial_ds_hash</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">True</span> <span class="o">#</span> <span class="n">This</span> <span class="n">should</span> <span class="n">be</span> <span class="k">True</span>
+</code></pre>
+</div>
+<p>Args:
+    n (int): Number of operations to rollback</p>
+<details class="quote">
+<summary>Source code in <code>recon/dataset.py</code></summary>
+<table class="highlighttable">
+<tr>
+<td class="linenos">
+<div class="linenodiv">
+<pre><span></span>190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237</pre>
+</div>
+</td>
+<td class="code">
+<div class="highlight">
+<pre><span></span><code><span class="k">def</span> <span class="nf">rollback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">"""Rollback the last n operations on a dataset.</span>
+
+<span class="sd">    e.g.</span>
+<span class="sd">        ```</span>
+<span class="sd">        ds = Dataset("name", data)</span>
+
+<span class="sd">        initial_ds_hash = hash(ds)</span>
+
+<span class="sd">        ds.apply_("some_operation")</span>
+<span class="sd">        ds.rollback()</span>
+
+<span class="sd">        hash(ds) == initial_ds_hash</span>
+<span class="sd">        &gt;&gt;&gt; True # This should be True</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        n (int): Number of operations to rollback</span>
+<span class="sd">    """</span>
+
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Cannot rollback dataset: n must be 1 or higher."</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">operations</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">"Cannot rollback dataset: n is larger than the total number of dataset operations."</span>
+        <span class="p">)</span>
+
+    <span class="n">store</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">example_store</span>
+
+    <span class="n">examples_to_remove</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">examples_to_add</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">operations</span><span class="p">[</span><span class="o">-</span><span class="n">n</span><span class="p">:]:</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">op</span><span class="o">.</span><span class="n">transformations</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">TransformationType</span><span class="o">.</span><span class="n">EXAMPLE_ADDED</span><span class="p">:</span>
+                <span class="n">examples_to_remove</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">example</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">t</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">TransformationType</span><span class="o">.</span><span class="n">EXAMPLE_CHANGED</span><span class="p">:</span>
+                <span class="n">examples_to_remove</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">example</span><span class="p">)</span>
+                <span class="n">examples_to_add</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">store</span><span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">prev_example</span><span class="p">])</span>  <span class="c1"># type: ignore</span>
+            <span class="k">elif</span> <span class="n">t</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">TransformationType</span><span class="o">.</span><span class="n">EXAMPLE_REMOVED</span><span class="p">:</span>
+                <span class="n">examples_to_add</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">store</span><span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">prev_example</span><span class="p">])</span>  <span class="c1"># type: ignore</span>
+
+    <span class="n">old_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="k">if</span> <span class="nb">hash</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">examples_to_remove</span><span class="p">]</span>
+    <span class="n">old_data</span> <span class="o">+=</span> <span class="n">examples_to_add</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">old_data</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">operations</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">operations</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">examples_to_remove</span><span class="p">:</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">example_store</span><span class="o">.</span><span class="n">_map</span><span class="p">[</span><span class="n">e</span><span class="p">]</span>  <span class="c1"># type: ignore</span>
+</code></pre>
+</div>
+</td>
+</tr>
+</table>
+</details>
+</div>
+</div>
+<div class="doc doc-object doc-method">
+<h3 class="doc doc-heading" id="recon.dataset.Dataset.search">
+<code class="highlight language-python">
+search<span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">search_query</span><span class="p">,</span> <span class="n">case_sensitive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> </code>
+<a class="headerlink" href="#recon.dataset.Dataset.search" title="Permanent link">¶</a></h3>
+<div class="doc doc-contents">
+<p>Naive search method to quickly identify examples matching the provided substring</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>search_query</code></td>
+<td><code>str</code></td>
+<td>
+<p>Substring to search each example for</p>
+</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>case_sensitive</code></td>
+<td><code>bool</code></td>
+<td>
+<p>Consider case of search query and example text</p>
+</td>
+<td><code>True</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>List[recon.types.Example]</code></td>
+<td>
+<p>List[Example]: Matched examples</p>
+</td>
+</tr>
+</tbody>
+</table>
+<details class="quote">
+<summary>Source code in <code>recon/dataset.py</code></summary>
+<table class="highlighttable">
+<tr>
+<td class="linenos">
+<div class="linenodiv">
+<pre><span></span>239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257</pre>
+</div>
+</td>
+<td class="code">
+<div class="highlight">
+<pre><span></span><code><span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">search_query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">case_sensitive</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Example</span><span class="p">]:</span>
+    <span class="sd">"""Naive search method to quickly identify examples matching the provided substring</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        search_query (str): Substring to search each example for</span>
+<span class="sd">        case_sensitive (bool, optional): Consider case of search query and example text</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        List[Example]: Matched examples</span>
+<span class="sd">    """</span>
+    <span class="n">search_query</span> <span class="o">=</span> <span class="n">search_query</span> <span class="k">if</span> <span class="n">case_sensitive</span> <span class="k">else</span> <span class="n">search_query</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">out_examples</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">example</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+        <span class="n">example_text</span> <span class="o">=</span> <span class="n">example</span><span class="o">.</span><span class="n">text</span> <span class="k">if</span> <span class="n">case_sensitive</span> <span class="k">else</span> <span class="n">example</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">search_query</span> <span class="ow">in</span> <span class="n">example_text</span><span class="p">:</span>
+            <span class="n">out_examples</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">example</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">out_examples</span>
 </code></pre>
 </div>
 </td>
@@ -1129,32 +1394,32 @@ or overwrite existing data.</p>
 <tr>
 <td class="linenos">
 <div class="linenodiv">
-<pre><span></span>254
-255
-256
-257
-258
-259
-260
-261
-262
-263
-264
-265
-266
-267
-268
-269
-270
-271
-272
-273
-274
-275
-276
-277
-278
-279</pre>
+<pre><span></span>324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349</pre>
 </div>
 </td>
 <td class="code">
