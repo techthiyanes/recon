@@ -1,99 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
      <loc>https://kabirkhan.github.io/recon/</loc>
-     <lastmod>2021-02-09</lastmod>
+     <lastmod>2021-03-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://kabirkhan.github.io/recon/tutorial/1_loading_data/</loc>
-     <lastmod>2021-02-09</lastmod>
+     <lastmod>2021-03-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://kabirkhan.github.io/recon/tutorial/2_ner_stats/</loc>
-     <lastmod>2021-02-09</lastmod>
+     <lastmod>2021-03-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://kabirkhan.github.io/recon/tutorial/3_dataset_intro/</loc>
-     <lastmod>2021-02-09</lastmod>
+     <lastmod>2021-03-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://kabirkhan.github.io/recon/tutorial/3_dataset_mutate/</loc>
-     <lastmod>2021-02-09</lastmod>
+     <lastmod>2021-03-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://kabirkhan.github.io/recon/tutorial/4_corpus/</loc>
-     <lastmod>2021-02-09</lastmod>
+     <lastmod>2021-03-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://kabirkhan.github.io/recon/tutorial/4_more_stats/</loc>
-     <lastmod>2021-02-09</lastmod>
+     <lastmod>2021-03-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://kabirkhan.github.io/recon/tutorial/5_getting_insights/</loc>
-     <lastmod>2021-02-09</lastmod>
+     <lastmod>2021-03-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://kabirkhan.github.io/recon/tutorial/custom_entity_recognizer/</loc>
-     <lastmod>2021-02-09</lastmod>
+     <lastmod>2021-03-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://kabirkhan.github.io/recon/api/corpus/</loc>
-     <lastmod>2021-02-09</lastmod>
+     <lastmod>2021-03-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://kabirkhan.github.io/recon/api/corrections/</loc>
-     <lastmod>2021-02-09</lastmod>
+     <lastmod>2021-03-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://kabirkhan.github.io/recon/api/dataset/</loc>
-     <lastmod>2021-02-09</lastmod>
+     <lastmod>2021-03-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://kabirkhan.github.io/recon/api/hashing/</loc>
-     <lastmod>2021-02-09</lastmod>
+     <lastmod>2021-03-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://kabirkhan.github.io/recon/api/insights/</loc>
-     <lastmod>2021-02-09</lastmod>
+     <lastmod>2021-03-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://kabirkhan.github.io/recon/api/loaders/</loc>
-     <lastmod>2021-02-09</lastmod>
+     <lastmod>2021-03-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://kabirkhan.github.io/recon/api/operations/</loc>
-     <lastmod>2021-02-09</lastmod>
+     <lastmod>2021-03-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://kabirkhan.github.io/recon/api/stats/</loc>
-     <lastmod>2021-02-09</lastmod>
+     <lastmod>2021-03-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://kabirkhan.github.io/recon/api/store/</loc>
-     <lastmod>2021-02-09</lastmod>
+     <lastmod>2021-03-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://kabirkhan.github.io/recon/api/tokenization/</loc>
-     <lastmod>2021-02-09</lastmod>
+     <lastmod>2021-03-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://kabirkhan.github.io/recon/api/validation/</loc>
-     <lastmod>2021-02-09</lastmod>
+     <lastmod>2021-03-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://kabirkhan.github.io/recon/api/recognizers/base/</loc>
-     <lastmod>2021-02-09</lastmod>
+     <lastmod>2021-03-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://kabirkhan.github.io/recon/api/recognizers/spacy/</loc>
-     <lastmod>2021-02-09</lastmod>
+     <lastmod>2021-03-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://kabirkhan.github.io/recon/api/types/example/</loc>
-     <lastmod>2021-02-09</lastmod>
+     <lastmod>2021-03-03</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://kabirkhan.github.io/recon/release-notes/</loc>
-     <lastmod>2021-02-09</lastmod>
+     <lastmod>2021-03-03</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>

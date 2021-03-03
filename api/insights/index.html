@@ -1,329 +1,783 @@
 
-<!DOCTYPE html>
 
-<html class="no-js" lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1" name="viewport"/>
-<meta content="Debug annotated Named Entity Recognition (NER) data for inconsitencies and get insights on improving the quality of your data." name="description"/>
-<link href="https://kabirkhan.github.io/recon/api/insights/" rel="canonical"/>
-<link href="../../img/favicon.ico" rel="shortcut icon"/>
-<meta content="mkdocs-1.1.2, mkdocs-material-5.5.1" name="generator"/>
-<title>Insights - Recon</title>
-<link href="../../assets/stylesheets/main.5d00201e.min.css" rel="stylesheet"/>
-<link href="../../assets/stylesheets/palette.816e8abc.min.css" rel="stylesheet"/>
-<meta content="#2196f3" name="theme-color"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
-<style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
-<link href="../../css/termynal.css" rel="stylesheet"/>
-<link href="../../css/custom.css" rel="stylesheet"/>
-<meta content="https://kabirkhan.github.io/recon/api/insights/" property="og:url"/>
-<meta content="Insights - Recon" property="og:title"/>
-<meta content="Debug annotated Named Entity Recognition (NER) data for inconsitencies and get insights on improving the quality of your data." property="og:description"/>
-<meta content="https://microsoft.github.io/reconner/img/recon.svg" property="og:image"/>
-<meta content="Recon NER" property="og:image:alt"/>
-<meta content="summary_large_image" name="twitter:card"/>
-<meta content="@kabir_khan14" name="twitter:site"/>
-<meta content="@kabir_khan14" name="twitter:creator"/>
-<meta content="Insights - Recon" property="twitter:title"/>
-<meta content="Debug annotated Named Entity Recognition (NER) data for inconsitencies and get insights on improving the quality of your data." name="twitter:description"/>
-<meta content="https://microsoft.github.io/reconner/img/recon.svg" name="twitter:image"/>
-<meta content="Recon NER" name="twitter:image:alt"/>
-</head>
-<body data-md-color-accent="blue" data-md-color-primary="blue" data-md-color-scheme="" dir="ltr">
-<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
-<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
-<label class="md-overlay" for="__drawer"></label>
-<div data-md-component="skip">
-<a class="md-skip" href="#recon.insights">
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Debug annotated Named Entity Recognition (NER) data for inconsitencies and get insights on improving the quality of your data.">
+      
+      
+        <link rel="canonical" href="https://kabirkhan.github.io/recon/api/insights/">
+      
+      
+      <link rel="shortcut icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.14">
+    
+    
+      
+        <title>Insights - Recon</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.d3202873.min.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ff0a5ce4.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#2094f3">
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../css/termynal.css">
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+    
+      
+    
+    
+
+  <meta property="og:url" content="https://kabirkhan.github.io/recon/api/insights/">
+  
+    <meta property="og:title" content="Insights - Recon">
+  
+  <meta property="og:description" content="Debug annotated Named Entity Recognition (NER) data for inconsitencies and get insights on improving the quality of your data.">
+  <meta property="og:image" content="https://microsoft.github.io/reconner/img/recon.svg">
+  <meta property="og:image:alt" content="Recon NER">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@kabir_khan14">
+  <meta name="twitter:creator" content="@kabir_khan14">
+  
+    <meta property="twitter:title" content="Insights - Recon">
+  
+  <meta name="twitter:description" content="Debug annotated Named Entity Recognition (NER) data for inconsitencies and get insights on improving the quality of your data.">
+  <meta name="twitter:image" content="https://microsoft.github.io/reconner/img/recon.svg">
+  <meta name="twitter:image:alt" content="Recon NER">
+
+
+  </head>
+  
+  
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#recon.insights" class="md-skip">
           Skip to content
         </a>
-</div>
-<div data-md-component="announce">
-</div>
-<header class="md-header" data-md-component="header">
-<nav aria-label="Header" class="md-header-nav md-grid">
-<a aria-label="Recon" class="md-header-nav__button md-logo" href="https://kabirkhan.github.io/recon/" title="Recon">
-<img alt="logo" src="../../img/drone-white.svg"/>
-</a>
-<label class="md-header-nav__button md-icon" for="__drawer">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
-</label>
-<div class="md-header-nav__title" data-md-component="header-title">
-<div class="md-header-nav__ellipsis">
-<span class="md-header-nav__topic md-ellipsis">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://kabirkhan.github.io/recon/" title="Recon" class="md-header-nav__button md-logo" aria-label="Recon">
+      
+  <img src="../../img/drone-white.svg" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
             Recon
           </span>
-<span class="md-header-nav__topic md-ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
             
               Insights
             
           </span>
-</div>
-</div>
-<div class="md-header-nav__source">
-<a class="md-source" href="https://github.com/kabirkhan/recon/" title="Go to repository">
-<div class="md-source__icon md-icon">
-<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
-</div>
-<div class="md-source__repository">
+        </div>
+      
+    </div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/kabirkhan/recon/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
     kabirkhan/recon
   </div>
 </a>
-</div>
-</nav>
+      </div>
+    
+  </nav>
 </header>
-<div class="md-container" data-md-component="container">
-<main class="md-main" data-md-component="main">
-<div class="md-main__inner md-grid">
-<div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
-<div class="md-sidebar__scrollwrap">
-<div class="md-sidebar__inner">
-<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
-<label class="md-nav__title" for="__drawer">
-<a aria-label="Recon" class="md-nav__button md-logo" href="https://kabirkhan.github.io/recon/" title="Recon">
-<img alt="logo" src="../../img/drone-white.svg"/>
-</a>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://kabirkhan.github.io/recon/" title="Recon" class="md-nav__button md-logo" aria-label="Recon">
+      
+  <img src="../../img/drone-white.svg" alt="logo">
+
+    </a>
     Recon
   </label>
-<div class="md-nav__source">
-<a class="md-source" href="https://github.com/kabirkhan/recon/" title="Go to repository">
-<div class="md-source__icon md-icon">
-<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
-</div>
-<div class="md-source__repository">
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/kabirkhan/recon/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
     kabirkhan/recon
   </div>
 </a>
-</div>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../.." title="Recon">
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Recon" class="md-nav__link">
       Recon
     </a>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" id="nav-2" type="checkbox"/>
-<label class="md-nav__link" for="nav-2">
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
       Tutorial
-      <span class="md-nav__icon md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"></path></svg>
-</span>
-</label>
-<nav aria-label="Tutorial" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="nav-2">
-<span class="md-nav__icon md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
-</span>
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Tutorial" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
         Tutorial
       </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../tutorial/1_loading_data/" title="Loading your data">
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tutorial/1_loading_data/" title="Loading your data" class="md-nav__link">
       Loading your data
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../tutorial/2_ner_stats/" title="NER Stats">
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tutorial/2_ner_stats/" title="NER Stats" class="md-nav__link">
       NER Stats
     </a>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-3" id="nav-2-3" type="checkbox"/>
-<label class="md-nav__link" for="nav-2-3">
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-3" type="checkbox" id="nav-2-3">
+    
+    <label class="md-nav__link" for="nav-2-3">
       Dataset
-      <span class="md-nav__icon md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"></path></svg>
-</span>
-</label>
-<nav aria-label="Dataset" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="nav-2-3">
-<span class="md-nav__icon md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
-</span>
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Dataset" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-3">
+        <span class="md-nav__icon md-icon"></span>
         Dataset
       </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../tutorial/3_dataset_intro/" title="Introduction">
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tutorial/3_dataset_intro/" title="Introduction" class="md-nav__link">
       Introduction
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../tutorial/3_dataset_mutate/" title="Making changes to a Dataset">
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tutorial/3_dataset_mutate/" title="Making changes to a Dataset" class="md-nav__link">
       Making changes to a Dataset
     </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../tutorial/4_corpus/" title="Using a Corpus">
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tutorial/4_corpus/" title="Using a Corpus" class="md-nav__link">
       Using a Corpus
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../tutorial/4_more_stats/" title="More NER Stats">
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tutorial/4_more_stats/" title="More NER Stats" class="md-nav__link">
       More NER Stats
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../tutorial/5_getting_insights/" title="Getting Insights">
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tutorial/5_getting_insights/" title="Getting Insights" class="md-nav__link">
       Getting Insights
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../tutorial/custom_entity_recognizer/" title="Custom EntityRecognizer">
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tutorial/custom_entity_recognizer/" title="Custom EntityRecognizer" class="md-nav__link">
       Custom EntityRecognizer
     </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="nav-3" id="nav-3" type="checkbox"/>
-<label class="md-nav__link" for="nav-3">
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
       API Reference
-      <span class="md-nav__icon md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"></path></svg>
-</span>
-</label>
-<nav aria-label="API Reference" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="nav-3">
-<span class="md-nav__icon md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
-</span>
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="API Reference" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
         API Reference
       </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../corpus/" title="Corpus">
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../corpus/" title="Corpus" class="md-nav__link">
       Corpus
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../corrections/" title="Corrections">
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../corrections/" title="Corrections" class="md-nav__link">
       Corrections
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../dataset/" title="Dataset">
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../dataset/" title="Dataset" class="md-nav__link">
       Dataset
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../hashing/" title="Hashing">
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../hashing/" title="Hashing" class="md-nav__link">
       Hashing
     </a>
-</li>
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
-<a class="md-nav__link md-nav__link--active" href="./" title="Insights">
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Insights
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" title="Insights" class="md-nav__link md-nav__link--active">
       Insights
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#recon.insights" class="md-nav__link">
+    recon.insights
+  </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../loaders/" title="Loaders">
+      
+        <li class="md-nav__item">
+  <a href="#recon.insights.get_annotation_labels" class="md-nav__link">
+    get_annotation_labels()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recon.insights.get_ents_by_label" class="md-nav__link">
+    get_ents_by_label()
+  </a>
+  
+    <nav class="md-nav" aria-label="get_ents_by_label()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recon.insights.get_ents_by_label--todo-ok-so-this-needs-to-return-more-than-just-a-set-for-each-label" class="md-nav__link">
+    TODO: Ok so this needs to return more than just a set for each label.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recon.insights.get_hardest_examples" class="md-nav__link">
+    get_hardest_examples()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recon.insights.get_label_disparities" class="md-nav__link">
+    get_label_disparities()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recon.insights.top_label_disparities" class="md-nav__link">
+    top_label_disparities()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recon.insights.top_prediction_errors" class="md-nav__link">
+    top_prediction_errors()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../loaders/" title="Loaders" class="md-nav__link">
       Loaders
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../operations/" title="Operations">
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../operations/" title="Operations" class="md-nav__link">
       Operations
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../stats/" title="Stats">
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../stats/" title="Stats" class="md-nav__link">
       Stats
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../store/" title="Store">
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../store/" title="Store" class="md-nav__link">
       Store
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../tokenization/" title="Tokenization">
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../tokenization/" title="Tokenization" class="md-nav__link">
       Tokenization
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../validation/" title="Validation">
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../validation/" title="Validation" class="md-nav__link">
       Validation
     </a>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-12" id="nav-3-12" type="checkbox"/>
-<label class="md-nav__link" for="nav-3-12">
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-12" type="checkbox" id="nav-3-12">
+    
+    <label class="md-nav__link" for="nav-3-12">
       Recognizers
-      <span class="md-nav__icon md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"></path></svg>
-</span>
-</label>
-<nav aria-label="Recognizers" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="nav-3-12">
-<span class="md-nav__icon md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
-</span>
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Recognizers" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-12">
+        <span class="md-nav__icon md-icon"></span>
         Recognizers
       </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../recognizers/base/" title="EntityRecognizer">
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../recognizers/base/" title="EntityRecognizer" class="md-nav__link">
       EntityRecognizer
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../recognizers/spacy/" title="SpacyEntityRecognizer">
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../recognizers/spacy/" title="SpacyEntityRecognizer" class="md-nav__link">
       SpacyEntityRecognizer
     </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../types/example/" title="Types">
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../types/example/" title="Types" class="md-nav__link">
       Types
     </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../release-notes/" title="Release Notes">
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../release-notes/" title="Release Notes" class="md-nav__link">
       Release Notes
     </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#recon.insights" class="md-nav__link">
+    recon.insights
+  </a>
+  
 </li>
-</ul>
+      
+        <li class="md-nav__item">
+  <a href="#recon.insights.get_annotation_labels" class="md-nav__link">
+    get_annotation_labels()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recon.insights.get_ents_by_label" class="md-nav__link">
+    get_ents_by_label()
+  </a>
+  
+    <nav class="md-nav" aria-label="get_ents_by_label()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recon.insights.get_ents_by_label--todo-ok-so-this-needs-to-return-more-than-just-a-set-for-each-label" class="md-nav__link">
+    TODO: Ok so this needs to return more than just a set for each label.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recon.insights.get_hardest_examples" class="md-nav__link">
+    get_hardest_examples()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recon.insights.get_label_disparities" class="md-nav__link">
+    get_label_disparities()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recon.insights.top_label_disparities" class="md-nav__link">
+    top_label_disparities()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recon.insights.top_prediction_errors" class="md-nav__link">
+    top_prediction_errors()
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
-</div>
-</div>
-</div>
-<div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-<div class="md-sidebar__scrollwrap">
-<div class="md-sidebar__inner">
-<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-</nav>
-</div>
-</div>
-</div>
-<div class="md-content">
-<article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/kabirkhan/recon/tree/master/docs/api/insights.md" title="Edit this page">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
-</a>
-<div class="doc doc-object doc-module">
-<h2 class="hidden-toc" href="#recon.insights" id="recon.insights" style="visibility: hidden; width: 0; height: 0;">
-<a class="headerlink" href="#recon.insights" title="Permanent link">¶</a></h2>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/kabirkhan/recon/tree/master/docs/api/insights.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  
+                
+                
+                  <h1>Insights</h1>
+                
+                <div class="doc doc-object doc-module">
+<h2 class="hidden-toc" id="recon.insights" style="visibility: hidden; position: absolute;">
+        <a class="headerlink" href="#recon.insights" title="Permanent link">&para;</a></h2>
 <div class="doc doc-contents first">
 <div class="doc doc-children">
 <div class="doc doc-object doc-function">
 <h2 class="doc doc-heading" id="recon.insights.get_annotation_labels">
-<code class="highlight language-python">
-get_annotation_labels<span class="p">(</span><span class="n">examples</span><span class="p">,</span> <span class="n">case_sensitive</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> </code>
-<a class="headerlink" href="#recon.insights.get_annotation_labels" title="Permanent link">¶</a></h2>
-<div class="doc doc-contents">
+
+<code class="highlight language-python"><span class="n">get_annotation_labels</span><span class="p">(</span><span class="n">examples</span><span class="p">,</span> <span class="n">case_sensitive</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+
+      <a class="headerlink" href="#recon.insights.get_annotation_labels" title="Permanent link">&para;</a></h2>
+<div class="doc doc-contents ">
 <p>Constructs a map of each annotation in the list of examples to each label that annotation
 has and references all examples associated with that label.</p>
 <p><strong>Parameters:</strong></p>
@@ -373,35 +827,8 @@ has and references all examples associated with that label.</p>
 </tbody>
 </table>
 <details class="quote">
-<summary>Source code in <code>recon/insights.py</code></summary>
-<table class="highlighttable">
-<tr>
-<td class="linenos">
-<div class="linenodiv">
-<pre><span></span>314
-315
-316
-317
-318
-319
-320
-321
-322
-323
-324
-325
-326
-327
-328
-329
-330
-331
-332
-333</pre>
-</div>
-</td>
-<td class="code">
-<div class="highlight">
+          <summary>Source code in <code>recon/insights.py</code></summary>
+          <div class="highlight">
 <pre><span></span><code><span class="k">def</span> <span class="nf">get_annotation_labels</span><span class="p">(</span>
     <span class="n">examples</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Example</span><span class="p">],</span> <span class="n">case_sensitive</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]]:</span>
@@ -424,20 +851,19 @@ has and references all examples associated with that label.</p>
     <span class="k">return</span> <span class="n">annotation_labels_map</span>
 </code></pre>
 </div>
-</td>
-</tr>
-</table>
 </details>
 </div>
 </div>
 <div class="doc doc-object doc-function">
 <h2 class="doc doc-heading" id="recon.insights.get_ents_by_label">
-<code class="highlight language-python">
-get_ents_by_label<span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">case_sensitive</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> </code>
-<a class="headerlink" href="#recon.insights.get_ents_by_label" title="Permanent link">¶</a></h2>
-<div class="doc doc-contents">
+
+<code class="highlight language-python"><span class="n">get_ents_by_label</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">case_sensitive</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+
+      <a class="headerlink" href="#recon.insights.get_ents_by_label" title="Permanent link">&para;</a></h2>
+<div class="doc doc-contents ">
 <p>Get a dictionary of unique text spans by label for your data</p>
-<h1 id="todo-ok-so-this-needs-to-return-more-than-just-a-set-for-each-label">TODO: Ok so this needs to return more than just a set for each label.<a class="headerlink" href="#todo-ok-so-this-needs-to-return-more-than-just-a-set-for-each-label" title="Permanent link">¶</a></h1>
+<h3 id="recon.insights.get_ents_by_label--todo-ok-so-this-needs-to-return-more-than-just-a-set-for-each-label">TODO: Ok so this needs to return more than just a set for each label.<a class="headerlink" href="#recon.insights.get_ents_by_label--todo-ok-so-this-needs-to-return-more-than-just-a-set-for-each-label" title="Permanent link">&para;</a></h3>
 <p>We want to return a dictionary that maps labels to AnnotationCount objects where each
 AnnotationCount contains the text of the annotation text, the total number of times it's mentioned (e.g. what entity_coverage does)
 but also the examples it is in.</p>
@@ -500,52 +926,8 @@ so I know what to focus on in editing and a</p>
 </tbody>
 </table>
 <details class="quote">
-<summary>Source code in <code>recon/insights.py</code></summary>
-<table class="highlighttable">
-<tr>
-<td class="linenos">
-<div class="linenodiv">
-<pre><span></span>19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55</pre>
-</div>
-</td>
-<td class="code">
-<div class="highlight">
+          <summary>Source code in <code>recon/insights.py</code></summary>
+          <div class="highlight">
 <pre><span></span><code><span class="k">def</span> <span class="nf">get_ents_by_label</span><span class="p">(</span>
     <span class="n">data</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Example</span><span class="p">],</span> <span class="n">case_sensitive</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DefaultDict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
@@ -585,18 +967,17 @@ so I know what to focus on in editing and a</p>
     <span class="k">return</span> <span class="n">sorted_annotations</span>
 </code></pre>
 </div>
-</td>
-</tr>
-</table>
 </details>
 </div>
 </div>
 <div class="doc doc-object doc-function">
 <h2 class="doc doc-heading" id="recon.insights.get_hardest_examples">
-<code class="highlight language-python">
-get_hardest_examples<span class="p">(</span><span class="n">pred_errors</span><span class="p">,</span> <span class="n">return_pred_errors</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">remove_pred_error_examples</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> </code>
-<a class="headerlink" href="#recon.insights.get_hardest_examples" title="Permanent link">¶</a></h2>
-<div class="doc doc-contents">
+
+<code class="highlight language-python"><span class="n">get_hardest_examples</span><span class="p">(</span><span class="n">pred_errors</span><span class="p">,</span> <span class="n">return_pred_errors</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">remove_pred_error_examples</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+
+
+      <a class="headerlink" href="#recon.insights.get_hardest_examples" title="Permanent link">&para;</a></h2>
+<div class="doc doc-contents ">
 <p>Get hardest examples from list of PredictionError types</p>
 <p><strong>Parameters:</strong></p>
 <table>
@@ -670,90 +1051,8 @@ get_hardest_examples<span class="p">(</span><span class="n">pred_errors</span><s
 </tbody>
 </table>
 <details class="quote">
-<summary>Source code in <code>recon/insights.py</code></summary>
-<table class="highlighttable">
-<tr>
-<td class="linenos">
-<div class="linenodiv">
-<pre><span></span>237
-238
-239
-240
-241
-242
-243
-244
-245
-246
-247
-248
-249
-250
-251
-252
-253
-254
-255
-256
-257
-258
-259
-260
-261
-262
-263
-264
-265
-266
-267
-268
-269
-270
-271
-272
-273
-274
-275
-276
-277
-278
-279
-280
-281
-282
-283
-284
-285
-286
-287
-288
-289
-290
-291
-292
-293
-294
-295
-296
-297
-298
-299
-300
-301
-302
-303
-304
-305
-306
-307
-308
-309
-310
-311</pre>
-</div>
-</td>
-<td class="code">
-<div class="highlight">
+          <summary>Source code in <code>recon/insights.py</code></summary>
+          <div class="highlight">
 <pre><span></span><code><span class="k">def</span> <span class="nf">get_hardest_examples</span><span class="p">(</span>
     <span class="n">pred_errors</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">PredictionError</span><span class="p">],</span>
     <span class="n">return_pred_errors</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
@@ -831,18 +1130,17 @@ get_hardest_examples<span class="p">(</span><span class="n">pred_errors</span><s
     <span class="k">return</span> <span class="n">sorted_hardest_examples</span>
 </code></pre>
 </div>
-</td>
-</tr>
-</table>
 </details>
 </div>
 </div>
 <div class="doc doc-object doc-function">
 <h2 class="doc doc-heading" id="recon.insights.get_label_disparities">
-<code class="highlight language-python">
-get_label_disparities<span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">label1</span><span class="p">,</span> <span class="n">label2</span><span class="p">,</span> <span class="n">case_sensitive</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> </code>
-<a class="headerlink" href="#recon.insights.get_label_disparities" title="Permanent link">¶</a></h2>
-<div class="doc doc-contents">
+
+<code class="highlight language-python"><span class="n">get_label_disparities</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">label1</span><span class="p">,</span> <span class="n">label2</span><span class="p">,</span> <span class="n">case_sensitive</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+
+      <a class="headerlink" href="#recon.insights.get_label_disparities" title="Permanent link">&para;</a></h2>
+<div class="doc doc-contents ">
 <p>Identify annotated spans that have different labels in different examples</p>
 <p><strong>Parameters:</strong></p>
 <table>
@@ -907,31 +1205,8 @@ get_label_disparities<span class="p">(</span><span class="n">data</span><span cl
 </tbody>
 </table>
 <details class="quote">
-<summary>Source code in <code>recon/insights.py</code></summary>
-<table class="highlighttable">
-<tr>
-<td class="linenos">
-<div class="linenodiv">
-<pre><span></span>58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73</pre>
-</div>
-</td>
-<td class="code">
-<div class="highlight">
+          <summary>Source code in <code>recon/insights.py</code></summary>
+          <div class="highlight">
 <pre><span></span><code><span class="k">def</span> <span class="nf">get_label_disparities</span><span class="p">(</span>
     <span class="n">data</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Example</span><span class="p">],</span> <span class="n">label1</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">label2</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">case_sensitive</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Set</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
@@ -950,18 +1225,17 @@ get_label_disparities<span class="p">(</span><span class="n">data</span><span cl
     <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="n">annotations</span><span class="p">[</span><span class="n">label1</span><span class="p">])</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">annotations</span><span class="p">[</span><span class="n">label2</span><span class="p">]))</span>
 </code></pre>
 </div>
-</td>
-</tr>
-</table>
 </details>
 </div>
 </div>
 <div class="doc doc-object doc-function">
 <h2 class="doc doc-heading" id="recon.insights.top_label_disparities">
-<code class="highlight language-python">
-top_label_disparities<span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">case_sensitive</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">dedupe</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> </code>
-<a class="headerlink" href="#recon.insights.top_label_disparities" title="Permanent link">¶</a></h2>
-<div class="doc doc-contents">
+
+<code class="highlight language-python"><span class="n">top_label_disparities</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">case_sensitive</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">dedupe</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+
+      <a class="headerlink" href="#recon.insights.top_label_disparities" title="Permanent link">&para;</a></h2>
+<div class="doc doc-contents ">
 <p>Identify annotated spans that have different labels
 in different examples for all label pairs in data.</p>
 <p><strong>Parameters:</strong></p>
@@ -1021,49 +1295,8 @@ False by default for easy confusion matrix display.</p>
 </tbody>
 </table>
 <details class="quote">
-<summary>Source code in <code>recon/insights.py</code></summary>
-<table class="highlighttable">
-<tr>
-<td class="linenos">
-<div class="linenodiv">
-<pre><span></span> 76
- 77
- 78
- 79
- 80
- 81
- 82
- 83
- 84
- 85
- 86
- 87
- 88
- 89
- 90
- 91
- 92
- 93
- 94
- 95
- 96
- 97
- 98
- 99
-100
-101
-102
-103
-104
-105
-106
-107
-108
-109</pre>
-</div>
-</td>
-<td class="code">
-<div class="highlight">
+          <summary>Source code in <code>recon/insights.py</code></summary>
+          <div class="highlight">
 <pre><span></span><code><span class="k">def</span> <span class="nf">top_label_disparities</span><span class="p">(</span>
     <span class="n">data</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Example</span><span class="p">],</span> <span class="n">case_sensitive</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">dedupe</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">LabelDisparity</span><span class="p">]:</span>
@@ -1100,18 +1333,17 @@ False by default for easy confusion matrix display.</p>
     <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">label_disparities</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">ld</span><span class="p">:</span> <span class="n">ld</span><span class="o">.</span><span class="n">count</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre>
 </div>
-</td>
-</tr>
-</table>
 </details>
 </div>
 </div>
 <div class="doc doc-object doc-function">
 <h2 class="doc doc-heading" id="recon.insights.top_prediction_errors">
-<code class="highlight language-python">
-top_prediction_errors<span class="p">(</span><span class="n">recognizer</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">exclude_fp</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">exclude_fn</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> </code>
-<a class="headerlink" href="#recon.insights.top_prediction_errors" title="Permanent link">¶</a></h2>
-<div class="doc doc-contents">
+
+<code class="highlight language-python"><span class="n">top_prediction_errors</span><span class="p">(</span><span class="n">recognizer</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">exclude_fp</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">exclude_fn</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+
+      <a class="headerlink" href="#recon.insights.top_prediction_errors" title="Permanent link">&para;</a></h2>
+<div class="doc doc-contents ">
 <p>Get a sorted list of examples your model is worst at predicting.</p>
 <p><strong>Parameters:</strong></p>
 <table>
@@ -1210,138 +1442,8 @@ Defaults to the labels property of <code>recognizer</code>.</p>
 </tbody>
 </table>
 <details class="quote">
-<summary>Source code in <code>recon/insights.py</code></summary>
-<table class="highlighttable">
-<tr>
-<td class="linenos">
-<div class="linenodiv">
-<pre><span></span>112
-113
-114
-115
-116
-117
-118
-119
-120
-121
-122
-123
-124
-125
-126
-127
-128
-129
-130
-131
-132
-133
-134
-135
-136
-137
-138
-139
-140
-141
-142
-143
-144
-145
-146
-147
-148
-149
-150
-151
-152
-153
-154
-155
-156
-157
-158
-159
-160
-161
-162
-163
-164
-165
-166
-167
-168
-169
-170
-171
-172
-173
-174
-175
-176
-177
-178
-179
-180
-181
-182
-183
-184
-185
-186
-187
-188
-189
-190
-191
-192
-193
-194
-195
-196
-197
-198
-199
-200
-201
-202
-203
-204
-205
-206
-207
-208
-209
-210
-211
-212
-213
-214
-215
-216
-217
-218
-219
-220
-221
-222
-223
-224
-225
-226
-227
-228
-229
-230
-231
-232
-233
-234</pre>
-</div>
-</td>
-<td class="code">
-<div class="highlight">
+          <summary>Source code in <code>recon/insights.py</code></summary>
+          <div class="highlight">
 <pre><span></span><code><span class="k">def</span> <span class="nf">top_prediction_errors</span><span class="p">(</span>
     <span class="n">recognizer</span><span class="p">:</span> <span class="n">EntityRecognizer</span><span class="p">,</span>
     <span class="n">data</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Example</span><span class="p">],</span>
@@ -1467,84 +1569,119 @@ Defaults to the labels property of <code>recognizer</code>.</p>
     <span class="k">return</span> <span class="n">ranked_errors</span>
 </code></pre>
 </div>
-</td>
-</tr>
-</table>
 </details>
 </div>
 </div>
 </div>
 </div>
 </div>
-</article>
-</div>
-</div>
-</main>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
 <footer class="md-footer">
-<div class="md-footer-nav">
-<nav aria-label="Footer" class="md-footer-nav__inner md-grid">
-<a class="md-footer-nav__link md-footer-nav__link--prev" href="../hashing/" rel="prev" title="Hashing">
-<div class="md-footer-nav__button md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
-</div>
-<div class="md-footer-nav__title">
-<div class="md-ellipsis">
-<span class="md-footer-nav__direction">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../hashing/" title="Hashing" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
                   Previous
                 </span>
                 Hashing
               </div>
-</div>
-</a>
-<a class="md-footer-nav__link md-footer-nav__link--next" href="../loaders/" rel="next" title="Loaders">
-<div class="md-footer-nav__title">
-<div class="md-ellipsis">
-<span class="md-footer-nav__direction">
+            </div>
+          </a>
+        
+        
+          <a href="../loaders/" title="Loaders" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
                   Next
                 </span>
                 Loaders
               </div>
-</div>
-<div class="md-footer-nav__button md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
-</div>
-</a>
-</nav>
-</div>
-<div class="md-footer-meta md-typeset">
-<div class="md-footer-meta__inner md-grid">
-<div class="md-footer-copyright">
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
         
         Made with
-        <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
           Material for MkDocs
         </a>
-</div>
-<div class="md-footer-social">
-<a class="md-footer-social__link" href="https://github.com/kabirkhan/recon" rel="noopener" target="_blank" title="github.com">
-<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
-</a>
-<a class="md-footer-social__link" href="https://twitter.com/kabir_khan14" rel="noopener" target="_blank" title="twitter.com">
-<svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg>
-</a>
-</div>
-</div>
-</div>
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/kabirkhan/recon" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://twitter.com/kabir_khan14" target="_blank" rel="noopener" title="twitter.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
 </footer>
-</div>
-<script src="../../assets/javascripts/vendor.592d4e23.min.js"></script>
-<script src="../../assets/javascripts/bundle.073197b2.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
-<script>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.2d1db4bd.min.js"></script>
+      <script src="../../assets/javascripts/bundle.6627ddf3.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
         app = initialize({
           base: "../..",
           features: [],
           search: Object.assign({
-            worker: "../../assets/javascripts/worker/search.01088dc6.min.js"
+            worker: "../../assets/javascripts/worker/search.5eca75d3.min.js"
           }, typeof search !== "undefined" && search)
         })
       </script>
-<script src="../../js/termynal.js"></script>
-<script src="https://unpkg.com/mermaid@8.4.6/dist/mermaid.min.js"></script>
-<script src="../../js/custom.js"></script>
-</body>
+      
+        <script src="../../js/termynal.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.4.6/dist/mermaid.min.js"></script>
+      
+        <script src="../../js/custom.js"></script>
+      
+    
+  </body>
 </html>

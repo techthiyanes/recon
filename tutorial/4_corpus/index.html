@@ -1,421 +1,761 @@
 
-<!DOCTYPE html>
 
-<html class="no-js" lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width,initial-scale=1" name="viewport"/>
-<meta content="Debug annotated Named Entity Recognition (NER) data for inconsitencies and get insights on improving the quality of your data." name="description"/>
-<link href="https://kabirkhan.github.io/recon/tutorial/4_corpus/" rel="canonical"/>
-<link href="../../img/favicon.ico" rel="shortcut icon"/>
-<meta content="mkdocs-1.1.2, mkdocs-material-5.5.1" name="generator"/>
-<title>Using a Corpus - Recon</title>
-<link href="../../assets/stylesheets/main.5d00201e.min.css" rel="stylesheet"/>
-<link href="../../assets/stylesheets/palette.816e8abc.min.css" rel="stylesheet"/>
-<meta content="#2196f3" name="theme-color"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
-<style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
-<link href="../../css/termynal.css" rel="stylesheet"/>
-<link href="../../css/custom.css" rel="stylesheet"/>
-<meta content="https://kabirkhan.github.io/recon/tutorial/4_corpus/" property="og:url"/>
-<meta content="Using a Corpus - Recon" property="og:title"/>
-<meta content="Debug annotated Named Entity Recognition (NER) data for inconsitencies and get insights on improving the quality of your data." property="og:description"/>
-<meta content="https://microsoft.github.io/reconner/img/recon.svg" property="og:image"/>
-<meta content="Recon NER" property="og:image:alt"/>
-<meta content="summary_large_image" name="twitter:card"/>
-<meta content="@kabir_khan14" name="twitter:site"/>
-<meta content="@kabir_khan14" name="twitter:creator"/>
-<meta content="Using a Corpus - Recon" property="twitter:title"/>
-<meta content="Debug annotated Named Entity Recognition (NER) data for inconsitencies and get insights on improving the quality of your data." name="twitter:description"/>
-<meta content="https://microsoft.github.io/reconner/img/recon.svg" name="twitter:image"/>
-<meta content="Recon NER" name="twitter:image:alt"/>
-</head>
-<body data-md-color-accent="blue" data-md-color-primary="blue" data-md-color-scheme="" dir="ltr">
-<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
-<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
-<label class="md-overlay" for="__drawer"></label>
-<div data-md-component="skip">
-<a class="md-skip" href="#tutorial-using-corpusapply">
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Debug annotated Named Entity Recognition (NER) data for inconsitencies and get insights on improving the quality of your data.">
+      
+      
+        <link rel="canonical" href="https://kabirkhan.github.io/recon/tutorial/4_corpus/">
+      
+      
+      <link rel="shortcut icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.14">
+    
+    
+      
+        <title>Using a Corpus - Recon</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.d3202873.min.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ff0a5ce4.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#2094f3">
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../css/termynal.css">
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+    
+      
+    
+    
+
+  <meta property="og:url" content="https://kabirkhan.github.io/recon/tutorial/4_corpus/">
+  
+    <meta property="og:title" content="Using a Corpus - Recon">
+  
+  <meta property="og:description" content="Debug annotated Named Entity Recognition (NER) data for inconsitencies and get insights on improving the quality of your data.">
+  <meta property="og:image" content="https://microsoft.github.io/reconner/img/recon.svg">
+  <meta property="og:image:alt" content="Recon NER">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@kabir_khan14">
+  <meta name="twitter:creator" content="@kabir_khan14">
+  
+    <meta property="twitter:title" content="Using a Corpus - Recon">
+  
+  <meta name="twitter:description" content="Debug annotated Named Entity Recognition (NER) data for inconsitencies and get insights on improving the quality of your data.">
+  <meta name="twitter:image" content="https://microsoft.github.io/reconner/img/recon.svg">
+  <meta name="twitter:image:alt" content="Recon NER">
+
+
+  </head>
+  
+  
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tutorial-using-corpusapply" class="md-skip">
           Skip to content
         </a>
-</div>
-<div data-md-component="announce">
-</div>
-<header class="md-header" data-md-component="header">
-<nav aria-label="Header" class="md-header-nav md-grid">
-<a aria-label="Recon" class="md-header-nav__button md-logo" href="https://kabirkhan.github.io/recon/" title="Recon">
-<img alt="logo" src="../../img/drone-white.svg"/>
-</a>
-<label class="md-header-nav__button md-icon" for="__drawer">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
-</label>
-<div class="md-header-nav__title" data-md-component="header-title">
-<div class="md-header-nav__ellipsis">
-<span class="md-header-nav__topic md-ellipsis">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://kabirkhan.github.io/recon/" title="Recon" class="md-header-nav__button md-logo" aria-label="Recon">
+      
+  <img src="../../img/drone-white.svg" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
             Recon
           </span>
-<span class="md-header-nav__topic md-ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
             
               Using a Corpus
             
           </span>
-</div>
-</div>
-<div class="md-header-nav__source">
-<a class="md-source" href="https://github.com/kabirkhan/recon/" title="Go to repository">
-<div class="md-source__icon md-icon">
-<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
-</div>
-<div class="md-source__repository">
+        </div>
+      
+    </div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/kabirkhan/recon/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
     kabirkhan/recon
   </div>
 </a>
-</div>
-</nav>
+      </div>
+    
+  </nav>
 </header>
-<div class="md-container" data-md-component="container">
-<main class="md-main" data-md-component="main">
-<div class="md-main__inner md-grid">
-<div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
-<div class="md-sidebar__scrollwrap">
-<div class="md-sidebar__inner">
-<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
-<label class="md-nav__title" for="__drawer">
-<a aria-label="Recon" class="md-nav__button md-logo" href="https://kabirkhan.github.io/recon/" title="Recon">
-<img alt="logo" src="../../img/drone-white.svg"/>
-</a>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://kabirkhan.github.io/recon/" title="Recon" class="md-nav__button md-logo" aria-label="Recon">
+      
+  <img src="../../img/drone-white.svg" alt="logo">
+
+    </a>
     Recon
   </label>
-<div class="md-nav__source">
-<a class="md-source" href="https://github.com/kabirkhan/recon/" title="Go to repository">
-<div class="md-source__icon md-icon">
-<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
-</div>
-<div class="md-source__repository">
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/kabirkhan/recon/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
     kabirkhan/recon
   </div>
 </a>
-</div>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../.." title="Recon">
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Recon" class="md-nav__link">
       Recon
     </a>
-</li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="nav-2" id="nav-2" type="checkbox"/>
-<label class="md-nav__link" for="nav-2">
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
       Tutorial
-      <span class="md-nav__icon md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"></path></svg>
-</span>
-</label>
-<nav aria-label="Tutorial" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="nav-2">
-<span class="md-nav__icon md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
-</span>
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Tutorial" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
         Tutorial
       </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../1_loading_data/" title="Loading your data">
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../1_loading_data/" title="Loading your data" class="md-nav__link">
       Loading your data
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../2_ner_stats/" title="NER Stats">
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2_ner_stats/" title="NER Stats" class="md-nav__link">
       NER Stats
     </a>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-3" id="nav-2-3" type="checkbox"/>
-<label class="md-nav__link" for="nav-2-3">
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-3" type="checkbox" id="nav-2-3">
+    
+    <label class="md-nav__link" for="nav-2-3">
       Dataset
-      <span class="md-nav__icon md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"></path></svg>
-</span>
-</label>
-<nav aria-label="Dataset" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="nav-2-3">
-<span class="md-nav__icon md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
-</span>
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Dataset" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-3">
+        <span class="md-nav__icon md-icon"></span>
         Dataset
       </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../3_dataset_intro/" title="Introduction">
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../3_dataset_intro/" title="Introduction" class="md-nav__link">
       Introduction
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../3_dataset_mutate/" title="Making changes to a Dataset">
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../3_dataset_mutate/" title="Making changes to a Dataset" class="md-nav__link">
       Making changes to a Dataset
     </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
         Using a Corpus
-        <span class="md-nav__icon md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"></path></svg>
-</span>
-</label>
-<a class="md-nav__link md-nav__link--active" href="./" title="Using a Corpus">
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" title="Using a Corpus" class="md-nav__link md-nav__link--active">
       Using a Corpus
     </a>
-<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
-</span>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#update-script-to-use-datasetapply">
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#update-script-to-use-datasetapply" class="md-nav__link">
     Update script to use Dataset.apply
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#run-the-application">
+      
+        <li class="md-nav__item">
+  <a href="#run-the-application" class="md-nav__link">
     Run the application
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#analyzing-the-results">
+      
+        <li class="md-nav__item">
+  <a href="#analyzing-the-results" class="md-nav__link">
     Analyzing the results
   </a>
-<nav aria-label="Analyzing the results" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#1-not-enough-job_role-annotations">
+  
+    <nav class="md-nav" aria-label="Analyzing the results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-not-enough-job_role-annotations" class="md-nav__link">
     1. Not enough JOB_ROLE annotations
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#2-barely-enough-product-annotations">
+        
+          <li class="md-nav__item">
+  <a href="#2-barely-enough-product-annotations" class="md-nav__link">
     2. Barely enough PRODUCT annotations
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#what-to-do-from-here">
+        
+          <li class="md-nav__item">
+  <a href="#what-to-do-from-here" class="md-nav__link">
     What to do from here
   </a>
+  
 </li>
-</ul>
-</nav>
+        
+      </ul>
+    </nav>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#next-steps">
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
     Next Steps
   </a>
+  
 </li>
-</ul>
+      
+    </ul>
+  
 </nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../4_more_stats/" title="More NER Stats">
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../4_more_stats/" title="More NER Stats" class="md-nav__link">
       More NER Stats
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../5_getting_insights/" title="Getting Insights">
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../5_getting_insights/" title="Getting Insights" class="md-nav__link">
       Getting Insights
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../custom_entity_recognizer/" title="Custom EntityRecognizer">
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../custom_entity_recognizer/" title="Custom EntityRecognizer" class="md-nav__link">
       Custom EntityRecognizer
     </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" id="nav-3" type="checkbox"/>
-<label class="md-nav__link" for="nav-3">
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
       API Reference
-      <span class="md-nav__icon md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"></path></svg>
-</span>
-</label>
-<nav aria-label="API Reference" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="nav-3">
-<span class="md-nav__icon md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
-</span>
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="API Reference" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
         API Reference
       </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../api/corpus/" title="Corpus">
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/corpus/" title="Corpus" class="md-nav__link">
       Corpus
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../api/corrections/" title="Corrections">
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/corrections/" title="Corrections" class="md-nav__link">
       Corrections
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../api/dataset/" title="Dataset">
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/dataset/" title="Dataset" class="md-nav__link">
       Dataset
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../api/hashing/" title="Hashing">
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/hashing/" title="Hashing" class="md-nav__link">
       Hashing
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../api/insights/" title="Insights">
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/insights/" title="Insights" class="md-nav__link">
       Insights
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../api/loaders/" title="Loaders">
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/loaders/" title="Loaders" class="md-nav__link">
       Loaders
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../api/operations/" title="Operations">
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/operations/" title="Operations" class="md-nav__link">
       Operations
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../api/stats/" title="Stats">
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/stats/" title="Stats" class="md-nav__link">
       Stats
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../api/store/" title="Store">
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/store/" title="Store" class="md-nav__link">
       Store
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../api/tokenization/" title="Tokenization">
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/tokenization/" title="Tokenization" class="md-nav__link">
       Tokenization
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../api/validation/" title="Validation">
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/validation/" title="Validation" class="md-nav__link">
       Validation
     </a>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-12" id="nav-3-12" type="checkbox"/>
-<label class="md-nav__link" for="nav-3-12">
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-12" type="checkbox" id="nav-3-12">
+    
+    <label class="md-nav__link" for="nav-3-12">
       Recognizers
-      <span class="md-nav__icon md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"></path></svg>
-</span>
-</label>
-<nav aria-label="Recognizers" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="nav-3-12">
-<span class="md-nav__icon md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
-</span>
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Recognizers" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-12">
+        <span class="md-nav__icon md-icon"></span>
         Recognizers
       </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../api/recognizers/base/" title="EntityRecognizer">
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/recognizers/base/" title="EntityRecognizer" class="md-nav__link">
       EntityRecognizer
     </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../api/recognizers/spacy/" title="SpacyEntityRecognizer">
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/recognizers/spacy/" title="SpacyEntityRecognizer" class="md-nav__link">
       SpacyEntityRecognizer
     </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../api/types/example/" title="Types">
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/types/example/" title="Types" class="md-nav__link">
       Types
     </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../release-notes/" title="Release Notes">
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../release-notes/" title="Release Notes" class="md-nav__link">
       Release Notes
     </a>
-</li>
-</ul>
+  </li>
+
+    
+  </ul>
 </nav>
-</div>
-</div>
-</div>
-<div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-<div class="md-sidebar__scrollwrap">
-<div class="md-sidebar__inner">
-<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
-</span>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#update-script-to-use-datasetapply">
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#update-script-to-use-datasetapply" class="md-nav__link">
     Update script to use Dataset.apply
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#run-the-application">
+      
+        <li class="md-nav__item">
+  <a href="#run-the-application" class="md-nav__link">
     Run the application
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#analyzing-the-results">
+      
+        <li class="md-nav__item">
+  <a href="#analyzing-the-results" class="md-nav__link">
     Analyzing the results
   </a>
-<nav aria-label="Analyzing the results" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#1-not-enough-job_role-annotations">
+  
+    <nav class="md-nav" aria-label="Analyzing the results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-not-enough-job_role-annotations" class="md-nav__link">
     1. Not enough JOB_ROLE annotations
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#2-barely-enough-product-annotations">
+        
+          <li class="md-nav__item">
+  <a href="#2-barely-enough-product-annotations" class="md-nav__link">
     2. Barely enough PRODUCT annotations
   </a>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#what-to-do-from-here">
+        
+          <li class="md-nav__item">
+  <a href="#what-to-do-from-here" class="md-nav__link">
     What to do from here
   </a>
+  
 </li>
-</ul>
-</nav>
+        
+      </ul>
+    </nav>
+  
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#next-steps">
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
     Next Steps
   </a>
+  
 </li>
-</ul>
+      
+    </ul>
+  
 </nav>
-</div>
-</div>
-</div>
-<div class="md-content">
-<article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/kabirkhan/recon/tree/master/docs/tutorial/4_corpus.md" title="Edit this page">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
-</a>
-<h1 id="tutorial-using-corpusapply">Tutorial - Using <code>Corpus.apply</code><a class="headerlink" href="#tutorial-using-corpusapply" title="Permanent link">¶</a></h1>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/kabirkhan/recon/tree/master/docs/tutorial/4_corpus.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  
+                
+                
+                <h1 id="tutorial-using-corpusapply">Tutorial - Using <code>Corpus.apply</code><a class="headerlink" href="#tutorial-using-corpusapply" title="Permanent link">&para;</a></h1>
 <p>In the previous step, we used the <code>stats.get_ner_stats</code> function to some stats on our train_data. Now, we want to be able to get these same stats across our train/dev/test split.</p>
 <p>SO, ReconNER's <code>Corpus</code> class provides a useful method called <a href="../../api/corpus"><code>apply</code></a>
 that takes a <code>Callable</code> as a parameter that can run on a list of <code>Example</code>s (e.g. <code>stats.get_ner_stats</code>)
@@ -424,7 +764,7 @@ and run that <code>Callable</code> over all the datasets as well as a concatenat
 <p class="admonition-title">Tip</p>
 <p>You can pass arbitary <code>*args</code> and <code>**kwargs</code> to <code>Corpus.apply</code> and they will be passed along to the callable you provide as the required argument.</p>
 </div>
-<h2 id="update-script-to-use-datasetapply">Update script to use <code>Dataset.apply</code><a class="headerlink" href="#update-script-to-use-datasetapply" title="Permanent link">¶</a></h2>
+<h2 id="update-script-to-use-datasetapply">Update script to use <code>Dataset.apply</code><a class="headerlink" href="#update-script-to-use-datasetapply" title="Permanent link">&para;</a></h2>
 <p>Let's edit that <code>main.py</code> file you created in the previous step to utilize the <code>Corpus.apply</code> method.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
@@ -437,149 +777,190 @@ and run that <code>Callable</code> over all the datasets as well as a concatenat
     <span class="n">ds</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">from_disk</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span>
 <span class="hll">    <span class="n">ds_stats</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">get_ner_stats</span><span class="p">,</span> <span class="n">serialize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">no_print</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </span>    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">stats</span> <span class="ow">in</span> <span class="n">ds_stats</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">"="</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">stats</span><span class="p">)</span>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">typer</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">)</span>
 </code></pre></div>
-<h2 id="run-the-application">Run the application<a class="headerlink" href="#run-the-application" title="Permanent link">¶</a></h2>
+<h2 id="run-the-application">Run the application<a class="headerlink" href="#run-the-application" title="Permanent link">&para;</a></h2>
 <p>Now, if you run your script you should get the following output:</p>
 <div class="termy">
-<div class="highlight"><pre><span></span><code><span class="gp">$</span> python main.py ./examples/data
+
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>python main.py ./examples/data
 <span class="go">train</span>
 <span class="go">==================================================</span>
 <span class="go">{</span>
-<span class="go">    "n_examples":102,</span>
-<span class="go">    "n_examples_no_entities":29,</span>
-<span class="go">    "ents_per_type":{</span>
-<span class="go">        "SKILL":191,</span>
-<span class="go">        "PRODUCT":34,</span>
-<span class="go">        "JOB_ROLE":5</span>
+<span class="go">    &quot;n_examples&quot;:102,</span>
+<span class="go">    &quot;n_examples_no_entities&quot;:29,</span>
+<span class="go">    &quot;ents_per_type&quot;:{</span>
+<span class="go">        &quot;SKILL&quot;:191,</span>
+<span class="go">        &quot;PRODUCT&quot;:34,</span>
+<span class="go">        &quot;JOB_ROLE&quot;:5</span>
 <span class="go">    }</span>
 <span class="go">}</span>
 <span class="go">dev</span>
 <span class="go">==================================================</span>
 <span class="go">{</span>
-<span class="go">    "n_examples":110,</span>
-<span class="go">    "n_examples_no_entities":49,</span>
-<span class="go">    "ents_per_type":{</span>
-<span class="go">        "SKILL":159,</span>
-<span class="go">        "PRODUCT":20,</span>
-<span class="go">        "JOB_ROLE":1</span>
+<span class="go">    &quot;n_examples&quot;:110,</span>
+<span class="go">    &quot;n_examples_no_entities&quot;:49,</span>
+<span class="go">    &quot;ents_per_type&quot;:{</span>
+<span class="go">        &quot;SKILL&quot;:159,</span>
+<span class="go">        &quot;PRODUCT&quot;:20,</span>
+<span class="go">        &quot;JOB_ROLE&quot;:1</span>
 <span class="go">    }</span>
 <span class="go">}</span>
 <span class="go">test</span>
 <span class="go">==================================================</span>
 <span class="go">{</span>
-<span class="go">    "n_examples":96,</span>
-<span class="go">    "n_examples_no_entities":38,</span>
-<span class="go">    "ents_per_type":{</span>
-<span class="go">        "PRODUCT":35,</span>
-<span class="go">        "SKILL":107,</span>
-<span class="go">        "JOB_ROLE":2</span>
+<span class="go">    &quot;n_examples&quot;:96,</span>
+<span class="go">    &quot;n_examples_no_entities&quot;:38,</span>
+<span class="go">    &quot;ents_per_type&quot;:{</span>
+<span class="go">        &quot;PRODUCT&quot;:35,</span>
+<span class="go">        &quot;SKILL&quot;:107,</span>
+<span class="go">        &quot;JOB_ROLE&quot;:2</span>
 <span class="go">    }</span>
 <span class="go">}</span>
 <span class="go">all</span>
 <span class="go">==================================================</span>
 <span class="go">{</span>
-<span class="go">    "n_examples":308,</span>
-<span class="go">    "n_examples_no_entities":116,</span>
-<span class="go">    "ents_per_type":{</span>
-<span class="go">        "SKILL":457,</span>
-<span class="go">        "PRODUCT":89,</span>
-<span class="go">        "JOB_ROLE":8</span>
+<span class="go">    &quot;n_examples&quot;:308,</span>
+<span class="go">    &quot;n_examples_no_entities&quot;:116,</span>
+<span class="go">    &quot;ents_per_type&quot;:{</span>
+<span class="go">        &quot;SKILL&quot;:457,</span>
+<span class="go">        &quot;PRODUCT&quot;:89,</span>
+<span class="go">        &quot;JOB_ROLE&quot;:8</span>
 <span class="go">    }</span>
 <span class="go">}</span>
 </code></pre></div>
+
 </div>
-<h2 id="analyzing-the-results">Analyzing the results<a class="headerlink" href="#analyzing-the-results" title="Permanent link">¶</a></h2>
+
+<h2 id="analyzing-the-results">Analyzing the results<a class="headerlink" href="#analyzing-the-results" title="Permanent link">&para;</a></h2>
 <p>Now that we have a good understanding of the distribution of labels in across our train/dev/test split as well as the summation of all those numbers to the "all" data, we can start to see some issues.</p>
-<h3 id="1-not-enough-job_role-annotations">1. Not enough <code>JOB_ROLE</code> annotations<a class="headerlink" href="#1-not-enough-job_role-annotations" title="Permanent link">¶</a></h3>
+<h3 id="1-not-enough-job_role-annotations">1. Not enough <code>JOB_ROLE</code> annotations<a class="headerlink" href="#1-not-enough-job_role-annotations" title="Permanent link">&para;</a></h3>
 <p>We clearly don't have enough annotations of the <code>JOB_ROLE</code> in our data. There's no way an NER model could learn to capture <code>JOB_ROLE</code> in a generic way with only 8 total annotations.</p>
-<h3 id="2-barely-enough-product-annotations">2. Barely enough <code>PRODUCT</code> annotations<a class="headerlink" href="#2-barely-enough-product-annotations" title="Permanent link">¶</a></h3>
+<h3 id="2-barely-enough-product-annotations">2. Barely enough <code>PRODUCT</code> annotations<a class="headerlink" href="#2-barely-enough-product-annotations" title="Permanent link">&para;</a></h3>
 <p>We're also a little low (though not nearly as much) on our <code>PRODUCT</code> label.</p>
-<h3 id="what-to-do-from-here">What to do from here<a class="headerlink" href="#what-to-do-from-here" title="Permanent link">¶</a></h3>
+<h3 id="what-to-do-from-here">What to do from here<a class="headerlink" href="#what-to-do-from-here" title="Permanent link">&para;</a></h3>
 <p>We want our final model to be equally good at extracting these 3 labels of <code>SKILL</code>, <code>PRODUCT</code> and <code>JOB_ROLE</code> so we now know exactly where to invest more time in our annotations effort: getting more examples of <code>JOB_ROLE</code>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This is a VERY small dataset sampled from a much larger NER dataset that's powering part of our work on the new <a href="https://azure.kabirkhan.com/en-us/services/cognitive-services/text-analytics/">v3 Text Analytics Cognitive Service</a>. So here's your glimpse into how we work with data at kabirkhan. Until we fix the lack of annotations for the <code>JOB_ROLE</code> label we won't be launching it in production.</p>
 </div>
-<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">¶</a></h2>
+<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <p>We've only scratched the surface of ReconNER. It's great to have these global stats about our dataset so we can track trends and make sure we're trending in the right direction as we annotate more data. But this data doesn't debug the data we already have. 34 of our 191 <code>SKILL</code> annotations in our <code>train</code> set might actually be instances where <code>JOB_ROLE</code> or <code>PRODUCT</code> is more appropriate.</p>
 <p>We might have subsets of our data annotated by different people that had a slightly different understanding of the annotation requirements.</p>
 <p>In the next step of this tutorial we'll dive into the <code>insights</code> module of ReconNER to examine the quality of our existing annotations.</p>
-</article>
-</div>
-</div>
-</main>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
 <footer class="md-footer">
-<div class="md-footer-nav">
-<nav aria-label="Footer" class="md-footer-nav__inner md-grid">
-<a class="md-footer-nav__link md-footer-nav__link--prev" href="../3_dataset_mutate/" rel="prev" title="Making changes to a Dataset">
-<div class="md-footer-nav__button md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
-</div>
-<div class="md-footer-nav__title">
-<div class="md-ellipsis">
-<span class="md-footer-nav__direction">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../3_dataset_mutate/" title="Making changes to a Dataset" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
                   Previous
                 </span>
                 Making changes to a Dataset
               </div>
-</div>
-</a>
-<a class="md-footer-nav__link md-footer-nav__link--next" href="../4_more_stats/" rel="next" title="More NER Stats">
-<div class="md-footer-nav__title">
-<div class="md-ellipsis">
-<span class="md-footer-nav__direction">
+            </div>
+          </a>
+        
+        
+          <a href="../4_more_stats/" title="More NER Stats" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
                   Next
                 </span>
                 More NER Stats
               </div>
-</div>
-<div class="md-footer-nav__button md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
-</div>
-</a>
-</nav>
-</div>
-<div class="md-footer-meta md-typeset">
-<div class="md-footer-meta__inner md-grid">
-<div class="md-footer-copyright">
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
         
         Made with
-        <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
           Material for MkDocs
         </a>
-</div>
-<div class="md-footer-social">
-<a class="md-footer-social__link" href="https://github.com/kabirkhan/recon" rel="noopener" target="_blank" title="github.com">
-<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
-</a>
-<a class="md-footer-social__link" href="https://twitter.com/kabir_khan14" rel="noopener" target="_blank" title="twitter.com">
-<svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg>
-</a>
-</div>
-</div>
-</div>
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/kabirkhan/recon" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://twitter.com/kabir_khan14" target="_blank" rel="noopener" title="twitter.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
 </footer>
-</div>
-<script src="../../assets/javascripts/vendor.592d4e23.min.js"></script>
-<script src="../../assets/javascripts/bundle.073197b2.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
-<script>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.2d1db4bd.min.js"></script>
+      <script src="../../assets/javascripts/bundle.6627ddf3.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
         app = initialize({
           base: "../..",
           features: [],
           search: Object.assign({
-            worker: "../../assets/javascripts/worker/search.01088dc6.min.js"
+            worker: "../../assets/javascripts/worker/search.5eca75d3.min.js"
           }, typeof search !== "undefined" && search)
         })
       </script>
-<script src="../../js/termynal.js"></script>
-<script src="https://unpkg.com/mermaid@8.4.6/dist/mermaid.min.js"></script>
-<script src="../../js/custom.js"></script>
-</body>
+      
+        <script src="../../js/termynal.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.4.6/dist/mermaid.min.js"></script>
+      
+        <script src="../../js/custom.js"></script>
+      
+    
+  </body>
 </html>
