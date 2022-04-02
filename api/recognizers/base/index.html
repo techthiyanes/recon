@@ -16,7 +16,7 @@
       
       
       <link rel="shortcut icon" href="../../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.14">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-5.5.14">
     
     
       
@@ -43,6 +43,8 @@
       
     
     
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
     
       <link rel="stylesheet" href="../../../css/termynal.css">
     
@@ -124,7 +126,7 @@
     
       <div class="md-header-nav__source">
         
-<a href="https://github.com/kabirkhan/recon/" title="Go to repository" class="md-source">
+<a href="https://github.com/kabirkhan/recon" title="Go to repository" class="md-source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
@@ -164,7 +166,7 @@
   
     <div class="md-nav__source">
       
-<a href="https://github.com/kabirkhan/recon/" title="Go to repository" class="md-source">
+<a href="https://github.com/kabirkhan/recon" title="Go to repository" class="md-source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
@@ -700,122 +702,204 @@
                   <h1>EntityRecognizer</h1>
                 
                 <div class="doc doc-object doc-class">
-<h2 class="hidden-toc" id="recon.recognizer.EntityRecognizer" style="visibility: hidden; position: absolute;">
-        <a class="headerlink" href="#recon.recognizer.EntityRecognizer" title="Permanent link">&para;</a></h2>
-<div class="doc doc-contents first">
-<p>Abstract Base class for recognizing entities in a batch of text.
+
+<a id="recon.recognizer.EntityRecognizer"></a>
+    <div class="doc doc-contents first">
+
+      <p>Abstract Base class for recognizing entities in a batch of text.
 Used in the <code>recon.insights</code> module for understanding the kinds
 of examples your model is having the most trouble with.</p>
-<div class="doc doc-children">
-<div class="doc doc-object doc-attribute">
-<h2 class="doc doc-heading" id="recon.recognizer.EntityRecognizer.labels">
 
-<code class="highlight language-python"><span class="n">labels</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span></code>
+        <details class="quote">
+          <summary>Source code in <code>recon/recognizer.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">EntityRecognizer</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Abstract Base class for recognizing entities in a batch of text.</span>
+<span class="sd">    Used in the `recon.insights` module for understanding the kinds</span>
+<span class="sd">    of examples your model is having the most trouble with.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">labels</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Return List of String Labels</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            NotImplementedError: Not Implemented, override</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List[str]: List of labels the model can predict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">texts</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">Example</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Run model inference on a batch of raw texts.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            texts (Iterable[str]): Raw text examples</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            NotImplementedError: Not implemented, override</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Iterator[Example]: Iterator of Examples</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+    <span class="k">def</span> <span class="nf">_evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">examples</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Example</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Scores</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">examples</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Example</span><span class="p">],</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Scores</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Evaluate recognizer performance on dataset and print metrics</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            data (List[Example]): Examples to evaluate on</span>
+<span class="sd">            verbose (bool, optional): Print results or not. Defaults to True.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Scorer: spaCy scorer object</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">sc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_evaluate</span><span class="p">(</span><span class="n">examples</span><span class="p">)</span>
+
+        <span class="n">msg</span> <span class="o">=</span> <span class="n">Printer</span><span class="p">(</span><span class="n">no_print</span><span class="o">=</span><span class="ow">not</span> <span class="n">verbose</span><span class="p">)</span>
+        <span class="n">msg</span><span class="o">.</span><span class="n">divider</span><span class="p">(</span><span class="s2">&quot;Recognizer Results&quot;</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">(</span><span class="s2">&quot;Precision&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">sc</span><span class="o">.</span><span class="n">ents_p</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">&quot;Recall&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">sc</span><span class="o">.</span><span class="n">ents_r</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">&quot;F-Score&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">sc</span><span class="o">.</span><span class="n">ents_f</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span>
+        <span class="p">]</span>
+        <span class="n">msg</span><span class="o">.</span><span class="n">table</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+        <span class="n">table_data</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">scores</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">sc</span><span class="o">.</span><span class="n">ents_per_type</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">tup</span><span class="p">:</span> <span class="n">tup</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="n">table_data</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">label</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">scores</span><span class="p">[</span><span class="s1">&#39;p&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">scores</span><span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">scores</span><span class="p">[</span><span class="s1">&#39;f&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+        <span class="n">header</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;Label&quot;</span><span class="p">,</span> <span class="s2">&quot;Precision&quot;</span><span class="p">,</span> <span class="s2">&quot;Recall&quot;</span><span class="p">,</span> <span class="s2">&quot;F-Score&quot;</span><span class="p">)</span>
+        <span class="n">formatted</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">table</span><span class="p">(</span><span class="n">table_data</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="n">header</span><span class="p">,</span> <span class="n">divider</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">sc</span>
+</code></pre></div>
+        </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+  <div class="doc doc-object doc-attribute">
+
+
+
+<h2 id="recon.recognizer.EntityRecognizer.labels" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">labels</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span></code>
 
   <span class="doc doc-properties">
       <small class="doc doc-property doc-property-property"><code>property</code></small>
       <small class="doc doc-property doc-property-readonly"><code>readonly</code></small>
   </span>
 
-      <a class="headerlink" href="#recon.recognizer.EntityRecognizer.labels" title="Permanent link">&para;</a></h2>
-<div class="doc doc-contents ">
-<p>Return List of String Labels</p>
+<a href="#recon.recognizer.EntityRecognizer.labels" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return List of String Labels</p>
+
 <p><strong>Exceptions:</strong></p>
 <table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>NotImplementedError</code></td>
-<td>
-<p>Not Implemented, override</p>
-</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>NotImplementedError</code></td>
+        <td><p>Not Implemented, override</p></td>
+      </tr>
+  </tbody>
 </table>
 <p><strong>Returns:</strong></p>
 <table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>List[str]</code></td>
-<td>
-<p>List[str]: List of labels the model can predict</p>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="doc doc-object doc-method">
-<h2 class="doc doc-heading" id="recon.recognizer.EntityRecognizer.evaluate">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>List[str]</code></td>
+      <td><p>List of labels the model can predict</p></td>
+    </tr>
+  </tbody>
+</table>    </div>
 
-<code class="highlight language-python"><span class="n">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">examples</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+  </div>
 
 
-      <a class="headerlink" href="#recon.recognizer.EntityRecognizer.evaluate" title="Permanent link">&para;</a></h2>
-<div class="doc doc-contents ">
-<p>Evaluate recognizer performance on dataset and print metrics</p>
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="recon.recognizer.EntityRecognizer.evaluate" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">examples</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+
+
+<a href="#recon.recognizer.EntityRecognizer.evaluate" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Evaluate recognizer performance on dataset and print metrics</p>
+
 <p><strong>Parameters:</strong></p>
 <table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>data</code></td>
-<td><code>List[Example]</code></td>
-<td>
-<p>Examples to evaluate on</p>
-</td>
-<td><em>required</em></td>
-</tr>
-<tr>
-<td><code>verbose</code></td>
-<td><code>bool</code></td>
-<td>
-<p>Print results or not. Defaults to True.</p>
-</td>
-<td><code>True</code></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>data</code></td>
+        <td><code>List[Example]</code></td>
+        <td><p>Examples to evaluate on</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>verbose</code></td>
+        <td><code>bool</code></td>
+        <td><p>Print results or not. Defaults to True.</p></td>
+        <td><code>True</code></td>
+      </tr>
+  </tbody>
 </table>
 <p><strong>Returns:</strong></p>
 <table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>Scores</code></td>
-<td>
-<p>Scorer: spaCy scorer object</p>
-</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Scorer</code></td>
+      <td><p>spaCy scorer object</p></td>
+    </tr>
+  </tbody>
 </table>
-<details class="quote">
+        <details class="quote">
           <summary>Source code in <code>recon/recognizer.py</code></summary>
-          <div class="highlight">
-<pre><span></span><code><span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">examples</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Example</span><span class="p">],</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Scores</span><span class="p">:</span>
-    <span class="sd">"""Evaluate recognizer performance on dataset and print metrics</span>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">examples</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Example</span><span class="p">],</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Scores</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Evaluate recognizer performance on dataset and print metrics</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        data (List[Example]): Examples to evaluate on</span>
@@ -823,100 +907,99 @@ of examples your model is having the most trouble with.</p>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        Scorer: spaCy scorer object</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">sc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_evaluate</span><span class="p">(</span><span class="n">examples</span><span class="p">)</span>
 
     <span class="n">msg</span> <span class="o">=</span> <span class="n">Printer</span><span class="p">(</span><span class="n">no_print</span><span class="o">=</span><span class="ow">not</span> <span class="n">verbose</span><span class="p">)</span>
-    <span class="n">msg</span><span class="o">.</span><span class="n">divider</span><span class="p">(</span><span class="s2">"Recognizer Results"</span><span class="p">)</span>
+    <span class="n">msg</span><span class="o">.</span><span class="n">divider</span><span class="p">(</span><span class="s2">&quot;Recognizer Results&quot;</span><span class="p">)</span>
     <span class="n">result</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="p">(</span><span class="s2">"Precision"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">sc</span><span class="o">.</span><span class="n">ents_p</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">),</span>
-        <span class="p">(</span><span class="s2">"Recall"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">sc</span><span class="o">.</span><span class="n">ents_r</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">),</span>
-        <span class="p">(</span><span class="s2">"F-Score"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">sc</span><span class="o">.</span><span class="n">ents_f</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;Precision&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">sc</span><span class="o">.</span><span class="n">ents_p</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;Recall&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">sc</span><span class="o">.</span><span class="n">ents_r</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;F-Score&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">sc</span><span class="o">.</span><span class="n">ents_f</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">),</span>
     <span class="p">]</span>
     <span class="n">msg</span><span class="o">.</span><span class="n">table</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 
     <span class="n">table_data</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">scores</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">sc</span><span class="o">.</span><span class="n">ents_per_type</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">tup</span><span class="p">:</span> <span class="n">tup</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
-        <span class="n">table_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-            <span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">scores</span><span class="p">[</span><span class="s1">'p'</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">scores</span><span class="p">[</span><span class="s1">'r'</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">scores</span><span class="p">[</span><span class="s1">'f'</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-        <span class="p">)</span>
-    <span class="n">header</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"Label"</span><span class="p">,</span> <span class="s2">"Precision"</span><span class="p">,</span> <span class="s2">"Recall"</span><span class="p">,</span> <span class="s2">"F-Score"</span><span class="p">)</span>
+        <span class="n">table_data</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">label</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">scores</span><span class="p">[</span><span class="s1">&#39;p&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">scores</span><span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">scores</span><span class="p">[</span><span class="s1">&#39;f&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+    <span class="n">header</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;Label&quot;</span><span class="p">,</span> <span class="s2">&quot;Precision&quot;</span><span class="p">,</span> <span class="s2">&quot;Recall&quot;</span><span class="p">,</span> <span class="s2">&quot;F-Score&quot;</span><span class="p">)</span>
     <span class="n">formatted</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">table</span><span class="p">(</span><span class="n">table_data</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="n">header</span><span class="p">,</span> <span class="n">divider</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">sc</span>
-</code></pre>
-</div>
-</details>
-</div>
-</div>
-<div class="doc doc-object doc-method">
-<h2 class="doc doc-heading" id="recon.recognizer.EntityRecognizer.predict">
+</code></pre></div>
+        </details>
+    </div>
 
-<code class="highlight language-python"><span class="n">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">texts</span><span class="p">)</span></code>
+  </div>
 
 
-      <a class="headerlink" href="#recon.recognizer.EntityRecognizer.predict" title="Permanent link">&para;</a></h2>
-<div class="doc doc-contents ">
-<p>Run model inference on a batch of raw texts.</p>
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="recon.recognizer.EntityRecognizer.predict" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">texts</span><span class="p">)</span></code>
+
+
+<a href="#recon.recognizer.EntityRecognizer.predict" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Run model inference on a batch of raw texts.</p>
+
 <p><strong>Parameters:</strong></p>
 <table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>texts</code></td>
-<td><code>Iterable[str]</code></td>
-<td>
-<p>Raw text examples</p>
-</td>
-<td><em>required</em></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>texts</code></td>
+        <td><code>Iterable[str]</code></td>
+        <td><p>Raw text examples</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
 </table>
 <p><strong>Exceptions:</strong></p>
 <table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>NotImplementedError</code></td>
-<td>
-<p>Not implemented, override</p>
-</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>NotImplementedError</code></td>
+        <td><p>Not implemented, override</p></td>
+      </tr>
+  </tbody>
 </table>
 <p><strong>Returns:</strong></p>
 <table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>Iterator[recon.types.Example]</code></td>
-<td>
-<p>Iterator[Example]: Iterator of Examples</p>
-</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Iterator[Example]</code></td>
+      <td><p>Iterator of Examples</p></td>
+    </tr>
+  </tbody>
 </table>
-<details class="quote">
+        <details class="quote">
           <summary>Source code in <code>recon/recognizer.py</code></summary>
-          <div class="highlight">
-<pre><span></span><code><span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">texts</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">Example</span><span class="p">]:</span>
-    <span class="sd">"""Run model inference on a batch of raw texts.</span>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">texts</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">Example</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Run model inference on a batch of raw texts.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        texts (Iterable[str]): Raw text examples</span>
@@ -926,16 +1009,23 @@ of examples your model is having the most trouble with.</p>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        Iterator[Example]: Iterator of Examples</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">raise</span> <span class="ne">NotImplementedError</span>
-</code></pre>
-</div>
-</details>
-</div>
-</div>
-</div>
-</div>
-</div>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
                 
               
               
@@ -1025,7 +1115,7 @@ of examples your model is having the most trouble with.</p>
     </div>
     
       <script src="../../../assets/javascripts/vendor.2d1db4bd.min.js"></script>
-      <script src="../../../assets/javascripts/bundle.6627ddf3.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      <script src="../../../assets/javascripts/bundle.6627ddf3.min.js"></script><script id="__lang" type="application/json">{"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching"}</script>
       
       <script>
         app = initialize({

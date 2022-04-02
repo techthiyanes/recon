@@ -16,7 +16,7 @@
       
       
       <link rel="shortcut icon" href="../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.14">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-5.5.14">
     
     
       
@@ -43,6 +43,8 @@
       
     
     
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
     
       <link rel="stylesheet" href="../../css/termynal.css">
     
@@ -124,7 +126,7 @@
     
       <div class="md-header-nav__source">
         
-<a href="https://github.com/kabirkhan/recon/" title="Go to repository" class="md-source">
+<a href="https://github.com/kabirkhan/recon" title="Go to repository" class="md-source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
@@ -164,7 +166,7 @@
   
     <div class="md-nav__source">
       
-<a href="https://github.com/kabirkhan/recon/" title="Go to repository" class="md-source">
+<a href="https://github.com/kabirkhan/recon" title="Go to repository" class="md-source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
@@ -684,73 +686,83 @@
                   <h1>Tokenization</h1>
                 
                 <div class="doc doc-object doc-module">
-<h2 class="hidden-toc" id="recon.tokenization" style="visibility: hidden; position: absolute;">
-        <a class="headerlink" href="#recon.tokenization" title="Permanent link">&para;</a></h2>
-<div class="doc doc-contents first">
-<div class="doc doc-children">
-<div class="doc doc-object doc-function">
-<h2 class="doc doc-heading" id="recon.tokenization.add_tokens">
 
-<code class="highlight language-python"><span class="n">add_tokens</span><span class="p">(</span><span class="n">example</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">use_spacy_token_ends</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">preprocessed_outputs</span><span class="p">)</span></code>
+<a id="recon.tokenization"></a>
+    <div class="doc doc-contents first">
 
 
-      <a class="headerlink" href="#recon.tokenization.add_tokens" title="Permanent link">&para;</a></h2>
-<div class="doc doc-contents ">
-<p>Add tokens to each Example</p>
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="recon.tokenization.add_tokens" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">add_tokens</span><span class="p">(</span><span class="n">example</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">use_spacy_token_ends</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">preprocessed_outputs</span><span class="p">)</span></code>
+
+
+<a href="#recon.tokenization.add_tokens" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Add tokens to each Example</p>
+
 <p><strong>Parameters:</strong></p>
 <table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>example</code></td>
-<td><code>Example</code></td>
-<td>
-<p>Input Example</p>
-</td>
-<td><em>required</em></td>
-</tr>
-<tr>
-<td><code>preprocessed_outputs</code></td>
-<td><code>Dict[str, Any]</code></td>
-<td>
-<p>Outputs of preprocessors</p>
-</td>
-<td><em>required</em></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>example</code></td>
+        <td><code>Example</code></td>
+        <td><p>Input Example</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>preprocessed_outputs</code></td>
+        <td><code>Dict[str, Any]</code></td>
+        <td><p>Outputs of preprocessors</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
 </table>
 <p><strong>Returns:</strong></p>
 <table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>Optional[recon.types.Example]</code></td>
-<td>
-<p>Example: Example with tokens</p>
-</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Example</code></td>
+      <td><p>Example with tokens</p></td>
+    </tr>
+  </tbody>
 </table>
-<details class="quote">
+        <details class="quote">
           <summary>Source code in <code>recon/tokenization.py</code></summary>
-          <div class="highlight">
-<pre><span></span><code><span class="nd">@operation</span><span class="p">(</span><span class="s2">"recon.v1.add_tokens"</span><span class="p">,</span> <span class="n">pre</span><span class="o">=</span><span class="p">[</span><span class="s2">"recon.v1.spacy"</span><span class="p">])</span>
+          <div class="codehilite"><pre><span></span><code><span class="nd">@operation</span><span class="p">(</span><span class="s2">&quot;recon.v1.add_tokens&quot;</span><span class="p">,</span> <span class="n">pre</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;recon.v1.spacy&quot;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">add_tokens</span><span class="p">(</span>
     <span class="n">example</span><span class="p">:</span> <span class="n">Example</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">use_spacy_token_ends</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">preprocessed_outputs</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Example</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
-    <span class="sd">"""Add tokens to each Example</span>
+    <span class="sd">&quot;&quot;&quot;Add tokens to each Example</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        example (Example): Input Example</span>
@@ -758,8 +770,8 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        Example: Example with tokens</span>
-<span class="sd">    """</span>
-    <span class="n">doc</span> <span class="o">=</span> <span class="n">preprocessed_outputs</span><span class="p">[</span><span class="s2">"recon.v1.spacy"</span><span class="p">]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">doc</span> <span class="o">=</span> <span class="n">preprocessed_outputs</span><span class="p">[</span><span class="s2">&quot;recon.v1.spacy&quot;</span><span class="p">]</span>
 
     <span class="n">tokens</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">token_starts</span> <span class="o">=</span> <span class="p">{}</span>
@@ -786,79 +798,80 @@
             <span class="k">return</span> <span class="kc">None</span>
 
     <span class="k">return</span> <span class="n">example</span>
-</code></pre>
-</div>
-</details>
-</div>
-</div>
-<div class="doc doc-object doc-function">
-<h2 class="doc doc-heading" id="recon.tokenization.fix_tokenization_and_spacing">
+</code></pre></div>
+        </details>
+    </div>
 
-<code class="highlight language-python"><span class="n">fix_tokenization_and_spacing</span><span class="p">(</span><span class="n">example</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">preprocessed_outputs</span><span class="o">=</span><span class="p">{})</span></code>
+  </div>
 
 
-      <a class="headerlink" href="#recon.tokenization.fix_tokenization_and_spacing" title="Permanent link">&para;</a></h2>
-<div class="doc doc-contents ">
-<p>Fix tokenization and spacing issues where there are annotation spans that
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 id="recon.tokenization.fix_tokenization_and_spacing" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">fix_tokenization_and_spacing</span><span class="p">(</span><span class="n">example</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">preprocessed_outputs</span><span class="o">=</span><span class="p">{})</span></code>
+
+
+<a href="#recon.tokenization.fix_tokenization_and_spacing" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Fix tokenization and spacing issues where there are annotation spans that
 don't fall on a token boundary. This can happen if annotations are done at the
 character level, not the token level. Often, when scraping web text it's easy to
 get two words pushed together where one is an entity so this can fix a lot of issues.</p>
+
 <p><strong>Parameters:</strong></p>
 <table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>example</code></td>
-<td><code>Example</code></td>
-<td>
-<p>Input Example</p>
-</td>
-<td><em>required</em></td>
-</tr>
-<tr>
-<td><code>preprocessed_outputs</code></td>
-<td><code>Dict[str, Any]</code></td>
-<td>
-<p>Outputs of preprocessors</p>
-</td>
-<td><code>{}</code></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>example</code></td>
+        <td><code>Example</code></td>
+        <td><p>Input Example</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>preprocessed_outputs</code></td>
+        <td><code>Dict[str, Any]</code></td>
+        <td><p>Outputs of preprocessors</p></td>
+        <td><code>{}</code></td>
+      </tr>
+  </tbody>
 </table>
 <p><strong>Returns:</strong></p>
 <table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>Optional[recon.types.Example]</code></td>
-<td>
-<p>Example: Example with spans fixed to align to token boundaries.</p>
-</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Example</code></td>
+      <td><p>Example with spans fixed to align to token boundaries.</p></td>
+    </tr>
+  </tbody>
 </table>
-<details class="quote">
+        <details class="quote">
           <summary>Source code in <code>recon/tokenization.py</code></summary>
-          <div class="highlight">
-<pre><span></span><code><span class="nd">@operation</span><span class="p">(</span><span class="s2">"recon.v1.fix_tokenization_and_spacing"</span><span class="p">,</span> <span class="n">pre</span><span class="o">=</span><span class="p">[</span><span class="s2">"recon.v1.spacy"</span><span class="p">])</span>
+          <div class="codehilite"><pre><span></span><code><span class="nd">@operation</span><span class="p">(</span><span class="s2">&quot;recon.v1.fix_tokenization_and_spacing&quot;</span><span class="p">,</span> <span class="n">pre</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;recon.v1.spacy&quot;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">fix_tokenization_and_spacing</span><span class="p">(</span>
     <span class="n">example</span><span class="p">:</span> <span class="n">Example</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">preprocessed_outputs</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Example</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
-    <span class="sd">"""Fix tokenization and spacing issues where there are annotation spans that</span>
-<span class="sd">    don't fall on a token boundary. This can happen if annotations are done at the</span>
-<span class="sd">    character level, not the token level. Often, when scraping web text it's easy to</span>
+    <span class="sd">&quot;&quot;&quot;Fix tokenization and spacing issues where there are annotation spans that</span>
+<span class="sd">    don&#39;t fall on a token boundary. This can happen if annotations are done at the</span>
+<span class="sd">    character level, not the token level. Often, when scraping web text it&#39;s easy to</span>
 <span class="sd">    get two words pushed together where one is an entity so this can fix a lot of issues.</span>
 
 <span class="sd">    Args:</span>
@@ -867,9 +880,9 @@ get two words pushed together where one is an entity so this can fix a lot of is
 
 <span class="sd">    Returns:</span>
 <span class="sd">        Example: Example with spans fixed to align to token boundaries.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">doc</span> <span class="o">=</span> <span class="n">preprocessed_outputs</span><span class="p">[</span><span class="s2">"recon.v1.spacy"</span><span class="p">]</span>
+    <span class="n">doc</span> <span class="o">=</span> <span class="n">preprocessed_outputs</span><span class="p">[</span><span class="s2">&quot;recon.v1.spacy&quot;</span><span class="p">]</span>
 
     <span class="n">tokens</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">token_starts</span> <span class="o">=</span> <span class="p">{}</span>
@@ -889,16 +902,16 @@ get two words pushed together where one is an entity so this can fix a lot of is
             <span class="k">continue</span>
 
         <span class="k">if</span> <span class="n">span</span><span class="o">.</span><span class="n">start</span> <span class="ow">in</span> <span class="n">token_starts</span> <span class="ow">and</span> <span class="n">span</span><span class="o">.</span><span class="n">end</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">token_ends</span><span class="p">:</span>
-            <span class="c1"># Span start aligns to token_start but end doesn't</span>
+            <span class="c1"># Span start aligns to token_start but end doesn&#39;t</span>
             <span class="c1"># e.g. [customer][PERSONTYPE]s but should be annotated as [customers][PERSONTYPE]</span>
             <span class="c1"># tokenization_errors.append((example, span))</span>
-            <span class="c1"># print("BAD END")</span>
+            <span class="c1"># print(&quot;BAD END&quot;)</span>
             <span class="k">if</span> <span class="n">span</span><span class="o">.</span><span class="n">end</span> <span class="o">+</span> <span class="mi">1</span> <span class="ow">in</span> <span class="n">token_ends</span><span class="p">:</span>
                 <span class="c1"># Likely off by 1 annotation</span>
                 <span class="c1"># e.g. [customer][PERSONTYPE]s but should be annotated as [customers][PERSONTYPE]</span>
                 <span class="n">span</span><span class="o">.</span><span class="n">end</span> <span class="o">+=</span> <span class="mi">1</span>
                 <span class="n">span</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">example</span><span class="o">.</span><span class="n">text</span><span class="p">[</span><span class="n">span</span><span class="o">.</span><span class="n">start</span> <span class="p">:</span> <span class="n">span</span><span class="o">.</span><span class="n">end</span><span class="p">]</span>
-                <span class="c1"># print("SPAN CORRECTED OFF BY 1", example.text, span)</span>
+                <span class="c1"># print(&quot;SPAN CORRECTED OFF BY 1&quot;, example.text, span)</span>
             <span class="k">elif</span> <span class="n">span</span><span class="o">.</span><span class="n">end</span> <span class="o">-</span> <span class="mi">1</span> <span class="ow">in</span> <span class="n">token_ends</span><span class="p">:</span>
                 <span class="n">span</span><span class="o">.</span><span class="n">end</span> <span class="o">-=</span> <span class="mi">1</span>
                 <span class="n">span</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">example</span><span class="o">.</span><span class="n">text</span><span class="p">[</span><span class="n">span</span><span class="o">.</span><span class="n">start</span> <span class="p">:</span> <span class="n">span</span><span class="o">.</span><span class="n">end</span><span class="p">]</span>
@@ -915,14 +928,14 @@ get two words pushed together where one is an entity so this can fix a lot of is
                 <span class="n">split_end</span> <span class="o">=</span> <span class="n">span</span><span class="o">.</span><span class="n">end</span>
                 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">spans_to_increment</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">span_i</span> <span class="o">!=</span> <span class="nb">list</span><span class="p">(</span><span class="n">spans_to_increment</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">0</span><span class="p">]:</span>
                     <span class="n">split_end</span> <span class="o">+=</span> <span class="n">spans_to_increment</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">span_i</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-                <span class="n">new_text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">fe_text</span><span class="p">[:</span><span class="n">split_start</span><span class="p">]</span><span class="si">}{</span><span class="n">span</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">fe_text</span><span class="p">[</span><span class="n">split_end</span><span class="p">:]</span><span class="si">}</span><span class="s2">"</span>
+                <span class="n">new_text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">fe_text</span><span class="p">[:</span><span class="n">split_start</span><span class="p">]</span><span class="si">}{</span><span class="n">span</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">fe_text</span><span class="p">[</span><span class="n">split_end</span><span class="p">:]</span><span class="si">}</span><span class="s2">&quot;</span>
 
                 <span class="n">example</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">new_text</span>
 
         <span class="k">elif</span> <span class="n">span</span><span class="o">.</span><span class="n">start</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">token_starts</span> <span class="ow">and</span> <span class="n">span</span><span class="o">.</span><span class="n">end</span> <span class="ow">in</span> <span class="n">token_ends</span><span class="p">:</span>
             <span class="c1"># Bad tokenization</span>
             <span class="c1"># e.g. with[Raymond][PERSON] but text should be split to with [Raymond][PERSON]</span>
-            <span class="c1"># print("BAD START", span.text)</span>
+            <span class="c1"># print(&quot;BAD START&quot;, span.text)</span>
             <span class="c1"># tokenization_errors.append((example, span))</span>
             <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">span_i</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">example</span><span class="o">.</span><span class="n">spans</span><span class="p">)):</span>
                 <span class="n">spans_to_increment</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
@@ -936,18 +949,18 @@ get two words pushed together where one is an entity so this can fix a lot of is
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">spans_to_increment</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">span_i</span> <span class="o">!=</span> <span class="nb">list</span><span class="p">(</span><span class="n">spans_to_increment</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">0</span><span class="p">]:</span>
                 <span class="n">split_end</span> <span class="o">+=</span> <span class="n">spans_to_increment</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">span_i</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
-            <span class="n">new_text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">fe_text</span><span class="p">[:</span><span class="n">split_start</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">span</span><span class="o">.</span><span class="n">text</span><span class="si">}{</span><span class="n">fe_text</span><span class="p">[</span><span class="n">split_end</span><span class="p">:]</span><span class="si">}</span><span class="s2">"</span>
+            <span class="n">new_text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">fe_text</span><span class="p">[:</span><span class="n">split_start</span><span class="p">]</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">span</span><span class="o">.</span><span class="n">text</span><span class="si">}{</span><span class="n">fe_text</span><span class="p">[</span><span class="n">split_end</span><span class="p">:]</span><span class="si">}</span><span class="s2">&quot;</span>
             <span class="n">example</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">new_text</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="c1"># Something is super messed up.</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">"SPAN CORRECTED OFF BY 1 unfixable"</span><span class="p">,</span> <span class="n">example</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">span</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;SPAN CORRECTED OFF BY 1 unfixable&quot;</span><span class="p">,</span> <span class="n">example</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">span</span><span class="p">)</span>
             <span class="n">span</span><span class="o">.</span><span class="n">start</span>
             <span class="n">span</span><span class="o">.</span><span class="n">end</span>
             <span class="c1"># tokenization_errors.append((example, span))</span>
 
-            <span class="c1"># if (before &gt;= 0 and after &lt; len(span.text) and span[before] not in token_starts and span[before] != ' ' and span[after] not in token_ends and span[after] != ' '):</span>
+            <span class="c1"># if (before &gt;= 0 and after &lt; len(span.text) and span[before] not in token_starts and span[before] != &#39; &#39; and span[after] not in token_ends and span[after] != &#39; &#39;):</span>
             <span class="c1">#     fe_text = example.text</span>
-            <span class="c1">#     new_text = f"{fe_text[:span.start]} {span.text}{fe_text[span.end:]}"</span>
+            <span class="c1">#     new_text = f&quot;{fe_text[:span.start]} {span.text}{fe_text[span.end:]}&quot;</span>
             <span class="c1">#     spans_to_increment[span_i] += 1</span>
             <span class="c1">#     for j in range(span_i + 1, len(example.spans)):</span>
             <span class="c1">#         spans_to_increment[j] += 2</span>
@@ -962,14 +975,22 @@ get two words pushed together where one is an entity so this can fix a lot of is
         <span class="n">example</span><span class="o">.</span><span class="n">spans</span><span class="p">[</span><span class="n">span_i</span><span class="p">]</span><span class="o">.</span><span class="n">end</span> <span class="o">+=</span> <span class="n">count</span>
 
     <span class="k">return</span> <span class="n">example</span>
-</code></pre>
-</div>
-</details>
-</div>
-</div>
-</div>
-</div>
-</div>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
                 
               
               
@@ -1059,7 +1080,7 @@ get two words pushed together where one is an entity so this can fix a lot of is
     </div>
     
       <script src="../../assets/javascripts/vendor.2d1db4bd.min.js"></script>
-      <script src="../../assets/javascripts/bundle.6627ddf3.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      <script src="../../assets/javascripts/bundle.6627ddf3.min.js"></script><script id="__lang" type="application/json">{"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching"}</script>
       
       <script>
         app = initialize({

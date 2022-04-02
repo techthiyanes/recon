@@ -16,7 +16,7 @@
       
       
       <link rel="shortcut icon" href="../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.14">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-5.5.14">
     
     
       
@@ -43,6 +43,8 @@
       
     
     
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
     
       <link rel="stylesheet" href="../../css/termynal.css">
     
@@ -124,7 +126,7 @@
     
       <div class="md-header-nav__source">
         
-<a href="https://github.com/kabirkhan/recon/" title="Go to repository" class="md-source">
+<a href="https://github.com/kabirkhan/recon" title="Go to repository" class="md-source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
@@ -164,7 +166,7 @@
   
     <div class="md-nav__source">
       
-<a href="https://github.com/kabirkhan/recon/" title="Go to repository" class="md-source">
+<a href="https://github.com/kabirkhan/recon" title="Go to repository" class="md-source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
@@ -918,39 +920,39 @@ name combined with that hash of each example in the dataset.
 If you're familiar with how <a href="https://git-scm.com/">git</a> works the idea is pretty similar.</p>
 <p>The <code>commit</code> property of a dataset allows us to understand if a Dataset changes between operations. 
 This can happen if you add new examples and want to rerun or run new operations later based on insights from that new data.</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;train&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;commit_hash&quot;</span><span class="p">:</span> <span class="s2">&quot;375a4cdec36fa9e0efd1d7b2a02fb4287b99dbdc&quot;</span><span class="p">,</span>
-<span class="hll">    <span class="nt">&quot;operations&quot;</span><span class="p">:</span> <span class="p">[</span>
-</span>        <span class="p">{</span>
-<span class="hll">            <span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;recon.v1.upcase_labels&quot;</span><span class="p">,</span>
-</span><span class="hll">            <span class="nt">&quot;args&quot;</span><span class="p">:[],</span>
-</span><span class="hll">            <span class="nt">&quot;kwargs&quot;</span><span class="p">:{},</span>
-</span><span class="hll">            <span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="s2">&quot;COMPLETED&quot;</span><span class="p">,</span>
-</span><span class="hll">            <span class="nt">&quot;ts&quot;</span><span class="p">:</span><span class="mi">1586687281</span><span class="p">,</span>
-</span>            <span class="nt">&quot;examples_added&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
-            <span class="nt">&quot;examples_removed&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
-            <span class="nt">&quot;examples_changed&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span>
-            <span class="nt">&quot;transformations&quot;</span><span class="p">:[</span>
-                <span class="p">{</span>
-                    <span class="nt">&quot;prev_example&quot;</span><span class="p">:</span><span class="mi">1923088532738022750</span><span class="p">,</span>
-                    <span class="nt">&quot;example&quot;</span><span class="p">:</span><span class="mi">1401028415299739275</span><span class="p">,</span>
-                    <span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;EXAMPLE_CHANGED&quot;</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="nt">&quot;prev_example&quot;</span><span class="p">:</span><span class="mi">459906967662468309</span><span class="p">,</span>
-                    <span class="nt">&quot;example&quot;</span><span class="p">:</span><span class="mi">1525998324968157929</span><span class="p">,</span>
-                    <span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;EXAMPLE_CHANGED&quot;</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="nt">&quot;prev_example&quot;</span><span class="p">:</span><span class="mi">200276835658424828</span><span class="p">,</span>
-                    <span class="nt">&quot;example&quot;</span><span class="p">:</span><span class="mi">407710308633891847</span><span class="p">,</span>
-                    <span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;EXAMPLE_CHANGED&quot;</span>
-                <span class="p">}</span>
-            <span class="p">]</span>
-        <span class="p">}</span>
-    <span class="p">]</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;train&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;commit_hash&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;375a4cdec36fa9e0efd1d7b2a02fb4287b99dbdc&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="hll"><span class="w">    </span><span class="nt">&quot;operations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+</span><span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="hll"><span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;recon.v1.upcase_labels&quot;</span><span class="p">,</span><span class="w"></span>
+</span><span class="hll"><span class="w">            </span><span class="nt">&quot;args&quot;</span><span class="p">:[],</span><span class="w"></span>
+</span><span class="hll"><span class="w">            </span><span class="nt">&quot;kwargs&quot;</span><span class="p">:{},</span><span class="w"></span>
+</span><span class="hll"><span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="s2">&quot;COMPLETED&quot;</span><span class="p">,</span><span class="w"></span>
+</span><span class="hll"><span class="w">            </span><span class="nt">&quot;ts&quot;</span><span class="p">:</span><span class="mi">1586687281</span><span class="p">,</span><span class="w"></span>
+</span><span class="w">            </span><span class="nt">&quot;examples_added&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;examples_removed&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;examples_changed&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;transformations&quot;</span><span class="p">:[</span><span class="w"></span>
+<span class="w">                </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;prev_example&quot;</span><span class="p">:</span><span class="mi">1923088532738022750</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;example&quot;</span><span class="p">:</span><span class="mi">1401028415299739275</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;EXAMPLE_CHANGED&quot;</span><span class="w"></span>
+<span class="w">                </span><span class="p">},</span><span class="w"></span>
+<span class="w">                </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;prev_example&quot;</span><span class="p">:</span><span class="mi">459906967662468309</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;example&quot;</span><span class="p">:</span><span class="mi">1525998324968157929</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;EXAMPLE_CHANGED&quot;</span><span class="w"></span>
+<span class="w">                </span><span class="p">},</span><span class="w"></span>
+<span class="w">                </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;prev_example&quot;</span><span class="p">:</span><span class="mi">200276835658424828</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;example&quot;</span><span class="p">:</span><span class="mi">407710308633891847</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;EXAMPLE_CHANGED&quot;</span><span class="w"></span>
+<span class="w">                </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="p">]</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p>The core of the stored state is the <code>operations</code> property. This operations property has all the information needed to both track and re-run an operation on a dataset.</p>
 <p>In the above state we have 1 operation since that's all we've run on our dataset so far.</p>
@@ -959,39 +961,39 @@ This can happen if you add new examples and want to rerun or run new operations 
 <p>These attributes provide the base information to re-create the exact function call and provide the base information of the operation.</p>
 <p>The rest of the properties deal with transformation tracking.
 The <code>examples_added</code>, <code>examples_removed</code>, <code>examples_changed</code> give you a summary of the overall changes by the operation.</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;train&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;commit_hash&quot;</span><span class="p">:</span> <span class="s2">&quot;375a4cdec36fa9e0efd1d7b2a02fb4287b99dbdc&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;operations&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;recon.v1.upcase_labels&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;args&quot;</span><span class="p">:[],</span>
-            <span class="nt">&quot;kwargs&quot;</span><span class="p">:{},</span>
-            <span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="s2">&quot;COMPLETED&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;ts&quot;</span><span class="p">:</span><span class="mi">1586687281</span><span class="p">,</span>
-<span class="hll">            <span class="nt">&quot;examples_added&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
-</span><span class="hll">            <span class="nt">&quot;examples_removed&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
-</span><span class="hll">            <span class="nt">&quot;examples_changed&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span>
-</span>            <span class="nt">&quot;transformations&quot;</span><span class="p">:[</span>
-                <span class="p">{</span>
-                    <span class="nt">&quot;prev_example&quot;</span><span class="p">:</span><span class="mi">1923088532738022750</span><span class="p">,</span>
-                    <span class="nt">&quot;example&quot;</span><span class="p">:</span><span class="mi">1401028415299739275</span><span class="p">,</span>
-                    <span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;EXAMPLE_CHANGED&quot;</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="nt">&quot;prev_example&quot;</span><span class="p">:</span><span class="mi">459906967662468309</span><span class="p">,</span>
-                    <span class="nt">&quot;example&quot;</span><span class="p">:</span><span class="mi">1525998324968157929</span><span class="p">,</span>
-                    <span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;EXAMPLE_CHANGED&quot;</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="nt">&quot;prev_example&quot;</span><span class="p">:</span><span class="mi">200276835658424828</span><span class="p">,</span>
-                    <span class="nt">&quot;example&quot;</span><span class="p">:</span><span class="mi">407710308633891847</span><span class="p">,</span>
-                    <span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;EXAMPLE_CHANGED&quot;</span>
-                <span class="p">}</span>
-            <span class="p">]</span>
-        <span class="p">}</span>
-    <span class="p">]</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;train&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;commit_hash&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;375a4cdec36fa9e0efd1d7b2a02fb4287b99dbdc&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;operations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;recon.v1.upcase_labels&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;args&quot;</span><span class="p">:[],</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;kwargs&quot;</span><span class="p">:{},</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="s2">&quot;COMPLETED&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;ts&quot;</span><span class="p">:</span><span class="mi">1586687281</span><span class="p">,</span><span class="w"></span>
+<span class="hll"><span class="w">            </span><span class="nt">&quot;examples_added&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+</span><span class="hll"><span class="w">            </span><span class="nt">&quot;examples_removed&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+</span><span class="hll"><span class="w">            </span><span class="nt">&quot;examples_changed&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w"></span>
+</span><span class="w">            </span><span class="nt">&quot;transformations&quot;</span><span class="p">:[</span><span class="w"></span>
+<span class="w">                </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;prev_example&quot;</span><span class="p">:</span><span class="mi">1923088532738022750</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;example&quot;</span><span class="p">:</span><span class="mi">1401028415299739275</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;EXAMPLE_CHANGED&quot;</span><span class="w"></span>
+<span class="w">                </span><span class="p">},</span><span class="w"></span>
+<span class="w">                </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;prev_example&quot;</span><span class="p">:</span><span class="mi">459906967662468309</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;example&quot;</span><span class="p">:</span><span class="mi">1525998324968157929</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;EXAMPLE_CHANGED&quot;</span><span class="w"></span>
+<span class="w">                </span><span class="p">},</span><span class="w"></span>
+<span class="w">                </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;prev_example&quot;</span><span class="p">:</span><span class="mi">200276835658424828</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;example&quot;</span><span class="p">:</span><span class="mi">407710308633891847</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;EXAMPLE_CHANGED&quot;</span><span class="w"></span>
+<span class="w">                </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="p">]</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p>Finally, the <code>transformations</code> property is the most useful for actually auditing and tracking your data changes.
 Each transformation has a <code>prev_example</code>, <code>example</code> and transformation <code>type</code>. </p>
@@ -1012,39 +1014,39 @@ Each transformation has a <code>prev_example</code>, <code>example</code> and tr
 <ul>
 <li>EXAMPLE_REMOVED - By default, Recon removes Examples that have bad final annotations that can't be properly resolved to token boundaries. Good reference examples for this behavior are the operations <a href="link/to/fix_tokenization_and_spacing"><code>recon.v1.fix_tokenization_and_spacing</code></a> and <a href="link/to/add_tokens"><code>recon.v1.add_tokens</code></a></li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;train&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;commit_hash&quot;</span><span class="p">:</span> <span class="s2">&quot;375a4cdec36fa9e0efd1d7b2a02fb4287b99dbdc&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;operations&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;recon.v1.upcase_labels&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;args&quot;</span><span class="p">:[],</span>
-            <span class="nt">&quot;kwargs&quot;</span><span class="p">:{},</span>
-            <span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="s2">&quot;COMPLETED&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;ts&quot;</span><span class="p">:</span><span class="mi">1586687281</span><span class="p">,</span>
-            <span class="nt">&quot;examples_added&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
-            <span class="nt">&quot;examples_removed&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
-            <span class="nt">&quot;examples_changed&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span>
-<span class="hll">            <span class="nt">&quot;transformations&quot;</span><span class="p">:[</span>
-</span>                <span class="p">{</span>
-<span class="hll">                    <span class="nt">&quot;prev_example&quot;</span><span class="p">:</span><span class="mi">1923088532738022750</span><span class="p">,</span>
-</span><span class="hll">                    <span class="nt">&quot;example&quot;</span><span class="p">:</span><span class="mi">1401028415299739275</span><span class="p">,</span>
-</span><span class="hll">                    <span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;EXAMPLE_CHANGED&quot;</span>
-</span>                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="nt">&quot;prev_example&quot;</span><span class="p">:</span><span class="mi">459906967662468309</span><span class="p">,</span>
-                    <span class="nt">&quot;example&quot;</span><span class="p">:</span><span class="mi">1525998324968157929</span><span class="p">,</span>
-                    <span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;EXAMPLE_CHANGED&quot;</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="nt">&quot;prev_example&quot;</span><span class="p">:</span><span class="mi">200276835658424828</span><span class="p">,</span>
-                    <span class="nt">&quot;example&quot;</span><span class="p">:</span><span class="mi">407710308633891847</span><span class="p">,</span>
-                    <span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;EXAMPLE_CHANGED&quot;</span>
-                <span class="p">}</span>
-            <span class="p">]</span>
-        <span class="p">}</span>
-    <span class="p">]</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;train&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;commit_hash&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;375a4cdec36fa9e0efd1d7b2a02fb4287b99dbdc&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;operations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;recon.v1.upcase_labels&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;args&quot;</span><span class="p">:[],</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;kwargs&quot;</span><span class="p">:{},</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="s2">&quot;COMPLETED&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;ts&quot;</span><span class="p">:</span><span class="mi">1586687281</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;examples_added&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;examples_removed&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;examples_changed&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w"></span>
+<span class="hll"><span class="w">            </span><span class="nt">&quot;transformations&quot;</span><span class="p">:[</span><span class="w"></span>
+</span><span class="w">                </span><span class="p">{</span><span class="w"></span>
+<span class="hll"><span class="w">                    </span><span class="nt">&quot;prev_example&quot;</span><span class="p">:</span><span class="mi">1923088532738022750</span><span class="p">,</span><span class="w"></span>
+</span><span class="hll"><span class="w">                    </span><span class="nt">&quot;example&quot;</span><span class="p">:</span><span class="mi">1401028415299739275</span><span class="p">,</span><span class="w"></span>
+</span><span class="hll"><span class="w">                    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;EXAMPLE_CHANGED&quot;</span><span class="w"></span>
+</span><span class="w">                </span><span class="p">},</span><span class="w"></span>
+<span class="w">                </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;prev_example&quot;</span><span class="p">:</span><span class="mi">459906967662468309</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;example&quot;</span><span class="p">:</span><span class="mi">1525998324968157929</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;EXAMPLE_CHANGED&quot;</span><span class="w"></span>
+<span class="w">                </span><span class="p">},</span><span class="w"></span>
+<span class="w">                </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;prev_example&quot;</span><span class="p">:</span><span class="mi">200276835658424828</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;example&quot;</span><span class="p">:</span><span class="mi">407710308633891847</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;EXAMPLE_CHANGED&quot;</span><span class="w"></span>
+<span class="w">                </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="p">]</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
                 
               
@@ -1135,7 +1137,7 @@ Each transformation has a <code>prev_example</code>, <code>example</code> and tr
     </div>
     
       <script src="../../assets/javascripts/vendor.2d1db4bd.min.js"></script>
-      <script src="../../assets/javascripts/bundle.6627ddf3.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      <script src="../../assets/javascripts/bundle.6627ddf3.min.js"></script><script id="__lang" type="application/json">{"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching"}</script>
       
       <script>
         app = initialize({

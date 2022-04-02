@@ -16,7 +16,7 @@
       
       
       <link rel="shortcut icon" href="../../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.14">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-5.5.14">
     
     
       
@@ -43,6 +43,8 @@
       
     
     
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
     
       <link rel="stylesheet" href="../../../css/termynal.css">
     
@@ -124,7 +126,7 @@
     
       <div class="md-header-nav__source">
         
-<a href="https://github.com/kabirkhan/recon/" title="Go to repository" class="md-source">
+<a href="https://github.com/kabirkhan/recon" title="Go to repository" class="md-source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
@@ -164,7 +166,7 @@
   
     <div class="md-nav__source">
       
-<a href="https://github.com/kabirkhan/recon/" title="Go to repository" class="md-source">
+<a href="https://github.com/kabirkhan/recon" title="Go to repository" class="md-source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
@@ -700,138 +702,254 @@
                   <h1>SpacyEntityRecognizer</h1>
                 
                 <div class="doc doc-object doc-class">
-<h2 class="hidden-toc" id="recon.recognizer.SpacyEntityRecognizer" style="visibility: hidden; position: absolute;">
-        <a class="headerlink" href="#recon.recognizer.SpacyEntityRecognizer" title="Permanent link">&para;</a></h2>
-<div class="doc doc-contents first">
-<p>Create an EntityRecognizer from a spaCy Langauge instance</p>
-<div class="doc doc-children">
-<div class="doc doc-object doc-attribute">
-<h2 class="doc doc-heading" id="recon.recognizer.SpacyEntityRecognizer.labels">
 
-<code class="highlight language-python"><span class="n">labels</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span></code>
+<a id="recon.recognizer.SpacyEntityRecognizer"></a>
+    <div class="doc doc-contents first">
+
+      <p>Create an EntityRecognizer from a spaCy Langauge instance</p>
+
+        <details class="quote">
+          <summary>Source code in <code>recon/recognizer.py</code></summary>
+          <div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">SpacyEntityRecognizer</span><span class="p">(</span><span class="n">EntityRecognizer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Create an EntityRecognizer from a spaCy Langauge instance&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nlp</span><span class="p">:</span> <span class="n">Language</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize a SpacyEntityRecognizer</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            nlp (Language): spaCy Language instance that can sets doc.ents</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nlp</span> <span class="o">=</span> <span class="n">nlp</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">labels</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Return List of spaCy ner labels</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List[str]: List of labels from spaCy ner pipe</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">all_labels</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">pipe</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;ner&quot;</span><span class="p">,</span> <span class="s2">&quot;entity_ruler&quot;</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">has_pipe</span><span class="p">(</span><span class="n">pipe</span><span class="p">):</span>
+                <span class="n">all_labels</span> <span class="o">=</span> <span class="n">all_labels</span> <span class="o">|</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">get_pipe</span><span class="p">(</span><span class="n">pipe</span><span class="p">)</span><span class="o">.</span><span class="n">labels</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">all_labels</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">texts</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">Example</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Run spaCy nlp.pipe on a batch of raw texts.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            texts (Iterable[str]): Raw text examples</span>
+
+<span class="sd">        Yields:</span>
+<span class="sd">            Iterator[Example]: Examples constructed from spaCy Model predictions</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">examples</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Example</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">texts</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="n">Example</span><span class="p">(</span>
+                <span class="n">text</span><span class="o">=</span><span class="n">doc</span><span class="o">.</span><span class="n">text</span><span class="p">,</span>
+                <span class="n">spans</span><span class="o">=</span><span class="p">[</span>
+                    <span class="n">Span</span><span class="p">(</span>
+                        <span class="n">text</span><span class="o">=</span><span class="n">e</span><span class="o">.</span><span class="n">text</span><span class="p">,</span>
+                        <span class="n">start</span><span class="o">=</span><span class="n">e</span><span class="o">.</span><span class="n">start_char</span><span class="p">,</span>
+                        <span class="n">end</span><span class="o">=</span><span class="n">e</span><span class="o">.</span><span class="n">end_char</span><span class="p">,</span>
+                        <span class="n">label</span><span class="o">=</span><span class="n">e</span><span class="o">.</span><span class="n">label_</span><span class="p">,</span>
+                        <span class="n">token_start</span><span class="o">=</span><span class="n">e</span><span class="o">.</span><span class="n">start</span><span class="p">,</span>
+                        <span class="n">token_end</span><span class="o">=</span><span class="n">e</span><span class="o">.</span><span class="n">end</span><span class="p">,</span>
+                    <span class="p">)</span>
+                    <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">doc</span><span class="o">.</span><span class="n">ents</span>
+                <span class="p">],</span>
+                <span class="n">tokens</span><span class="o">=</span><span class="p">[</span><span class="n">Token</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">t</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">t</span><span class="o">.</span><span class="n">idx</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">t</span><span class="o">.</span><span class="n">idx</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="nb">id</span><span class="o">=</span><span class="n">t</span><span class="o">.</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">doc</span><span class="p">],</span>
+            <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Example</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Scores</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Evaluate spaCy recognizer performance on dataset</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            data (List[Example]): Examples to evaluate on</span>
+<span class="sd">            verbose (bool, optional): Print results or not. Defaults to True.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Scorer: spaCy scorer object</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">()</span> <span class="k">as</span> <span class="n">tmp_dir</span><span class="p">:</span>
+            <span class="n">data_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">tmp_dir</span><span class="p">)</span> <span class="o">/</span> <span class="s2">&quot;data.spacy&quot;</span>
+            <span class="n">to_spacy</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+            <span class="n">corpus</span> <span class="o">=</span> <span class="n">SpacyCorpus</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="n">gold_preproc</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">dev_dataset</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">corpus</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nlp</span><span class="p">))</span>
+            <span class="n">sc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">dev_dataset</span><span class="p">)</span>
+            <span class="n">scores</span> <span class="o">=</span> <span class="n">Scores</span><span class="p">(</span><span class="o">**</span><span class="n">sc</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">scores</span>
+</code></pre></div>
+        </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+  <div class="doc doc-object doc-attribute">
+
+
+
+<h2 id="recon.recognizer.SpacyEntityRecognizer.labels" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">labels</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span></code>
 
   <span class="doc doc-properties">
       <small class="doc doc-property doc-property-property"><code>property</code></small>
       <small class="doc doc-property doc-property-readonly"><code>readonly</code></small>
   </span>
 
-      <a class="headerlink" href="#recon.recognizer.SpacyEntityRecognizer.labels" title="Permanent link">&para;</a></h2>
-<div class="doc doc-contents ">
-<p>Return List of spaCy ner labels</p>
+<a href="#recon.recognizer.SpacyEntityRecognizer.labels" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return List of spaCy ner labels</p>
+
 <p><strong>Returns:</strong></p>
 <table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>List[str]</code></td>
-<td>
-<p>List[str]: List of labels from spaCy ner pipe</p>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="doc doc-object doc-method">
-<h2 class="doc doc-heading" id="recon.recognizer.SpacyEntityRecognizer.__init__">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>List[str]</code></td>
+      <td><p>List of labels from spaCy ner pipe</p></td>
+    </tr>
+  </tbody>
+</table>    </div>
 
-<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nlp</span><span class="p">)</span></code>
+  </div>
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="recon.recognizer.SpacyEntityRecognizer.__init__" class="doc doc-heading">
+<code class="codehilite language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nlp</span><span class="p">)</span></code>
 
   <span class="doc doc-properties">
       <small class="doc doc-property doc-property-special"><code>special</code></small>
   </span>
 
-      <a class="headerlink" href="#recon.recognizer.SpacyEntityRecognizer.__init__" title="Permanent link">&para;</a></h2>
-<div class="doc doc-contents ">
-<p>Initialize a SpacyEntityRecognizer</p>
+<a href="#recon.recognizer.SpacyEntityRecognizer.__init__" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Initialize a SpacyEntityRecognizer</p>
+
 <p><strong>Parameters:</strong></p>
 <table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>nlp</code></td>
-<td><code>Language</code></td>
-<td>
-<p>spaCy Language instance that can sets doc.ents</p>
-</td>
-<td><em>required</em></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>nlp</code></td>
+        <td><code>Language</code></td>
+        <td><p>spaCy Language instance that can sets doc.ents</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
 </table>
-<details class="quote">
+        <details class="quote">
           <summary>Source code in <code>recon/recognizer.py</code></summary>
-          <div class="highlight">
-<pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nlp</span><span class="p">:</span> <span class="n">Language</span><span class="p">):</span>
-    <span class="sd">"""Initialize a SpacyEntityRecognizer</span>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nlp</span><span class="p">:</span> <span class="n">Language</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Initialize a SpacyEntityRecognizer</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        nlp (Language): spaCy Language instance that can sets doc.ents</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">nlp</span> <span class="o">=</span> <span class="n">nlp</span>
-</code></pre>
-</div>
-</details>
-</div>
-</div>
-<div class="doc doc-object doc-method">
-<h2 class="doc doc-heading" id="recon.recognizer.SpacyEntityRecognizer.predict">
+</code></pre></div>
+        </details>
+    </div>
 
-<code class="highlight language-python"><span class="n">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">texts</span><span class="p">)</span></code>
+  </div>
 
 
-      <a class="headerlink" href="#recon.recognizer.SpacyEntityRecognizer.predict" title="Permanent link">&para;</a></h2>
-<div class="doc doc-contents ">
-<p>Run spaCy nlp.pipe on a batch of raw texts.</p>
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 id="recon.recognizer.SpacyEntityRecognizer.predict" class="doc doc-heading">
+<code class="codehilite language-python"><span class="n">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">texts</span><span class="p">)</span></code>
+
+
+<a href="#recon.recognizer.SpacyEntityRecognizer.predict" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Run spaCy nlp.pipe on a batch of raw texts.</p>
+
 <p><strong>Parameters:</strong></p>
 <table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>texts</code></td>
-<td><code>Iterable[str]</code></td>
-<td>
-<p>Raw text examples</p>
-</td>
-<td><em>required</em></td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>texts</code></td>
+        <td><code>Iterable[str]</code></td>
+        <td><p>Raw text examples</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
 </table>
-<div class="admonition yields">
-<p class="admonition-title">Yields</p>
-<p>Iterator[Example]: Examples constructed from spaCy Model predictions</p>
-</div>
-<details class="quote">
+<p><strong>Yields:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>Iterator[Example]</code></td>
+      <td><p>Examples constructed from spaCy Model predictions</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
           <summary>Source code in <code>recon/recognizer.py</code></summary>
-          <div class="highlight">
-<pre><span></span><code><span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">texts</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">Example</span><span class="p">]:</span>
-    <span class="sd">"""Run spaCy nlp.pipe on a batch of raw texts.</span>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">texts</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">Example</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Run spaCy nlp.pipe on a batch of raw texts.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        texts (Iterable[str]): Raw text examples</span>
 
 <span class="sd">    Yields:</span>
 <span class="sd">        Iterator[Example]: Examples constructed from spaCy Model predictions</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">examples</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Example</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">texts</span><span class="p">):</span>
@@ -850,14 +968,21 @@
             <span class="p">],</span>
             <span class="n">tokens</span><span class="o">=</span><span class="p">[</span><span class="n">Token</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">t</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">t</span><span class="o">.</span><span class="n">idx</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">t</span><span class="o">.</span><span class="n">idx</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="nb">id</span><span class="o">=</span><span class="n">t</span><span class="o">.</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">doc</span><span class="p">],</span>
         <span class="p">)</span>
-</code></pre>
-</div>
-</details>
-</div>
-</div>
-</div>
-</div>
-</div>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
                 
               
               
@@ -947,7 +1072,7 @@
     </div>
     
       <script src="../../../assets/javascripts/vendor.2d1db4bd.min.js"></script>
-      <script src="../../../assets/javascripts/bundle.6627ddf3.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      <script src="../../../assets/javascripts/bundle.6627ddf3.min.js"></script><script id="__lang" type="application/json">{"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching"}</script>
       
       <script>
         app = initialize({
