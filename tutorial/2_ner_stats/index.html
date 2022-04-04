@@ -676,7 +676,7 @@
                 
                 
                 <h1 id="tutorial-ner-statistics">Tutorial - NER Statistics<a class="headerlink" href="#tutorial-ner-statistics" title="Permanent link">&para;</a></h1>
-<p>Getting statistics about your NER data is extremely helpful throughout the annotation process. It helps you ensure that you're spendind time on the right annotations and that you have enough examples for each type as well as enough examples with <strong>NO ENTITIES</strong> at all (this is often overlooked but <strong>VERY</strong> important to build a model that generalizes well).</p>
+<p>Getting statistics about your NER data can be extremely helpful throughout the annotation process. It can help you ensure that you're spending time on the right annotations and that you have enough examples for each type as well as enough examples with <strong>no entities</strong> at all (this is often overlooked but <strong>very</strong> important to build a model that generalizes well).</p>
 <p>Once you have your data loaded either by itself as a list of <code>Example</code>s or as a <code>Dataset</code> you can easily get statistics using the <a href="../../api/stats#ner_stats"><code>stats.ner_stats</code></a> function.</p>
 <p>The <code>stats.get_ner_stats</code> function expects a <code>List[Example]</code> as it's input parameter and will return a serializable response with info about your data. Let's see how this works on the provided example data.</p>
 <!-- !!! tip
