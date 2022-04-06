@@ -89,7 +89,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#recon.tokenization" class="md-skip">
+        <a href="#recon.operations.tokenization" class="md-skip">
           Skip to content
         </a>
       
@@ -503,21 +503,21 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#recon.tokenization" class="md-nav__link">
-    recon.tokenization
+  <a href="#recon.operations.tokenization" class="md-nav__link">
+    recon.operations.tokenization
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#recon.tokenization.add_tokens" class="md-nav__link">
+  <a href="#recon.operations.tokenization.add_tokens" class="md-nav__link">
     add_tokens()
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#recon.tokenization.fix_tokenization_and_spacing" class="md-nav__link">
+  <a href="#recon.operations.tokenization.fix_tokenization_and_spacing" class="md-nav__link">
     fix_tokenization_and_spacing()
   </a>
   
@@ -643,21 +643,21 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#recon.tokenization" class="md-nav__link">
-    recon.tokenization
+  <a href="#recon.operations.tokenization" class="md-nav__link">
+    recon.operations.tokenization
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#recon.tokenization.add_tokens" class="md-nav__link">
+  <a href="#recon.operations.tokenization.add_tokens" class="md-nav__link">
     add_tokens()
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#recon.tokenization.fix_tokenization_and_spacing" class="md-nav__link">
+  <a href="#recon.operations.tokenization.fix_tokenization_and_spacing" class="md-nav__link">
     fix_tokenization_and_spacing()
   </a>
   
@@ -687,7 +687,7 @@
                 
                 <div class="doc doc-object doc-module">
 
-<a id="recon.tokenization"></a>
+<a id="recon.operations.tokenization"></a>
     <div class="doc doc-contents first">
 
 
@@ -706,11 +706,11 @@
 
 
 
-<h2 id="recon.tokenization.add_tokens" class="doc doc-heading">
+<h2 id="recon.operations.tokenization.add_tokens" class="doc doc-heading">
 <code class="codehilite language-python"><span class="n">add_tokens</span><span class="p">(</span><span class="n">example</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">use_spacy_token_ends</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">preprocessed_outputs</span><span class="p">)</span></code>
 
 
-<a href="#recon.tokenization.add_tokens" class="headerlink" title="Permanent link">&para;</a></h2>
+<a href="#recon.operations.tokenization.add_tokens" class="headerlink" title="Permanent link">&para;</a></h2>
 
     <div class="doc doc-contents ">
 
@@ -757,7 +757,7 @@
   </tbody>
 </table>
         <details class="quote">
-          <summary>Source code in <code>recon/tokenization.py</code></summary>
+          <summary>Source code in <code>recon/operations/tokenization.py</code></summary>
           <div class="codehilite"><pre><span></span><code><span class="nd">@operation</span><span class="p">(</span><span class="s2">&quot;recon.v1.add_tokens&quot;</span><span class="p">,</span> <span class="n">pre</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;recon.v1.spacy&quot;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">add_tokens</span><span class="p">(</span>
     <span class="n">example</span><span class="p">:</span> <span class="n">Example</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">use_spacy_token_ends</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">preprocessed_outputs</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
@@ -810,11 +810,11 @@
 
 
 
-<h2 id="recon.tokenization.fix_tokenization_and_spacing" class="doc doc-heading">
+<h2 id="recon.operations.tokenization.fix_tokenization_and_spacing" class="doc doc-heading">
 <code class="codehilite language-python"><span class="n">fix_tokenization_and_spacing</span><span class="p">(</span><span class="n">example</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">preprocessed_outputs</span><span class="o">=</span><span class="p">{})</span></code>
 
 
-<a href="#recon.tokenization.fix_tokenization_and_spacing" class="headerlink" title="Permanent link">&para;</a></h2>
+<a href="#recon.operations.tokenization.fix_tokenization_and_spacing" class="headerlink" title="Permanent link">&para;</a></h2>
 
     <div class="doc doc-contents ">
 
@@ -864,7 +864,7 @@ get two words pushed together where one is an entity so this can fix a lot of is
   </tbody>
 </table>
         <details class="quote">
-          <summary>Source code in <code>recon/tokenization.py</code></summary>
+          <summary>Source code in <code>recon/operations/tokenization.py</code></summary>
           <div class="codehilite"><pre><span></span><code><span class="nd">@operation</span><span class="p">(</span><span class="s2">&quot;recon.v1.fix_tokenization_and_spacing&quot;</span><span class="p">,</span> <span class="n">pre</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;recon.v1.spacy&quot;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">fix_tokenization_and_spacing</span><span class="p">(</span>
     <span class="n">example</span><span class="p">:</span> <span class="n">Example</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">preprocessed_outputs</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>

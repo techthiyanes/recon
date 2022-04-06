@@ -969,13 +969,13 @@ Used to apply core functions to all datasets at once.</p>
             <span class="k">if</span> <span class="n">test</span><span class="p">:</span>
                 <span class="n">examples</span> <span class="o">+=</span> <span class="n">test</span><span class="o">.</span><span class="n">data</span>
             <span class="n">example_store</span> <span class="o">=</span> <span class="n">ExampleStore</span><span class="p">(</span><span class="n">examples</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">example_store</span> <span class="o">=</span> <span class="n">example_store</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_example_store</span> <span class="o">=</span> <span class="n">example_store</span>
 
         <span class="k">if</span> <span class="n">test</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">test</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
 
         <span class="k">for</span> <span class="n">ds</span> <span class="ow">in</span> <span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">dev</span><span class="p">,</span> <span class="n">test</span><span class="p">):</span>
-            <span class="n">ds</span><span class="o">.</span><span class="n">example_store</span> <span class="o">=</span> <span class="n">example_store</span>
+            <span class="n">ds</span><span class="o">.</span><span class="n">set_example_store</span><span class="p">(</span><span class="n">example_store</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_train</span> <span class="o">=</span> <span class="n">train</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_dev</span> <span class="o">=</span> <span class="n">dev</span>
@@ -1052,6 +1052,10 @@ Used to apply core functions to all datasets at once.</p>
 <span class="sd">            List[Example]: All Examples in Corpus</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">train</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">dev</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">test</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">example_store</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ExampleStore</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_example_store</span>
 
     <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">List</span><span class="p">[</span><span class="n">Example</span><span class="p">],</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">Any</span><span class="p">],</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CorpusApplyResult</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Apply a function to all datasets</span>
@@ -1136,30 +1140,32 @@ Used to apply core functions to all datasets at once.</p>
             <span class="n">corpus</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">train</span><span class="p">,</span> <span class="n">dev</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">corpus</span>
 
-    <span class="k">def</span> <span class="nf">to_disk</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">to_disk</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">overwrite</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Save Corpus to Disk</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            data_dir (Path): Directory to save data to</span>
-<span class="sd">            force (bool): Force save to directory. Create parent directories</span>
-<span class="sd">                or overwrite existing data.</span>
+<span class="sd">            output_dir (Path): Directory to save data to</span>
+<span class="sd">            overwrite (bool): Force save to directory. Create parent directories</span>
+<span class="sd">                and/or overwrite existing data.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">data_dir</span> <span class="o">=</span> <span class="n">ensure_path</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span>
-        <span class="n">state_dir</span> <span class="o">=</span> <span class="n">data_dir</span> <span class="o">/</span> <span class="s2">&quot;.recon&quot;</span>
+        <span class="n">data_dir</span> <span class="o">=</span> <span class="n">ensure_path</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span>
+        <span class="n">state_dir</span> <span class="o">=</span> <span class="n">output_dir</span> <span class="o">/</span> <span class="s2">&quot;.recon&quot;</span>
         <span class="n">corpus_meta_path</span> <span class="o">=</span> <span class="n">state_dir</span> <span class="o">/</span> <span class="s2">&quot;meta.json&quot;</span>
 
-        <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-            <span class="n">data_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">overwrite</span> <span class="ow">and</span> <span class="n">output_dir</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Output directory is not empty. Set overwrite=True in Corpus.to_disk to clear the directory before saving.&quot;</span>
+            <span class="p">)</span>
 
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">state_dir</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
-                <span class="n">state_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">output_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">state_dir</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="n">state_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
         <span class="n">srsly</span><span class="o">.</span><span class="n">write_json</span><span class="p">(</span><span class="n">corpus_meta_path</span><span class="p">,</span> <span class="n">CorpusMeta</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">dict</span><span class="p">())</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_train</span><span class="o">.</span><span class="n">to_disk</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">save_examples</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_dev</span><span class="o">.</span><span class="n">to_disk</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">save_examples</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_train</span><span class="o">.</span><span class="n">to_disk</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="n">overwrite</span><span class="p">,</span> <span class="n">save_examples</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dev</span><span class="o">.</span><span class="n">to_disk</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="n">overwrite</span><span class="p">,</span> <span class="n">save_examples</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_test</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_test</span><span class="o">.</span><span class="n">to_disk</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">save_examples</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
+            <span class="bp">self</span><span class="o">.</span><span class="n">_test</span><span class="o">.</span><span class="n">to_disk</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="n">overwrite</span><span class="p">,</span> <span class="n">save_examples</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">example_store</span><span class="o">.</span><span class="n">to_disk</span><span class="p">(</span><span class="n">state_dir</span> <span class="o">/</span> <span class="s2">&quot;example_store.jsonl&quot;</span><span class="p">)</span>
 
     <span class="nd">@classmethod</span>
@@ -1341,6 +1347,7 @@ Used to apply core functions to all datasets at once.</p>
 </table>    </div>
 
   </div>
+
 
 
 
@@ -1615,13 +1622,13 @@ Used to apply core functions to all datasets at once.</p>
         <span class="k">if</span> <span class="n">test</span><span class="p">:</span>
             <span class="n">examples</span> <span class="o">+=</span> <span class="n">test</span><span class="o">.</span><span class="n">data</span>
         <span class="n">example_store</span> <span class="o">=</span> <span class="n">ExampleStore</span><span class="p">(</span><span class="n">examples</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">example_store</span> <span class="o">=</span> <span class="n">example_store</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_example_store</span> <span class="o">=</span> <span class="n">example_store</span>
 
     <span class="k">if</span> <span class="n">test</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">test</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
 
     <span class="k">for</span> <span class="n">ds</span> <span class="ow">in</span> <span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">dev</span><span class="p">,</span> <span class="n">test</span><span class="p">):</span>
-        <span class="n">ds</span><span class="o">.</span><span class="n">example_store</span> <span class="o">=</span> <span class="n">example_store</span>
+        <span class="n">ds</span><span class="o">.</span><span class="n">set_example_store</span><span class="p">(</span><span class="n">example_store</span><span class="p">)</span>
 
     <span class="bp">self</span><span class="o">.</span><span class="n">_train</span> <span class="o">=</span> <span class="n">train</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_dev</span> <span class="o">=</span> <span class="n">dev</span>
@@ -1768,7 +1775,7 @@ changes data in place. See recon.operations.registry.operations</p></td>
 
 
 <h3 id="recon.corpus.Corpus.from_disk" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">from_disk</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;corpus&#39;</span><span class="p">,</span> <span class="n">train_name</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="n">dev_name</span><span class="o">=</span><span class="s1">&#39;dev&#39;</span><span class="p">,</span> <span class="n">test_name</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="n">loader_func</span><span class="o">=&lt;</span><span class="n">function</span> <span class="n">read_jsonl</span> <span class="n">at</span> <span class="mh">0x12d071240</span><span class="o">&gt;</span><span class="p">)</span></code>
+<code class="codehilite language-python"><span class="n">from_disk</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;corpus&#39;</span><span class="p">,</span> <span class="n">train_name</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="n">dev_name</span><span class="o">=</span><span class="s1">&#39;dev&#39;</span><span class="p">,</span> <span class="n">test_name</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="n">loader_func</span><span class="o">=&lt;</span><span class="n">function</span> <span class="n">read_jsonl</span> <span class="n">at</span> <span class="mh">0x11b5dd5a0</span><span class="o">&gt;</span><span class="p">)</span></code>
 
   <span class="doc doc-properties">
       <small class="doc doc-property doc-property-classmethod"><code>classmethod</code></small>
@@ -1821,7 +1828,7 @@ named explicitly train.jsonl, dev.jsonl, and test.jsonl</p>
         <td><code>Callable</code></td>
         <td><p>Callable that reads a file and returns a List of examples.
 Defaults to <a class="autorefs autorefs-internal" href="../loaders/#recon.loaders.read_jsonl">read_jsonl</a></p></td>
-        <td><code>&lt;function read_jsonl at 0x12d071240&gt;</code></td>
+        <td><code>&lt;function read_jsonl at 0x11b5dd5a0&gt;</code></td>
       </tr>
   </tbody>
 </table>
@@ -2033,7 +2040,7 @@ Calls Dataset.pipe_ for each dataset</p>
 
 
 <h3 id="recon.corpus.Corpus.to_disk" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">to_disk</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_dir</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+<code class="codehilite language-python"><span class="n">to_disk</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
 
 
 <a href="#recon.corpus.Corpus.to_disk" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -2054,46 +2061,48 @@ Calls Dataset.pipe_ for each dataset</p>
   </thead>
   <tbody>
       <tr>
-        <td><code>data_dir</code></td>
+        <td><code>output_dir</code></td>
         <td><code>Path</code></td>
         <td><p>Directory to save data to</p></td>
         <td><em>required</em></td>
       </tr>
       <tr>
-        <td><code>force</code></td>
+        <td><code>overwrite</code></td>
         <td><code>bool</code></td>
         <td><p>Force save to directory. Create parent directories
-or overwrite existing data.</p></td>
+and/or overwrite existing data.</p></td>
         <td><code>False</code></td>
       </tr>
   </tbody>
 </table>
         <details class="quote">
           <summary>Source code in <code>recon/corpus.py</code></summary>
-          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">to_disk</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+          <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">to_disk</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">overwrite</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Save Corpus to Disk</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        data_dir (Path): Directory to save data to</span>
-<span class="sd">        force (bool): Force save to directory. Create parent directories</span>
-<span class="sd">            or overwrite existing data.</span>
+<span class="sd">        output_dir (Path): Directory to save data to</span>
+<span class="sd">        overwrite (bool): Force save to directory. Create parent directories</span>
+<span class="sd">            and/or overwrite existing data.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">data_dir</span> <span class="o">=</span> <span class="n">ensure_path</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span>
-    <span class="n">state_dir</span> <span class="o">=</span> <span class="n">data_dir</span> <span class="o">/</span> <span class="s2">&quot;.recon&quot;</span>
+    <span class="n">data_dir</span> <span class="o">=</span> <span class="n">ensure_path</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span>
+    <span class="n">state_dir</span> <span class="o">=</span> <span class="n">output_dir</span> <span class="o">/</span> <span class="s2">&quot;.recon&quot;</span>
     <span class="n">corpus_meta_path</span> <span class="o">=</span> <span class="n">state_dir</span> <span class="o">/</span> <span class="s2">&quot;meta.json&quot;</span>
 
-    <span class="k">if</span> <span class="n">force</span><span class="p">:</span>
-        <span class="n">data_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">overwrite</span> <span class="ow">and</span> <span class="n">output_dir</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;Output directory is not empty. Set overwrite=True in Corpus.to_disk to clear the directory before saving.&quot;</span>
+        <span class="p">)</span>
 
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">state_dir</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
-            <span class="n">state_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">output_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">state_dir</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="n">state_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="n">srsly</span><span class="o">.</span><span class="n">write_json</span><span class="p">(</span><span class="n">corpus_meta_path</span><span class="p">,</span> <span class="n">CorpusMeta</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">dict</span><span class="p">())</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_train</span><span class="o">.</span><span class="n">to_disk</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">save_examples</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_dev</span><span class="o">.</span><span class="n">to_disk</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">save_examples</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_train</span><span class="o">.</span><span class="n">to_disk</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="n">overwrite</span><span class="p">,</span> <span class="n">save_examples</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_dev</span><span class="o">.</span><span class="n">to_disk</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="n">overwrite</span><span class="p">,</span> <span class="n">save_examples</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_test</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_test</span><span class="o">.</span><span class="n">to_disk</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="n">force</span><span class="p">,</span> <span class="n">save_examples</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
+        <span class="bp">self</span><span class="o">.</span><span class="n">_test</span><span class="o">.</span><span class="n">to_disk</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="n">overwrite</span><span class="p">,</span> <span class="n">save_examples</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">example_store</span><span class="o">.</span><span class="n">to_disk</span><span class="p">(</span><span class="n">state_dir</span> <span class="o">/</span> <span class="s2">&quot;example_store.jsonl&quot;</span><span class="p">)</span>
 </code></pre></div>
         </details>
