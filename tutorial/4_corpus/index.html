@@ -758,26 +758,21 @@
                 
                 
                 <h1 id="tutorial-using-corpusapply">Tutorial - Using <code>Corpus.apply</code><a class="headerlink" href="#tutorial-using-corpusapply" title="Permanent link">&para;</a></h1>
-<p>In the previous step, we used the <code>stats.get_ner_stats</code> function to some stats on our train_data. Now, we want to be able to get these same stats across our train/dev/test split.</p>
-<p>SO, ReconNER's <code>Corpus</code> class provides a useful method called <a href="../../api/corpus"><code>apply</code></a>
-that takes a <code>Callable</code> as a parameter that can run on a list of <code>Example</code>s (e.g. <code>stats.get_ner_stats</code>)
-and run that <code>Callable</code> over all the datasets as well as a concatenation of all the datasets so you get the full picture.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>You can pass arbitary <code>*args</code> and <code>**kwargs</code> to <code>Corpus.apply</code> and they will be passed along to the callable you provide as the required argument.</p>
-</div>
+<p>So far, we have been operating on a Dataset which represents a single split of our data. Recon's <code>Corpus</code> container allows us to work with our full train/dev/test split by managing a separate <code>Dataset</code> for each split. The <code>Corpus</code> handles either 2 (train, dev) or 3 (train, dev, test) Datasets. If you happen to split up your data in some other way, you may need to just manage the lower level <code>Dataset</code> for each split on your own.</p>
+<p>Recon's <code>Corpus</code> class provides the same <code>apply</code> method as <code>Dataset</code> that accepts an <code>Operation</code>.
+S</p>
 <h2 id="update-script-to-use-datasetapply">Update script to use <code>Dataset.apply</code><a class="headerlink" href="#update-script-to-use-datasetapply" title="Permanent link">&para;</a></h2>
 <p>Let's edit that <code>main.py</code> file you created in the previous step to utilize the <code>Corpus.apply</code> method.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
 <span class="kn">import</span> <span class="nn">typer</span>
-<span class="kn">from</span> <span class="nn">recon</span> <span class="kn">import</span> <span class="n">Dataset</span><span class="p">,</span> <span class="n">get_ner_stats</span>
+<span class="kn">from</span> <span class="nn">recon</span> <span class="kn">import</span> <span class="n">Corpus</span>
 
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">data_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">):</span>
-    <span class="n">ds</span> <span class="o">=</span> <span class="n">Dataset</span><span class="o">.</span><span class="n">from_disk</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span>
-    <span class="n">ds_stats</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">get_ner_stats</span><span class="p">,</span> <span class="n">serialize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">no_print</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="hll">    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">stats</span> <span class="ow">in</span> <span class="n">ds_stats</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">corpus</span> <span class="o">=</span> <span class="n">Corpus</span><span class="o">.</span><span class="n">from_disk</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">corpus</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="s2">&quot;recon.v1.get_ner_stats&quot;</span><span class="p">,</span> <span class="n">serialize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">no_print</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="hll">    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">stats</span> <span class="ow">in</span> <span class="n">res</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
 </span>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">stats</span><span class="p">)</span>
@@ -846,15 +841,11 @@ and run that <code>Callable</code> over all the datasets as well as a concatenat
 <h3 id="2-barely-enough-product-annotations">2. Barely enough <code>PRODUCT</code> annotations<a class="headerlink" href="#2-barely-enough-product-annotations" title="Permanent link">&para;</a></h3>
 <p>We're also a little low (though not nearly as much) on our <code>PRODUCT</code> label.</p>
 <h3 id="what-to-do-from-here">What to do from here<a class="headerlink" href="#what-to-do-from-here" title="Permanent link">&para;</a></h3>
-<p>We want our final model to be equally good at extracting these 3 labels of <code>SKILL</code>, <code>PRODUCT</code> and <code>JOB_ROLE</code> so we now know exactly where to invest more time in our annotations effort: getting more examples of <code>JOB_ROLE</code>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This is a VERY small dataset sampled from a much larger NER dataset that's powering part of our work on the new <a href="https://azure.kabirkhan.com/en-us/services/cognitive-services/text-analytics/">v3 Text Analytics Cognitive Service</a>. So here's your glimpse into how we work with data at kabirkhan. Until we fix the lack of annotations for the <code>JOB_ROLE</code> label we won't be launching it in production.</p>
-</div>
+<p>We want our final model to be equally good at extracting these 3 labels of <code>SKILL</code>, <code>PRODUCT</code> and <code>JOB_ROLE</code> so we now know exactly where to invest more time in our annotations effort: getting more examples of <code>JOB_ROLE</code> and <code>PRODUCT</code>.</p>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
-<p>We've only scratched the surface of ReconNER. It's great to have these global stats about our dataset so we can track trends and make sure we're trending in the right direction as we annotate more data. But this data doesn't debug the data we already have. 34 of our 191 <code>SKILL</code> annotations in our <code>train</code> set might actually be instances where <code>JOB_ROLE</code> or <code>PRODUCT</code> is more appropriate.</p>
+<p>We've only scratched the surface of Recon. It's great to have these global stats about our dataset so we can track trends and make sure we're trending in the right direction as we annotate more data. But this data doesn't debug the data we already have. 34 of our 191 <code>SKILL</code> annotations in our <code>train</code> set might actually be instances where <code>JOB_ROLE</code> or <code>PRODUCT</code> is more appropriate.</p>
 <p>We might have subsets of our data annotated by different people that had a slightly different understanding of the annotation requirements.</p>
-<p>In the next step of this tutorial we'll dive into the <code>insights</code> module of ReconNER to examine the quality of our existing annotations.</p>
+<p>In the next step of this tutorial we'll dive into the <code>insights</code> module of Recon to examine the quality of our existing annotations.</p>
                 
               
               

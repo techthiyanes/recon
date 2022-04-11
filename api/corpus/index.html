@@ -959,9 +959,9 @@ Used to apply core functions to all datasets at once.</p>
 
 <span class="sd">        Args:</span>
 <span class="sd">            name (str): Name of the Corpus</span>
-<span class="sd">            train (Dataset): List of examples for **train** set</span>
-<span class="sd">            dev (Dataset): List of examples for **dev** set</span>
-<span class="sd">            test (Dataset, optional): Defaults to None. List of examples for **test** set</span>
+<span class="sd">            train (Dataset): Dataset containing examples for **train** set</span>
+<span class="sd">            dev (Dataset): Dataset containing examples for **dev** set</span>
+<span class="sd">            test (Dataset, optional): Defaults to None. Dataset containing examples for **test** set</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span>
         <span class="k">if</span> <span class="n">example_store</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -980,6 +980,12 @@ Used to apply core functions to all datasets at once.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">_train</span> <span class="o">=</span> <span class="n">train</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_dev</span> <span class="o">=</span> <span class="n">dev</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_test</span> <span class="o">=</span> <span class="n">test</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">train_ds</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">dev_ds</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_ds</span><span class="p">:</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">test_ds</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">return</span> <span class="n">output</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -1581,19 +1587,19 @@ Used to apply core functions to all datasets at once.</p>
       <tr>
         <td><code>train</code></td>
         <td><code>Dataset</code></td>
-        <td><p>List of examples for <strong>train</strong> set</p></td>
+        <td><p>Dataset containing examples for <strong>train</strong> set</p></td>
         <td><em>required</em></td>
       </tr>
       <tr>
         <td><code>dev</code></td>
         <td><code>Dataset</code></td>
-        <td><p>List of examples for <strong>dev</strong> set</p></td>
+        <td><p>Dataset containing examples for <strong>dev</strong> set</p></td>
         <td><em>required</em></td>
       </tr>
       <tr>
         <td><code>test</code></td>
         <td><code>Dataset</code></td>
-        <td><p>Defaults to None. List of examples for <strong>test</strong> set</p></td>
+        <td><p>Defaults to None. Dataset containing examples for <strong>test</strong> set</p></td>
         <td><code>None</code></td>
       </tr>
   </tbody>
@@ -1612,9 +1618,9 @@ Used to apply core functions to all datasets at once.</p>
 
 <span class="sd">    Args:</span>
 <span class="sd">        name (str): Name of the Corpus</span>
-<span class="sd">        train (Dataset): List of examples for **train** set</span>
-<span class="sd">        dev (Dataset): List of examples for **dev** set</span>
-<span class="sd">        test (Dataset, optional): Defaults to None. List of examples for **test** set</span>
+<span class="sd">        train (Dataset): Dataset containing examples for **train** set</span>
+<span class="sd">        dev (Dataset): Dataset containing examples for **dev** set</span>
+<span class="sd">        test (Dataset, optional): Defaults to None. Dataset containing examples for **test** set</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span>
     <span class="k">if</span> <span class="n">example_store</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -1638,6 +1644,7 @@ Used to apply core functions to all datasets at once.</p>
     </div>
 
   </div>
+
 
 
 
@@ -1775,7 +1782,7 @@ changes data in place. See recon.operations.registry.operations</p></td>
 
 
 <h3 id="recon.corpus.Corpus.from_disk" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">from_disk</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;corpus&#39;</span><span class="p">,</span> <span class="n">train_name</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="n">dev_name</span><span class="o">=</span><span class="s1">&#39;dev&#39;</span><span class="p">,</span> <span class="n">test_name</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="n">loader_func</span><span class="o">=&lt;</span><span class="n">function</span> <span class="n">read_jsonl</span> <span class="n">at</span> <span class="mh">0x161edd5a0</span><span class="o">&gt;</span><span class="p">)</span></code>
+<code class="codehilite language-python"><span class="n">from_disk</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;corpus&#39;</span><span class="p">,</span> <span class="n">train_name</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="n">dev_name</span><span class="o">=</span><span class="s1">&#39;dev&#39;</span><span class="p">,</span> <span class="n">test_name</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="n">loader_func</span><span class="o">=&lt;</span><span class="n">function</span> <span class="n">read_jsonl</span> <span class="n">at</span> <span class="mh">0x1265e1630</span><span class="o">&gt;</span><span class="p">)</span></code>
 
   <span class="doc doc-properties">
       <small class="doc doc-property doc-property-classmethod"><code>classmethod</code></small>
@@ -1828,7 +1835,7 @@ named explicitly train.jsonl, dev.jsonl, and test.jsonl</p>
         <td><code>Callable</code></td>
         <td><p>Callable that reads a file and returns a List of examples.
 Defaults to <a class="autorefs autorefs-internal" href="../loaders/#recon.loaders.read_jsonl">read_jsonl</a></p></td>
-        <td><code>&lt;function read_jsonl at 0x161edd5a0&gt;</code></td>
+        <td><code>&lt;function read_jsonl at 0x1265e1630&gt;</code></td>
       </tr>
   </tbody>
 </table>
