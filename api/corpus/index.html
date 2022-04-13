@@ -981,12 +981,6 @@ Used to apply core functions to all datasets at once.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">_dev</span> <span class="o">=</span> <span class="n">dev</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_test</span> <span class="o">=</span> <span class="n">test</span>
 
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="n">output</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">train_ds</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">dev_ds</span><span class="si">}</span><span class="s2">&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_ds</span><span class="p">:</span>
-            <span class="n">output</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">test_ds</span><span class="si">}</span><span class="s2">&quot;</span>
-        <span class="k">return</span> <span class="n">output</span>
-
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Get Corpus name</span>
@@ -1062,6 +1056,12 @@ Used to apply core functions to all datasets at once.</p>
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">example_store</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ExampleStore</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_example_store</span>
+
+    <span class="k">def</span> <span class="nf">print_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">train_ds</span><span class="o">.</span><span class="n">print_stats</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dev_ds</span><span class="o">.</span><span class="n">print_stats</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_ds</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">test_ds</span><span class="o">.</span><span class="n">print_stats</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">List</span><span class="p">[</span><span class="n">Example</span><span class="p">],</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">Any</span><span class="p">],</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CorpusApplyResult</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Apply a function to all datasets</span>
@@ -1647,7 +1647,6 @@ Used to apply core functions to all datasets at once.</p>
 
 
 
-
   <div class="doc doc-object doc-method">
 
 
@@ -1782,7 +1781,7 @@ changes data in place. See recon.operations.registry.operations</p></td>
 
 
 <h3 id="recon.corpus.Corpus.from_disk" class="doc doc-heading">
-<code class="codehilite language-python"><span class="n">from_disk</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;corpus&#39;</span><span class="p">,</span> <span class="n">train_name</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="n">dev_name</span><span class="o">=</span><span class="s1">&#39;dev&#39;</span><span class="p">,</span> <span class="n">test_name</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="n">loader_func</span><span class="o">=&lt;</span><span class="n">function</span> <span class="n">read_jsonl</span> <span class="n">at</span> <span class="mh">0x1265e1630</span><span class="o">&gt;</span><span class="p">)</span></code>
+<code class="codehilite language-python"><span class="n">from_disk</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;corpus&#39;</span><span class="p">,</span> <span class="n">train_name</span><span class="o">=</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="n">dev_name</span><span class="o">=</span><span class="s1">&#39;dev&#39;</span><span class="p">,</span> <span class="n">test_name</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="n">loader_func</span><span class="o">=&lt;</span><span class="n">function</span> <span class="n">read_jsonl</span> <span class="n">at</span> <span class="mh">0x121529630</span><span class="o">&gt;</span><span class="p">)</span></code>
 
   <span class="doc doc-properties">
       <small class="doc doc-property doc-property-classmethod"><code>classmethod</code></small>
@@ -1835,7 +1834,7 @@ named explicitly train.jsonl, dev.jsonl, and test.jsonl</p>
         <td><code>Callable</code></td>
         <td><p>Callable that reads a file and returns a List of examples.
 Defaults to <a class="autorefs autorefs-internal" href="../loaders/#recon.loaders.read_jsonl">read_jsonl</a></p></td>
-        <td><code>&lt;function read_jsonl at 0x1265e1630&gt;</code></td>
+        <td><code>&lt;function read_jsonl at 0x121529630&gt;</code></td>
       </tr>
   </tbody>
 </table>
@@ -2039,6 +2038,7 @@ Calls Dataset.pipe_ for each dataset</p>
     </div>
 
   </div>
+
 
 
 
